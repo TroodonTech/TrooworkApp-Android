@@ -1,0 +1,49 @@
+<!--VIEW WORKORDER -> EmployeePage -->
+<ion-view view-title="Inspection Order">
+    <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div> 
+         
+            <ion-content class="padding_inspection"  delegate-handle="mainScroll">
+            <!--  <ion-scroll direction="xy" class="scrollClass" delegate-handle="small"> -->
+            <!-- <ion-scroll zooming="true" direction="xy" style="width: 100%; "> -->
+             <ion-refresher pulling-text="Pull to refresh.." on-refresh="doRefresh()"></ion-refresher>
+             <!-- <input type = "date" class = "form-control"  ng-model="WorkorderDate" ng-show="showDatepicker" ng-change="viewWorkorderFilterByDate()" class="col-sm-12 col-md-12 col-lg-12"/> -->
+             
+
+            
+          
+             <div class="item" ng-repeat="data in viewinspection">
+                <a class="item item-text-wrap text-center">               
+                  <h2>{{data.TemplateName}}</h2>
+                  <div ng-show="data.FacilityName">
+                  <p>{{data.FacilityName}} - {{data.RoomType}} - {{data.RoomId}}</p>
+                  <!-- <p>{{data.WorkorderTime}}</p> -->
+                  <p>Assigned to : {{data.FirstName}} {{data.LastName}}</p>
+                  <!-- <a class="button  icon-right ion-chevron-right button-calm">Inspect</a> -->
+                  <button ng-disabled="{{data.TemplateName == 'No inspection found!'}}" class=" button icon-right ion-chevron-right 
+                                          button-large button-brown-{{data.InspectionCompletedBy === null}} 
+                                          button-yellow-{{data.InspectionCompletedBy !== null}}" 
+                          ng-click="getInspectionDetails(data.InspectionOrderKey, data.TemplateId, data.TemplateName)">Inspect
+                  </button>
+                  <!-- <button  class="btn-primary  button-brown-{{x.InspectionCompletedBy === null}}
+                                                         button-yellow-{{x.InspectionCompletedBy !== null}}" type="submit" ng-click="inspect(x.InspectionorderKey, x.TemplateId, x.TemplateName)">Inspect
+                            </button> -->
+                  <!-- <button type="sumbit" ng-click="getInspectionDetails(data.InspectionorderKey, data.TemplateId, data.TemplateName)" class="button icon-right ion-chevron-right button-calm">Inspect  </button>  -->
+                </div>
+                </a>  
+              </div>
+
+     
+<div><br><br></div>
+<!-- <div class="float-button" ng-click="scrollToTop()">
+<span class="height-fix">
+   <a class="content">
+      <i class="ion-ios-arrow-up"> </i>
+   </a>
+    </span>
+</div> -->
+               <!--  </ion-scroll> -->
+            </ion-content>
+            <ion-floating-button click="scrollToTop()" has-footer="false" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff" class="bottomPadding">
+          </ion-floating-button>
+        </ion-view>
+         

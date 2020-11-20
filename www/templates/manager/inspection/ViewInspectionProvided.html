@@ -1,0 +1,64 @@
+<!--VIEW WORKORDER -> EmployeePage -->
+<ion-view view-title="Inspection">
+    
+         <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div> 
+            <ion-content class="padding_inspection"  delegate-handle="mainScroll">
+            <!--  <ion-scroll direction="xy" class="scrollClass" delegate-handle="small"> -->
+            <!-- <ion-scroll zooming="true" direction="xy" style="width: 100%; "> -->
+             <!-- <ion-refresher pulling-text="Pull to refresh.." on-refresh="doRefresh()"></ion-refresher> -->
+           
+      <!-- <div class="pager">       
+          <button class="button button-positive button-rounded " ng-click="loadLessData()" ng-disabled="pageno == 1">Previous</button> 
+          <button class="button button-positive button-rounded pagerNextButton" ng-click="loadMoreData()" ng-disabled="disableNext">Next</button>              
+          </div> -->
+          <!-- <a ng-click="loadMoreData()" href="">More...</a>
+          <a ng-click="loadLessData()" href="" class="pagerNextButton">Back...</a> -->
+             <div class="item item-icon-right" ng-repeat="data in viewinspection">
+              <div> 
+                <a class="item item-text-wrap text-center" ng-click="inspectionDetailsByManager(data)">               
+                  <h2>{{data.TemplateName}}</h2>
+                  <div ng-show="data.FacilityName">
+                  <p>{{data.FacilityName}} - {{data.RoomType}} - {{data.RoomId}}</p>
+                  <!-- <p>{{data.WorkorderTime}}</p> -->
+                  <p>Assigned to : {{data.LastName}},{{data.FirstName}} </p>
+                  <p ng-if="data.InspectionCompletedBy !== null && disableNext === false">
+                            <ion-label class="label 
+                                   text-yellow-{{data.inspectioncompletedby !== null}}">
+                                  Inspection Completed!
+                            </ion-label>
+                          </p>
+                  <p ng-if="data.InspectionCompletedBy === null && disableNext === false">
+                            <ion-label class="label text-brown-{{data.inspectioncompletedby !== null}} "
+                                   >
+                                  Inspection is not Completed!
+                            </ion-label>
+                  </p>
+                </div>
+                  <!-- <a class="button  icon-right ion-chevron-right button-calm">Inspect</a> -->
+                  <!-- <button class=" button" 
+                                   ng-if="data.InspectionCompletedBy !== 'null'" >
+                                   <h2>View Inspection</h2>
+                      </button> -->
+                 
+                </a>   <i class="icon ion-chevron-right"></i>  
+              </div>
+
+             
+          </div>
+
+
+<div><br><br></div>
+
+<!-- <div class="float-button" ng-click="scrollToTop()">
+<span class="height-fix">
+   <a class="content">
+      <i class="ion-ios-arrow-up"> </i>
+   </a>
+    </span>
+</div> -->
+               <!--  </ion-scroll> -->
+            </ion-content>
+            <ion-floating-button click="scrollToTop()" has-footer="false" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff" class="bottomPadding">
+          </ion-floating-button>
+        </ion-view>
+         

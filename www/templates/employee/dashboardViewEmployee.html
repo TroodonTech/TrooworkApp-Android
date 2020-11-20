@@ -1,0 +1,17 @@
+<!--VIEW WORKORDER  -->
+<ion-view view-title="Employee - {{username}}">
+
+  <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+  <ion-content class="padding_inspection" delegate-handle="mainScroll">
+
+    <div class="inspectionMenuButtons">
+      <p><a class="button button-dark  button-block" ui-sref="employeeDashboard.employeeworks">Work Order</a></p>
+
+      <p><a class="button button-dark button-block" ui-sref="employeeDashboard.scanforworkEmp">Scan For Work</a></p>
+      <p><a class="button button-dark button-block" ui-sref="employeeDashboard.createWorkOrderbyScan">Create WorkOrder By Scan</a></p>
+
+    </div>
+
+  </ion-content>
+
+</ion-view>

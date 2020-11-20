@@ -1,0 +1,35 @@
+<ion-view view-title="Work Order Pie" >
+
+  <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+  <ion-content class="padding_inspection"  delegate-handle="mainScroll">
+    <label class="item item-input item-select item-text-wrap">
+      <div class="input-label">Employee</div>
+      <select  ng-model="viewworkorder.EmployeeKey" ng-options="z.EmployeeKey as z.EmployeeText  for z in viewworkorder.workorderemployeeList| unique:'EmployeeText'" value="z.EmployeeKey"
+               ng-change="viewWorkorderbyAllFilter(viewworkorder);EmpListOfWorks();">
+        <option label=" Select "></option>
+      </select>
+    </label>
+
+    <label class="item item-input item-select item-text-wrap">
+      <div class="input-label">Workorder Type</div>
+      <select  ng-model="viewworkorder.WorkorderTypeKey" ng-options="z.WorkorderTypeKey as z.WorkorderTypeText for z in viewworkorder.workordertypelist| unique:'WorkorderTypeText'" value="z.WorkorderTypeKey"
+               ng-change="viewWorkorderbyAllFilter(viewworkorder);EmpListOfWorks();">
+        <option label=" Select "></option>
+      </select>
+    </label>
+
+    <div class="item item-icon-left" ion-datetime-picker date monday-first ng-model="dateValue" ng-click="openDatePicker();" >
+      <i class="icon ion-ios-calendar-outline positive"></i>
+      From Date:
+      <div class="input-label">{{dateValue}}</div>
+    </div>
+
+    <div class="item item-icon-left" ion-datetime-picker date monday-first ng-model="dateValue1" ng-click="openDatePicker1();" >
+      <i class="icon ion-ios-calendar-outline positive"></i>
+      To Date:
+      <div class="input-label">{{dateValue1}}</div>
+    </div>
+
+
+    <a class="button button-dark button-block"  ng-click="generateFilterPieChart()">Generate Report</a>
+  </ion-content>

@@ -1,0 +1,14 @@
+<ion-view view-title="Work Order Pie" >
+
+  <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+  <ion-content class="padding_inspection"  delegate-handle="mainScroll">
+    <h4><b>DASHBOARD REPORT</b></h4>
+    <div id="piechart"></div>
+    <div ng-show="showPie">
+      <center> <h5 >  <b>No Records Found</b></h5></center>
+    </div>
+    <div>
+      <a class="button button-dark button-block"  ui-sref="managerDashboard.applyPieChartFilter">Apply filters & search</a>
+    </div>
+  </ion-content>
+</ion-view>

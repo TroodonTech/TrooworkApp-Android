@@ -1,0 +1,115 @@
+<!--VIEW WORKORDER -> EmployeePage -->
+<ion-view view-title="Inspection">
+    <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+
+    <ion-content class="padding_inspection" delegate-handle="mainScroll">
+        <!--  <ion-scroll direction="xy" class="scrollClass" delegate-handle="small"> -->
+        <!-- <ion-scroll zooming="true" direction="xy" style="width: 100%; "> -->
+        <!-- <ion-refresher pulling-text="Pull to refresh.." on-refresh="doRefresh()"></ion-refresher> -->
+
+
+        <h3 align="center">Create Inspection Order</h3>
+        <div class="list">
+
+            <!-- <label class="item item-input item-select">
+                        <div class="input-label">Scoring Type</div>
+                        <select ng-model="inspectionAdd.ScoreTypeKey"  ng-options="x.ScoreTypeText for x in ScoreName | unique:'ScoreTypeText'" ng-value="x.ScoreTypeKey" ng-change="getAllTemplates(inspectionAdd.ScoreTypeKey.ScoreTypeKey)">
+                            <option label=" Select "></option>
+                        </select>
+                    </label>  -->
+            <label class="item item-input item-select">
+                <div class="input-label">Template*</div>
+                <select ng-model="inspectionAdd.TemplateID"
+                    ng-options="x.TemplateName for x in templateList | unique:'TemplateName'" ng-value="x.TemplateID">
+                    <option label=" Select "></option>
+                </select>
+            </label>
+            <div class="item item-divider">Date-Time picker</div>
+            <div class="item item-icon-left" ion-datetime-picker date ng-model="timeValue" ng-click="callTimePicker()">
+                <i class="icon ion-ios-clock positive"></i>
+                Click to open the time:
+                <div class="input-label">{{timeValue}}</div>
+            </div>
+
+            <div class="item item-icon-left" ion-datetime-picker date monday-first ng-model="dateValue"
+                ng-click="openDatePicker();">
+                <i class="icon ion-ios-calendar-outline positive"></i>
+                Click to open the date:
+                <div class="input-label">{{dateValue}}</div>
+            </div>
+            <!-- <button class="button button-stable button-block" ng-click="callTimePicker()">Time*</button>   
+                    <button class="button button-stable button-block" ng-click="openDatePicker()">Date*</button>    -->
+            <div class="item item-divider">Select Auditor and Employee</div>
+            <label class="item item-input item-select">
+                <div class="input-label" ng-init="inspectionAdd.SupervisorKey=auditSupKey">Auditor*</div>
+                <select ng-model="inspectionAdd.SupervisorKey"
+                    ng-options="x.SupervisorKey as  x.SupervisorText for x in supervisorName | unique:'SupervisorText'"
+                    ng-value="x.SupervisorKey">
+                    <option label=" Select "></option>
+                </select>
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">Employee</div>
+                <select ng-model="inspectionAdd.EmployeeKey"
+                    ng-options="x.EmployeeText for x in employeeListManagerView | unique:'EmployeeText'"
+                    ng-value="x.EmployeeKey">
+                    <option label=" Select "></option>
+                </select>
+            </label>
+            <div class="item item-divider" ng-hide="showWorkorder">Select Location</div>
+            <label class="item item-input item-select" ng-hide="showWorkorder">
+                <div class="input-label">Building*</div>
+                <select ng-model="inspectionAdd.FacilityKey"
+                    ng-options="x.FacilityText for x in facilityList | unique:'FacilityText'" ng-value="x.FacilityKey"
+                    ng-change="selectedFacility();">
+                    <option label=" Select "></option>
+                </select>
+            </label>
+            <label class="item item-input item-select" ng-hide="showWorkorder">
+                <div class="input-label">Floor*</div>
+                <select ng-model="inspectionAdd.FloorKey"
+                    ng-options="x.FloorName for x in floorList | unique:'FloorName'" ng-value="x.FloorKey"
+                    ng-change="changedFloor()">
+                    <option label=" Select "></option>
+                </select>
+            </label>
+            <label class="item item-input item-select" ng-hide="showWorkorder">
+                <div class="input-label">Zone</div>
+                <select ng-model="inspectionAdd.ZoneKey" ng-options="x.ZoneName for x in zoneList | unique:'ZoneName'"
+                    ng-value="x.ZoneKey" ng-change="changedZone()">
+                    <option label=" Select "></option>
+                </select>
+            </label>
+            <label class="item item-input item-select" ng-hide="showWorkorder">
+                <div class="input-label">Room Type</div>
+                <select ng-model="inspectionAdd.RoomTypeKey"
+                    ng-options="x.RoomTypeName for x in roomtypeList | unique:'RoomTypeName'" ng-value="x.RoomTypeKey"
+                    ng-change="changedRoomtype()">
+                    <option label=" Select "></option>
+                </select>
+            </label>
+            <label class="item item-input item-select" ng-hide="showWorkorder">
+                <div class="input-label">Room*</div>
+                <select ng-model="inspectionAdd.RoomKey" ng-options="x.RoomName for x in roomList | unique:'RoomName'"
+                    ng-value="x.RoomKey">
+                    <option label=" Select "></option>
+                </select>
+            </label>
+            <button class="button button-full button-positive" type="submit"
+                ng-click="AddInspectionOrder(showWorkorder)">Submit</button>
+
+        </div>
+        <div><br><br></div>
+        <!-- <div class="float-button" ng-click="scrollToTop()">
+<span class="height-fix">
+   <a class="content">
+      <i class="ion-ios-arrow-up"> </i>
+   </a>
+    </span>
+</div> -->
+        <!--  </ion-scroll> -->
+    </ion-content>
+    <ion-floating-button click="scrollToTop()" has-footer="false" button-color="#2AC9AA" icon="ion-ios-arrow-up"
+        iconColor="#fff" class="bottomPadding">
+    </ion-floating-button>
+</ion-view>

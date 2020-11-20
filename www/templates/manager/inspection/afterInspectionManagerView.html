@@ -1,0 +1,38 @@
+<!--VIEW WORKORDER  -->
+<ion-view view-title="View Inspection Order">
+    <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+
+            <ion-content class="padding_inspection"  delegate-handle="mainScroll">
+               <div ng-show="inspectionNotCompleted">
+              <div class="item item-icon-right">
+                <a class="item item-text-wrap text-center">
+                  <h2>Inspection is Not Completed!</h2>
+                 </a>
+              </div>
+             </div>
+             <div ng-hide="inspectionNotCompleted">
+                <h3 align="center">{{templateName}}</h3>
+                <h5 align="center">{{roomtype}} {{roomId}} {{inspectionreport}}</h5>
+                <h6 align="center">{{inspectedby}} {{supervisorName}}</h6>
+
+             </div>
+
+             <div class="item item-icon-right" ng-repeat="data in inspectionDetails">
+                <a class="item item-text-wrap text-center">
+                  <h2>{{data.Question}}</h2>
+                  <p>{{scoreType}} {{data.ScoreName}}</p>
+                  <p>{{values}} {{data.Value}}</p>
+                 <p>{{notes}} {{data.Notes}}</p>
+                  <p>{{Observationdef}} {{data.ObservationDeficiency}}</p>
+                  <p>{{Correctiveaction}} {{data.CorrectiveAction}}</p>
+                  <p>{{Completeddate}} {{data.CompletedDate}}</p>
+                </a>
+              </div>
+
+<p><a class="button button-dark button-block" ui-sref="managerDashboard.inspectionorderProvided">Done</a></p>
+<div><br><br></div>
+
+            </ion-content>
+            <ion-floating-button click="scrollToTop()" has-footer="false" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff" class="bottomPadding">
+          </ion-floating-button>
+        </ion-view>

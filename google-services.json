@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "71238283283",
+    "firebase_url": "https://troowork-7eef7.firebaseio.com",
+    "project_id": "troowork-7eef7",
+    "storage_bucket": "troowork-7eef7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71238283283:android:f8bbc4586fd8e9e9a80fe6",
+        "android_client_info": {
+          "package_name": "com.troodon.troowork"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "71238283283-oqvj4fcq4samlfccm2b91p7idvhhnh3q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxX2j8djliwMW-H62Rrb1znfm1pOtj1rQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "71238283283-oqvj4fcq4samlfccm2b91p7idvhhnh3q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "71238283283-vbearq6dsdsa2p5krca9bb4h1ueqh8bm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.troodon.troowork"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

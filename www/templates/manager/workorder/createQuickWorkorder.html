@@ -1,0 +1,50 @@
+<!--VIEW WORKORDER  -->
+
+<ion-view view-title="Create Work Order" >
+    
+         <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div> 
+            <ion-content class="padding_inspection"  delegate-handle="mainScroll">
+ 
+           <h3 align="center">Create Quick Work Order</h3>    
+           <div class="list padding-bottom">
+                 <label class="item item-input item-select">
+                        <div class="input-label">Employee*</div>
+                        <select ng-model="newworkorder.EmployeeKey"  ng-options="x.EmployeeText for x in allEmployeeList | unique:'EmployeeText'" ng-value="x.EmployeeKey" >
+                            <option label=" Select "></option>
+                        </select>
+                    </label>
+                 <label class="item item-input">
+                    <div class="input-label">Workorder Notes*</div>
+                        <input type="text" ng-model="newworkorder.WorkorderNotes" maxlength="200" placeholder="Workorder Notes">
+                 </label> 
+                 <div class="item item-divider">Select Location</div>
+                 <label class="item item-input item-select">
+                        <div class="input-label">Facility*</div>
+                        <select ng-model="newworkorder.FacilityKey"  ng-options="x.FacilityText for x in facilityList | unique:'FacilityText'" ng-value="x.FacilityKey" >
+                            <option label=" Select "></option>
+                        </select>
+                    </label>
+                  
+                    <div class="item item-divider"></div> 
+                  
+                   
+                 
+                    <label class="item item-input item-select">
+                        <div class="input-label">Priority Level</div>
+                        <select ng-model="newworkorder.PriorityKey"  ng-options="x.PriorityText for x in allPriorityList | unique:'PriorityText'" ng-value="x.PriorityKey">
+                            <option label=" Select "></option>
+                        </select>
+                    </label>
+                   
+                        <div class="item item-divider"></div>
+                        <ion-toggle ng-model="newworkorder.isPhotoRequired" toggle-class="toggle-positive">Photo Required</ion-toggle>
+                       
+                        <button class="button button-block button-positive padding" type="submit" ng-click="newWorkordersave()">Create</button>
+           </div>
+           <div class="padding"></div>
+        </ion-content>
+           <ion-floating-button click="scrollToTop()" has-footer="true" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff" class="padding">
+          </ion-floating-button>         
+        </ion-view>
+
+         

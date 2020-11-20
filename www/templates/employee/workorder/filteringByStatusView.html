@@ -1,0 +1,243 @@
+<!--VIEW WORKORDER -> EmployeePage -->
+
+
+
+<ion-view view-title="View Work Order">
+  <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+  <div class="bar bar-subheader">
+    <div class="button-bar">
+      <!--   <a class="button" ng-class="{'button-small buttonScan': isActive('employeeFilter')}" ng-click="setActive('employeeFilter');" ui-sref="employeeDashboard.filteringByEmployeeList">Employee</a> -->
+      <a class="button" ng-class="{'button-small buttonScan': isActive('facilityFilter')}" ng-click="setActive('facilityFilter');getAllFacility();" ui-sref="employeeDashboard.filteringByFacility">Facility</a>
+      <a class="button" ng-class="{'button-small buttonScan': isActive('statusFilter')}" ng-click="setActive('statusFilter');getAllWorkStatus();" ui-sref="employeeDashboard.filteringByStatus">Status</a>
+    </div>
+  </div>
+
+  <ion-content class="padding_workorderview" delegate-handle="mainScroll">
+    <!--  <ion-scroll direction="xy" class="scrollClass" delegate-handle="small"> -->
+    <!-- <ion-scroll zooming="true" direction="xy" style="width: 100%; "> -->
+
+
+
+    <!-- <ion-list>
+             <div class="item item-icon-right" ng-repeat="item in workorderStatusList" ng-hide="filteringByStatus">
+
+                 <ion-item ng-click="getWorkorderBYStatusKey(item.WorkorderStatusKey);">
+                        <i class="icon ion-chevron-right"></i>
+                        {{item.WorkorderStatus}}
+                  </ion-item>
+            </div>
+
+            </ion-list> -->
+
+
+
+    <!-- <div class="item item-icon-right" ng-repeat="item in workorderStatusList">
+
+                <i class="icon ion-chevron-right"></i>
+                {{item.WorkorderStatus}}
+            </div> -->
+    <ion-list>
+      <ion-item ng-repeat="data in viewworkorder">
+        <div class="item item-icon-right">
+<!--    <div class="item item-icon-right" ng-repeat="data in viewworkorder" ng-show="filteringByStatus">-->
+      <div ng-if="data.Color!='#ebfaff'">
+        <a ng-style="{'border': '11px' ,'border-style': 'solid','border-color': data.Color}" class="item item-text-wrap text-center" ng-If="data.IsEquipment==0" ui-sref="employeeDashboard.detailedWorkorderView({workorderKey: data.WorkorderKey})">
+          <h2><b>{{data.RoomId}}</b></h2>
+          <div ng-show="data.FacilityName">
+            <p style="color: blueviolet">{{data.WorkorderTypeName}}</p>
+            <p>{{data.FacilityName}} - {{data.ZoneName}} - {{data.FloorName}}</p>
+            <p>{{data.WorkorderTime}}</p>
+            <p>Assigned to : {{data.LastName}},{{data.FirstName}} </p>
+            <p>Priority : {{data.PriorityValue}}</p>
+            <p>
+              <ion-label class="label text-Scheduled-{{data.WorkorderStatus === 'Scheduled'}}
+                              text-InProgress-{{data.WorkorderStatus === 'InProgress'}}
+                              text-Completed-{{data.WorkorderStatus === 'Completed'}}
+                              text-Delayed-{{data.WorkorderStatus === 'Delayed'}}
+                              text-Cancelled-{{data.WorkorderStatus === 'Cancelled'}}">
+                {{data.WorkorderStatus}}
+              </ion-label>
+            </p>
+          </div>
+        </a> <i class="icon ion-chevron-right"></i>
+        <a ng-style="{'border': '11px' ,'border-style': 'solid','border-color': data.Color}" class="item item-text-wrap text-center" ng-If="data.IsEquipment==1" ui-sref="employeeDashboard.detailedWorkorderView({workorderKey: data.WorkorderKey})">
+          <h2><b>{{data.EquipmentName}}</b></h2>
+          <div ng-show="data.FacilityName">
+            <p style="color: blueviolet">{{data.WorkorderTypeName}}</p>
+            <p>{{data.FacilityNameEqp}} - {{data.EquipmentType}} </p>
+            <p>{{data.WorkorderTime}}</p>
+            <p>Assigned to : {{data.LastName}},{{data.FirstName}} </p>
+            <p>Priority : {{data.PriorityValue}}</p>
+            <p>
+              <ion-label class="label text-Scheduled-{{data.WorkorderStatus === 'Scheduled'}}
+                              text-InProgress-{{data.WorkorderStatus === 'InProgress'}}
+                              text-Completed-{{data.WorkorderStatus === 'Completed'}}
+                              text-Delayed-{{data.WorkorderStatus === 'Delayed'}}
+                              text-Cancelled-{{data.WorkorderStatus === 'Cancelled'}}">
+                {{data.WorkorderStatus}}
+              </ion-label>
+            </p>
+          </div>
+        </a> <i class="icon ion-chevron-right"></i>
+        <a class="item item-text-wrap text-center" ng-show="data.IsEquipment!=1 && data.IsEquipment!=0 && data.WorkorderTypeName=='No works found!'">
+          <h2>No works found!</h2>
+        </a> <i class="icon ion-chevron-right"></i>
+
+      </div>
+      <div ng-if="data.Color==='#ebfaff'">
+        <a class="item item-text-wrap text-center" ng-If="data.IsEquipment==0" ui-sref="employeeDashboard.detailedWorkorderView({workorderKey: data.WorkorderKey})">
+          <h2><b>{{data.RoomId}}</b></h2>
+          <div ng-show="data.FacilityName">
+            <p style="color: blueviolet">{{data.WorkorderTypeName}}</p>
+            <p>{{data.FacilityName}} - {{data.ZoneName}} - {{data.FloorName}}</p>
+            <p>{{data.WorkorderTime}}</p>
+            <p>Assigned to : {{data.LastName}},{{data.FirstName}} </p>
+            <p>Priority : {{data.PriorityValue}}</p>
+            <p>
+              <ion-label class="label text-Scheduled-{{data.WorkorderStatus === 'Scheduled'}}
+                              text-InProgress-{{data.WorkorderStatus === 'InProgress'}}
+                              text-Completed-{{data.WorkorderStatus === 'Completed'}}
+                              text-Delayed-{{data.WorkorderStatus === 'Delayed'}}
+                              text-Cancelled-{{data.WorkorderStatus === 'Cancelled'}}">
+                {{data.WorkorderStatus}}
+              </ion-label>
+            </p>
+          </div>
+        </a> <i class="icon ion-chevron-right"></i>
+        <a class="item item-text-wrap text-center" ng-If="data.IsEquipment==1" ui-sref="employeeDashboard.detailedWorkorderView({workorderKey: data.WorkorderKey})">
+          <h2><b>{{data.EquipmentName}}</b></h2>
+          <div ng-show="data.FacilityName">
+            <p style="color: blueviolet">{{data.WorkorderTypeName}}</p>
+            <p>{{data.FacilityNameEqp}} - {{data.EquipmentType}} </p>
+            <p>{{data.WorkorderTime}}</p>
+            <p>Assigned to : {{data.LastName}},{{data.FirstName}} </p>
+            <p>Priority : {{data.PriorityValue}}</p>
+            <p>
+              <ion-label class="label text-Scheduled-{{data.WorkorderStatus === 'Scheduled'}}
+                              text-InProgress-{{data.WorkorderStatus === 'InProgress'}}
+                              text-Completed-{{data.WorkorderStatus === 'Completed'}}
+                              text-Delayed-{{data.WorkorderStatus === 'Delayed'}}
+                              text-Cancelled-{{data.WorkorderStatus === 'Cancelled'}}">
+                {{data.WorkorderStatus}}
+              </ion-label>
+            </p>
+          </div>
+        </a> <i class="icon ion-chevron-right"></i>
+        <a class="item item-text-wrap text-center" ng-show="data.IsEquipment!=1 && data.IsEquipment!=0 && data.WorkorderTypeName=='No works found!'">
+          <h2>No works found!</h2>
+        </a> <i class="icon ion-chevron-right"></i>
+
+      </div>
+
+    </div>
+
+
+    </ion-item>
+    </ion-list>
+    <div ng-if="hasData">
+      <ion-infinite-scroll on-infinite="get_more()" distance="1%">
+      </ion-infinite-scroll>
+    </div>
+    <!--  <div class="item" ng-repeat="data in viewworkorder" ng-show="filteringByStatus">
+                <a class="item" ui-sref="employeeDashboard.detailedWorkorderView({workorderKey: data.WorkorderKey})">
+                  <h2>{{data.WorkorderTypeName}}</h2>
+                  <p>{{data.FacilityName}} - {{data.ZoneName}} - {{data.FloorName}}</p>
+                  <p>{{data.WorkorderTime}}</p>
+                  <p>Assigned to : {{data.FirstName}} {{data.LastName}}</p>
+                </a>
+              </div> -->
+
+
+
+
+    <!-- <ion-list ng-hide="filteringByStatus">
+                  <ion-item ng-repeat="item in workorderStatusList" ng-click="getWorkorderByWorkStauts(item.WorkorderStatusKey)">
+                       {{item.WorkorderStatus}}
+                  </ion-item>
+            </ion-list> -->
+
+
+
+
+    <!-- <ion-scroll zooming="true" direction="y" style="width: 100%;height: 500px !important;" class="scrollClass" delegate-handle="small" >
+            <div class="container-fluid" ng-controller="WorkOrderViewCtrl"><br>
+                <ion-refresher pulling-text="Pull to refresh.." on-refresh="doRefresh()"></ion-refresher>
+            <div class="container">Search work order by:
+            <div class = "list">
+                <label class = "col-sm-2 item item-input item-select control-label">
+                <div class = "col-sm-2 input-label">Facility
+                    <select  ng-model="z.FacilityKey" ng-options="z.FacilityText for z in facilityList" value="z.FacilityKey" ng-change="viewWorkorderFilterByFacility('facility',z.FacilityKey.FacilityKey)">
+                        <option label="--all--"></option>
+                    </select>
+                   </div> </label>
+            </div>
+
+
+            <div class="list">
+                <label class = "col-sm-1 control-label item item-input item-select">
+                <div class = "col-sm-1 input-label">Date
+                    <input type="date" ng-model="WorkorderDate" name="dateFilter" ng-change="viewWorkorderFilterByDate()">
+                </div></label>
+            </div>
+
+
+
+             <div class="padding_right">
+        <div class="row header">
+          <div class="col">Workorder</div>
+          <div class="col">Room</div>
+          <div class="col">Equipment</div>
+          <div class="col">Employee</div>
+          <div class="col" style="width:auto">Action</div>
+        </div>
+        <div class="row" ng-repeat="data in viewworkorder">
+          <div class="col">{{data.WorkorderTypeName}}</div>
+          <div class="col">{{data.RoomId}}</div>
+           <div class="col">{{data.EquipmentType}}</div>
+          <div class="col">{{data.FirstName}}</div>
+          <div class="col" style="width:auto">
+            <button class=" button button-brown-{{data.WorkorderStatus === 'Scheduled'}}
+                                   button-green-{{data.WorkorderStatus === 'InProgress'}}
+                                   button-yellow-{{data.WorkorderStatus === 'Completed'}}"
+                                   ng-click="captureImage(data.WorkorderKey)" ng-if="data.IsPhotoRequired == 1" >
+                                   <i class="icon ion-camera"></i>
+            </button>
+            <button class=" button button-brown-{{data.WorkorderStatus === 'Scheduled'}}
+                                   button-green-{{data.WorkorderStatus === 'InProgress'}}
+                                   button-yellow-{{data.WorkorderStatus === 'Completed'}}"
+                                   on-hold="showBarcodePopup(data.WorkorderKey)" on-tap="scanBarcode(data.WorkorderKey)" ng-if="data.IsBarcodeRequired == 1">
+                                   <i class="icon ion-ios-barcode-outline"></i>
+
+            </button>
+            <button class=" button button-brown-{{data.WorkorderStatus ==='Scheduled'}}
+                                   button-green-{{data.WorkorderStatus === 'InProgress'}}
+                                   button-yellow-{{data.WorkorderStatus === 'Completed'}}"
+                                   ng-click="workCompleted(data.WorkorderKey)" ng-if="data.IsBarcodeRequired==0 && data.IsPhotoRequired==0">
+                                   <i class="icon ion-checkmark-circled"></i>
+            </button>
+          </div>
+        </div>
+
+        </div>
+          </div>
+
+
+        </div>
+        </ion-scroll> -->
+    <div><br><br></div>
+    <!-- <ion-floating-menu>
+
+    <ion-floating-item icon="ion-person" click="myEvent()"></ion-floating-item>
+</ion-floating-menu>
+<div class="float-button" ng-click="scrollToTop()">
+<span class="height-fix">
+   <a class="content">
+      <i class="ion-ios-arrow-up"> </i>
+   </a>
+    </span>
+</div> -->
+    <!--  </ion-scroll> -->
+  </ion-content>
+  <ion-floating-button click="scrollToTop()" has-footer="false" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff" class="bottomPadding">
+  </ion-floating-button>
+</ion-view>

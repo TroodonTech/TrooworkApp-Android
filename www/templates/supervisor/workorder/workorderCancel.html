@@ -1,0 +1,28 @@
+<ion-view view-title="Work Order Cancel">
+  <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+  <div class="bar bar-subheader">
+    <div class="button-bar">
+      <!--  <a class="button" ng-class="{'button-small buttonScan': isActive('employeeFilter')}" ng-click="setActive('employeeFilter');" ui-sref="employeeDashboard.filteringByEmployeeList">Employee</a> -->
+      <a class="button" ng-class="{'button-small buttonScan': isActive('employeeFilter')}" ng-click="setActive('employeeFilter');" ui-sref="supervisorDashboard.filteringByEmployeeList">Employee</a>
+            <a class="button" ng-class="{'button-small buttonScan': isActive('facilityFilter')}" ng-click="setActive('facilityFilter');getAllFacility();" ui-sref="supervisorDashboard.filteringByFacility">Facility</a>
+            <a class="button" ng-class="{'button-small buttonScan': isActive('statusFilter')}" ng-click="setActive('statusFilter');getAllWorkStatus();" ui-sref="supervisorDashboard.filteringByStatus">Status</a>
+    </div>
+  </div>
+
+  <ion-content class="padding_workorderview" delegate-handle="mainScroll">
+
+    <h3 align="center">Work Order Cancel</h3>
+    <label class="item item-input">
+        <div class="input-label">Reason</div>
+            <input type="text" ng-model="Reason" maxlength="200" placeholder="Reason">
+     </label>
+         
+     <div class="row">
+              <div   class="row col text-center">
+                <button class="button facilityBackButton button-positive padding" type="submit" ng-click="cancelWorkOrder(Reason)">Submit</button>
+              </div> 
+              </div>
+        </ion-content>
+   <ion-floating-button click="scrollToTop()" has-footer="false" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff">
+     </ion-floating-button>
+</ion-view>

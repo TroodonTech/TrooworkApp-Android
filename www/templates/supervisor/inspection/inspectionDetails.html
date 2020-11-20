@@ -1,0 +1,461 @@
+<!--VIEW WORKORDER -> EmployeePage -->
+
+
+
+<ion-view view-title="Inspection Order">
+  <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+  <ion-content class="padding_inspection" delegate-handle="mainScroll">
+    <!--  <ion-scroll direction="xy" class="scrollClass" delegate-handle="small"> -->
+    <!-- <ion-scroll zooming="true" direction="xy" style="width: 100%; "> -->
+    <!--  <div class="container-fluid" > -->
+
+    <!-- <div class = "form-horizontal"> -->
+    <div>
+      <h3 align="center" class="item-text-wrap">{{TemplateName}}</h3>
+      <h5 align="center" class="item-text-wrap"><b>{{facility}} {{floorname}} {{roomid}}</b></h5>
+    </div>
+
+    <ul id="menu" ng-repeat="x in inspectionorder track by $index" class="form-group">
+      <li class="col-sm-offset-1 col-sm-10">
+      </li>
+      <li class="col-sm-offset-4 col-sm-10" ng-if="x.ScoreName === 'Yes/No'" ng-init="names = ['Yes', 'No', 'N/A']">
+        <div class="list inspectionPadding">
+          <a class="item item-text-wrap">
+            <h2 class="item-text-wrap">{{$index + 1}}. {{x.Question}}</h2>
+            <label class="col-sm-2 control-label item item-input item-select">
+              <div class="col-sm-4 input-label">Score Type
+                <select ng-model="Scoringtype.rating_yn[x.TemplateQuestionID]" ng-options="x for x in names"
+                  ng-value="x.names" ng-change="saveRatings(x.TemplateQuestionID,x.ScoreName)">
+                  <option label="--Select--"></option>
+                </select>
+              </div>
+            </label>
+            <label class="item item-input item-text-wrap">
+              <div class="input-label">Notes</div>
+              <!-- <span>Notes:--  </span> -->
+              <textarea rows="6" ng-model="Scoringtype.inspectionNotes[x.TemplateQuestionID]"
+                maxlength="200"></textarea>
+              <!--              <textarea rows="6" ng-model="Scoringtype.inspectionNotes[x.TemplateQuestionID]" maxlength="200"-->
+              <!--                        placeholder="Notes"></textarea>-->
+              <!--              <input type="text" placeholder="Notes:" value="null"-->
+              <!--                ng-model="Scoringtype.inspectionNotes[x.TemplateQuestionID]">-->
+
+            </label>
+            <label class="item item-input item-text-wrap">
+              <div class="input-label">Observation/ Deficiency</div>
+              <!-- <span>Notes:--  </span> -->
+              <textarea rows="6" ng-model="Scoringtype.observationdef[x.TemplateQuestionID]" maxlength="200"></textarea>
+              <!--              <textarea rows="6" ng-model="Scoringtype.observationdef[x.TemplateQuestionID]" maxlength="200"-->
+              <!--                placeholder="Observation/Deficiency"></textarea>-->
+            </label>
+            <label class="item item-input item-text-wrap">
+              <div class="input-label">Corrective Action</div>
+              <!-- <span>Notes:--  </span> -->
+              <textarea rows="6" ng-model="Scoringtype.correctiveaction[x.TemplateQuestionID]"
+                maxlength="200"></textarea>
+              <!--              <textarea rows="6" ng-model="Scoringtype.correctiveaction[x.TemplateQuestionID]" maxlength="200"-->
+              <!--                placeholder="Corrective Action"></textarea>-->
+            </label>
+
+            <div class="item item-divider">Completed Date</div>
+            <div class="item item-icon-left" ion-datetime-picker date monday-first
+              ng-model="Scoringtype.completeddate[x.TemplateQuestionID]" ng-click="openDatePicker();">
+              <i class="icon ion-ios-calendar-outline positive"></i>
+              Click to open the date:
+              <div class="input-label">{{dateValue}}</div>
+            </div>
+            <!-- <div>
+                                      <button type="sumbit" ng-click="yesNoScoringTypeInspection(Scoringtype.inspectionNotesforYes_No[$index],x.TemplateQuestionID,Scoringtype.choicesforyes_no[$index],x.InspectionOrderKey,x.TemplateID,$index + 1)" class="button button-positive inspection_SaveButton"> SAVE </button>
+                                    </div> -->
+          </a>
+        </div>
+      </li>
+      <li class="col-sm-offset-4 col-sm-10" ng-if="x.ScoreName === '0-25'">
+        <div class="list inspectionPadding">
+          <a class="item item-text-wrap">
+            <h2 class="item-text-wrap">{{$index + 1}}. {{x.Question}}</h2>
+            <label class="col-sm-2 control-label item item-input item-select">
+              <div class="col-sm-4 input-label">Score Type
+                <select ng-model="Scoringtype.rating_yn[x.TemplateQuestionID]"
+                        ng-options="x.picklistvalue as x.picklistvalue for x in picklistDrop" ng-value="x.picklistvalue"
+                        ng-change="saveRatings(x.TemplateQuestionID,x.ScoreName)">
+                  <option label="--Select--"></option>
+                </select>
+              </div>
+            </label>
+            <label class="item item-input item-text-wrap">
+              <div class="input-label">Notes</div>
+              <!-- <span>Notes:--  </span> -->
+              <textarea rows="6" ng-model="Scoringtype.inspectionNotes[x.TemplateQuestionID]"
+                        maxlength="200"></textarea>
+              <!--              <textarea rows="6" ng-model="Scoringtype.inspectionNotes[x.TemplateQuestionID]" maxlength="200"-->
+              <!--                        placeholder="Notes"></textarea>-->
+              <!--              <input type="text" placeholder="Notes:" value="null"-->
+              <!--                ng-model="Scoringtype.inspectionNotes[x.TemplateQuestionID]">-->
+
+            </label>
+            <label class="item item-input item-text-wrap">
+              <div class="input-label">Observation/ Deficiency</div>
+              <!-- <span>Notes:--  </span> -->
+              <textarea rows="6" ng-model="Scoringtype.observationdef[x.TemplateQuestionID]" maxlength="200"></textarea>
+              <!--              <textarea rows="6" ng-model="Scoringtype.observationdef[x.TemplateQuestionID]" maxlength="200"-->
+              <!--                placeholder="Observation/Deficiency"></textarea>-->
+            </label>
+            <label class="item item-input item-text-wrap">
+              <div class="input-label">Corrective Action</div>
+              <!-- <span>Notes:--  </span> -->
+              <textarea rows="6" ng-model="Scoringtype.correctiveaction[x.TemplateQuestionID]"
+                        maxlength="200"></textarea>
+              <!--              <textarea rows="6" ng-model="Scoringtype.correctiveaction[x.TemplateQuestionID]" maxlength="200"-->
+              <!--                placeholder="Corrective Action"></textarea>-->
+            </label>
+
+            <div class="item item-divider">Completed Date</div>
+            <div class="item item-icon-left" ion-datetime-picker date monday-first
+                 ng-model="Scoringtype.completeddate[x.TemplateQuestionID]" ng-click="openDatePicker();">
+              <i class="icon ion-ios-calendar-outline positive"></i>
+              Click to open the date:
+              <div class="input-label">{{dateValue}}</div>
+            </div>
+            <!-- <div>
+                                   <button type="sumbit" ng-click="yesNoScoringTypeInspection(Scoringtype.inspectionNotesforYes_No[$index],x.TemplateQuestionID,Scoringtype.choicesforyes_no[$index],x.InspectionOrderKey,x.TemplateID,$index + 1)" class="button button-positive inspection_SaveButton"> SAVE </button>
+                                 </div> -->
+          </a>
+        </div>
+      </li>
+      <li class="col-sm-offset-4 col-sm-10" ng-if="x.ScoreName === 'Pass/Fail'" ng-init="names = ['Fail','N/A']">
+        <div class="list inspectionPadding">
+          <a class="item item-text-wrap">
+            <h2 class="item-text-wrap">{{$index + 1}}. {{x.Question}}</h2>
+            <label class="col-sm-2 control-label item item-input item-select">
+              <div class="col-sm-4 input-label">Score Type
+                <select ng-model="Scoringtype.rating_yn[x.TemplateQuestionID]" ng-options="x as x for x in names"
+                  ng-value="x.names" ng-change="saveRatings(x.TemplateQuestionID,x.ScoreName)">
+                  <option value="">Pass</option>
+                </select>
+              </div>
+            </label>
+            <label class="item item-input item-text-wrap">
+              <div class="input-label">Notes</div>
+              <!-- <span>Notes:--  </span> -->
+              <textarea rows="6" ng-model="Scoringtype.inspectionNotes[x.TemplateQuestionID]"
+                maxlength="200"></textarea>
+              <!--              <textarea rows="6" ng-model="Scoringtype.inspectionNotes[x.TemplateQuestionID]" maxlength="200"-->
+              <!--                        placeholder="Notes"></textarea>-->
+              <!--              <input type="text" placeholder="Notes:" value="null"-->
+              <!--                ng-model="Scoringtype.inspectionNotes[x.TemplateQuestionID]">-->
+
+            </label>
+            <label class="item item-input item-text-wrap">
+              <div class="input-label">Observation/ Deficiency</div>
+              <!-- <span>Notes:--  </span> -->
+              <textarea rows="6" ng-model="Scoringtype.observationdef[x.TemplateQuestionID]" maxlength="200"></textarea>
+              <!--              <textarea rows="6" ng-model="Scoringtype.observationdef[x.TemplateQuestionID]" maxlength="200"-->
+              <!--                placeholder="Observation/Deficiency"></textarea>-->
+            </label>
+            <label class="item item-input item-text-wrap">
+              <div class="input-label">Corrective Action</div>
+              <!-- <span>Notes:--  </span> -->
+              <textarea rows="6" ng-model="Scoringtype.correctiveaction[x.TemplateQuestionID]"
+                maxlength="200"></textarea>
+              <!--              <textarea rows="6" ng-model="Scoringtype.correctiveaction[x.TemplateQuestionID]" maxlength="200"-->
+              <!--                placeholder="Corrective Action"></textarea>-->
+            </label>
+
+            <div class="item item-divider">Completed Date</div>
+            <div class="item item-icon-left" ion-datetime-picker date monday-first
+              ng-model="Scoringtype.completeddate[x.TemplateQuestionID]" ng-click="openDatePicker();">
+              <i class="icon ion-ios-calendar-outline positive"></i>
+              Click to open the date:
+              <div class="input-label">{{dateValue}}</div>
+            </div>
+            <!-- <div>
+                                      <button type="sumbit" ng-click="yesNoScoringTypeInspection(Scoringtype.inspectionNotesforYes_No[$index],x.TemplateQuestionID,Scoringtype.choicesforyes_no[$index],x.InspectionOrderKey,x.TemplateID,$index + 1)" class="button button-positive inspection_SaveButton"> SAVE </button>
+                                    </div> -->
+          </a>
+        </div>
+      </li>
+
+
+      <li class="col-sm-offset-4 col-sm-10" ng-if="x.ScoreName === '5 Star'">
+        <div class="list inspectionPadding">
+          <a class="item item-text-wrap ">
+            <h2>{{$index + 1}}. {{x.Question}}</h2>
+            <ionic-ratings ratingsobj='ratingsObject' ng-click="saveRatings(x.TemplateQuestionID,x.ScoreName)">
+            </ionic-ratings>
+            <label class="item item-input item-text-wrap">
+              <div class="input-label">Notes</div>
+              <!-- <span>Notes:--  </span> -->
+              <textarea rows="6" ng-model="Scoringtype.inspectionNotes[x.TemplateQuestionID]"
+                maxlength="200"></textarea>
+              <!--              <textarea rows="6" ng-model="Scoringtype.inspectionNotes[x.TemplateQuestionID]" maxlength="200"-->
+              <!--                        placeholder="Notes"></textarea>-->
+              <!--              <input type="text" placeholder="Notes:" value="null"-->
+              <!--                ng-model="Scoringtype.inspectionNotes[x.TemplateQuestionID]">-->
+
+            </label>
+            <label class="item item-input item-text-wrap">
+              <div class="input-label">Observation/ Deficiency</div>
+              <!-- <span>Notes:--  </span> -->
+              <textarea rows="6" ng-model="Scoringtype.observationdef[x.TemplateQuestionID]" maxlength="200"></textarea>
+              <!--              <textarea rows="6" ng-model="Scoringtype.observationdef[x.TemplateQuestionID]" maxlength="200"-->
+              <!--                placeholder="Observation/Deficiency"></textarea>-->
+            </label>
+            <label class="item item-input item-text-wrap">
+              <div class="input-label">Corrective Action</div>
+              <!-- <span>Notes:--  </span> -->
+              <textarea rows="6" ng-model="Scoringtype.correctiveaction[x.TemplateQuestionID]"
+                maxlength="200"></textarea>
+              <!--              <textarea rows="6" ng-model="Scoringtype.correctiveaction[x.TemplateQuestionID]" maxlength="200"-->
+              <!--                placeholder="Corrective Action"></textarea>-->
+            </label>
+
+            <div class="item item-divider">Completed Date</div>
+            <div class="item item-icon-left" ion-datetime-picker date monday-first
+              ng-model="Scoringtype.completeddate[x.TemplateQuestionID]" ng-click="openDatePicker();">
+              <i class="icon ion-ios-calendar-outline positive"></i>
+              Click to open the date:
+              <div class="input-label">{{dateValue}}</div>
+            </div>
+            <!-- <button type="sumbit" ng-click="fiveStarScoringTypeInspection(Scoringtype.inspectionNotesfor5stars[$index],x.TemplateQuestionID,rating5star,x.InspectionOrderKey,x.TemplateID,$index + 1)" class="button button-large button-positive inspection_SaveButton"> SAVE </button>  -->
+          </a>
+        </div>
+      </li>
+      <li class="col-sm-offset-4 col-sm-10" ng-if="x.ScoreName === '3 Star'">
+        <div class="list inspectionPadding">
+          <a class="item item-text-wrap">
+            <h2>{{$index + 1}}. {{x.Question}}</h2>
+            <ionic-rating ratingsobj='ratingsObject3Star' ng-click="saveRatings(x.TemplateQuestionID,x.ScoreName)">
+            </ionic-rating>
+            <label class="item item-input item-text-wrap">
+              <div class="input-label">Notes</div>
+              <!-- <span>Notes:--  </span> -->
+              <textarea rows="6" ng-model="Scoringtype.inspectionNotes[x.TemplateQuestionID]"
+                maxlength="200"></textarea>
+              <!--              <textarea rows="6" ng-model="Scoringtype.inspectionNotes[x.TemplateQuestionID]" maxlength="200"-->
+              <!--                        placeholder="Notes"></textarea>-->
+              <!--              <input type="text" placeholder="Notes:" value="null"-->
+              <!--                ng-model="Scoringtype.inspectionNotes[x.TemplateQuestionID]">-->
+
+            </label>
+            <label class="item item-input item-text-wrap">
+              <div class="input-label">Observation/ Deficiency</div>
+              <!-- <span>Notes:--  </span> -->
+              <textarea rows="6" ng-model="Scoringtype.observationdef[x.TemplateQuestionID]" maxlength="200"></textarea>
+              <!--              <textarea rows="6" ng-model="Scoringtype.observationdef[x.TemplateQuestionID]" maxlength="200"-->
+              <!--                placeholder="Observation/Deficiency"></textarea>-->
+            </label>
+            <label class="item item-input item-text-wrap">
+              <div class="input-label">Corrective Action</div>
+              <!-- <span>Notes:--  </span> -->
+              <textarea rows="6" ng-model="Scoringtype.correctiveaction[x.TemplateQuestionID]"
+                maxlength="200"></textarea>
+              <!--              <textarea rows="6" ng-model="Scoringtype.correctiveaction[x.TemplateQuestionID]" maxlength="200"-->
+              <!--                placeholder="Corrective Action"></textarea>-->
+            </label>
+
+            <div class="item item-divider">Completed Date</div>
+            <div class="item item-icon-left" ion-datetime-picker date monday-first
+              ng-model="Scoringtype.completeddate[x.TemplateQuestionID]" ng-click="openDatePicker();">
+              <i class="icon ion-ios-calendar-outline positive"></i>
+              Click to open the date:
+              <div class="input-label">{{dateValue}}</div>
+            </div>
+            <!--   <div class="inspection_questionButton">
+                                        <button type="sumbit" ng-click="threeStarScoringTypeInspection(Scoringtype.inspectionNotesfor3stars[$index],x.TemplateQuestionID,rating3star,x.InspectionOrderKey,x.TemplateID,$index + 1)" class="button button-large button-positive inspection_SaveButton"> SAVE </button>
+                                      </div> -->
+          </a>
+        </div>
+      </li>
+    </ul>
+    <!-- <label class="checkbox">
+                        <input type="checkbox" ng-model="isMail"> Send E-mail
+                      </label>   -->
+
+    <div ng-if="imgFlag">
+      <img ng-src="{{pathForImage(image)}}" style="width: 100%; height: 100%;">
+
+    </div>
+
+    <!--<ion-footer-bar class="bar bar-positive">-->
+    <div class="button-bar">
+      <button class="button icon-left ion-camera" style="width: 50%; " ng-click="loadImage()">Choose Photo</button>
+      <button class="button icon-left ion-upload" style="width: 50%; " ng-click="uploadImage()"
+        ng-disabled="image === null">Upload</button>
+    </div>
+
+    <!-- <ion-toggle ng-model="mail.IsMail" toggle-class="toggle-positive">Send E-mail</ion-toggle> -->
+    <ion-toggle ng-model="inspectionCompletion.isMailRequired" toggle-class="toggle-positive">Send E-mail</ion-toggle>
+    <div class="">
+      <button type="submit"
+        ng-click="inspectionCompleted(inpectionValues.ScoreName,inpectionValues.TemplateQuestionID,inpectionValues.InspectionOrderKey,inpectionValues.TemplateID)"
+        class="button button-positive button-outline button-block">Submit</button>
+    </div>
+
+    <div><br><br></div>
+
+
+  </ion-content>
+  <ion-floating-button click="scrollToTop()" has-footer="false" button-color="#2AC9AA" icon="ion-ios-arrow-up"
+    iconColor="#fff" class="bottomPadding">
+  </ion-floating-button>
+</ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  <ul id="menu" ng-repeat="x in inspectionorder track by $index" class = "form-group">
+                        <li class = "col-sm-offset-1 col-sm-10">
+                        </li>
+                        <li class = "col-sm-offset-4 col-sm-10"  ng-if="x.ScoreName === 'Yes/No'" ng-init="names = ['Yes', 'No']">
+                             <div class="list inspectionPadding">
+                                <a class="item">
+                                  <h2>{{$index + 1}}. {{x.Question}}</h2>
+                                      <label  class = "col-sm-2 control-label item item-input item-select">
+                                                <div class = "col-sm-4 input-label">Score Type
+                                                    <select ng-model="Scoringtype.choicesforyes_no[$index]" ng-options="x for x in names" ng-value="x.names">
+                                                          <option label="--Select--"></option>
+                                                    </select>
+                                                </div>
+                                      </label>
+                                      <label class="item item-input">
+
+                                            <input type="text" placeholder="Notes:" ng-model="Scoringtype.inspectionNotesforYes_No[$index]">
+                                      </label>
+                                      <div>
+                                      <button type="sumbit" ng-click="yesNoScoringTypeInspection(Scoringtype.inspectionNotesforYes_No[$index],x.TemplateQuestionID,Scoringtype.choicesforyes_no[$index],x.InspectionOrderKey,x.TemplateID,$index + 1)" class="button button-positive inspection_SaveButton"> SAVE </button>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class = "col-sm-offset-4 col-sm-10" ng-if="x.ScoreName === '5 Star'">
+                            <div class="list inspectionPadding">
+                                <a class="item">
+                                  <h2>{{$index + 1}}. {{x.Question}}</h2>
+                                  <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
+                                  <label class="item item-input">
+
+                                              <input type="text" placeholder="Notes:"  ng-model="Scoringtype.inspectionNotesfor5stars[$index]">
+                                  </label>
+                                  <button type="sumbit" ng-click="fiveStarScoringTypeInspection(Scoringtype.inspectionNotesfor5stars[$index],x.TemplateQuestionID,rating5star,x.InspectionOrderKey,x.TemplateID,$index + 1)" class="button button-large button-positive inspection_SaveButton"> SAVE </button>
+                                </a>
+                            </div>
+                        </li>
+                        <li class = "col-sm-offset-4 col-sm-10" ng-if="x.ScoreName === '3 Star'">
+                            <div class="list inspectionPadding">
+                              <a class="item">
+                                <h2>{{$index + 1}}. {{x.Question}}</h2>
+                                <ionic-rating ratingsobj='ratingsObject3Star'></ionic-rating>
+                                <label class="item item-input">
+
+                                            <input type="text"  placeholder="Notes:"  ng-model="Scoringtype.inspectionNotesfor3stars[$index]">
+
+                                        </label>
+                                        <div class="inspection_questionButton">
+                                        <button type="sumbit" ng-click="threeStarScoringTypeInspection(Scoringtype.inspectionNotesfor3stars[$index],x.TemplateQuestionID,rating3star,x.InspectionOrderKey,x.TemplateID,$index + 1)" class="button button-large button-positive inspection_SaveButton"> SAVE </button>
+                                      </div>
+                              </a>
+                          </div>
+                        </li>
+                      </ul> -->
+
+
+
+<!--   <div class = "list">
+                                            <label  class = "col-sm-2 control-label item item-input item-select">
+                                                <div class = "col-sm-4 input-label">Score Type
+                                                    <select ng-model="Scoringtype.choicesforyes_no[$index]" ng-options="x for x in names" ng-value="x.names">
+                                                          <option label="--Select--"></option>
+                                                    </select>
+                                                </div>
+                                            </label>
+                                      </div> -->
+<!-- <div class = "list">
+                                        <label class="item item-input">
+                                            <span>Notes:--  </span>
+                                            <input type="text" ng-model="Scoringtype.inspectionNotesforYes_No[$index]">
+                                        </label> -->
+<!--  <label  class = "col-sm-2 control-label item item-input">
+                                                <div class = "col-sm-12 input-label">Notes
+                                                      <input type="text" ng-model="Scoringtype.inspectionNotesforYes_No[$index]">
+                                                </div>
+                                            </label> -->
+<!--  </div> -->
+<!--  <div class="list">
+                                        <button type="sumbit" ng-click="yesNoScoringTypeInspection(Scoringtype.inspectionNotesforYes_No[$index],x.TemplateQuestionID,Scoringtype.choicesforyes_no[$index],x.InspectionOrderKey,x.TemplateID,$index + 1)" class="button button-positive inspection_SaveButton"> SAVE QUESTION {{$index + 1}}</button>
+                                      </div> -->
+<!-- <button type="submit" ng-click="yesNoScoringTypeInspection(Scoringtype.inspectionNotesforYes_No[$index],x.TemplateQuestionID,Scoringtype.choicesforyes_no[$index],x.InspectionOrderKey,x.TemplateID)" class = " btn-primary">OK</button> -->
+
+<!-- <div class = "list"> -->
+<!-- <ionic-ratings ng-model="rating5star"  ratingsobj='ratingsObjectfor5star'></ionic-ratings>  -->
+<!-- <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings> -->
+<!-- <div>
+                                                <span class="label label-primary">Star Rating: {{rating}}</span>
+                                            </div> -->
+<!-- </div>
+                                      <div class = "list">
+                                        <label class="item item-input">
+                                            <span>Notes:--  </span>
+                                            <input type="text" ng-model="Scoringtype.inspectionNotesfor5stars[$index]">
+                                        </label> -->
+<!-- <label  class = "col-sm-2 control-label item item-input">
+                                                  <div class = "col-sm-12 input-label">Notes
+                                                      <input type="text" ng-model="Scoringtype.inspectionNotesfor5stars[$index]">
+                                                   </div>
+                                            </label> -->
+<!-- </div>
+                                      <div class="list">
+                                        <button type="sumbit" ng-click="fiveStarScoringTypeInspection(Scoringtype.inspectionNotesfor5stars[$index],x.TemplateQuestionID,rating5star,x.InspectionOrderKey,x.TemplateID,$index + 1)" class="button button-large button-positive inspection_SaveButton"> SAVE QUESTION {{$index + 1}}</button>
+                                      </div> -->
+<!-- <button type="submit" ng-click="fiveStarScoringTypeInspection(Scoringtype.inspectionNotesfor5stars[$index],x.TemplateQuestionID,rating5star,x.InspectionOrderKey,x.TemplateID)" class = " btn-primary">OK</button> -->
+
+<!-- <div class = "list"> -->
+<!-- <ionic-ratings ng-model="rating3star" ratingsobj='ratingsObjectfor3star'></ionic-ratings> -->
+<!-- <ionic-rating ratingsobj='ratingsObject3Star'></ionic-rating>
+
+                                  </div>
+                                  <div class = "list">
+                                        <label class="item item-input">
+                                            <span>Notes:--  </span>
+                                            <input type="text" ng-model="Scoringtype.inspectionNotesfor3stars[$index]">
+
+                                        </label> -->
+
+<!-- <label  class = "col-sm-2 control-label item item-input">
+                                          <div class = "col-sm-12 input-label">Notes
+                                                <input type="text" ng-model="Scoringtype.inspectionNotesfor3stars[$index]">
+                                          </div>
+                                      </label> -->
+
+<!-- </div>
+                                 <div class = "list">
+                                 <button type="sumbit" ng-click="threeStarScoringTypeInspection(Scoringtype.inspectionNotesfor3stars[$index],x.TemplateQuestionID,rating3star,x.InspectionOrderKey,x.TemplateID,$index + 1)" class="button button-large button-positive inspection_SaveButton"> SAVE QUESTION {{$index + 1}}</button> -->
+<!-- <button type="submit" ng-click="threeStarScoringTypeInspection(Scoringtype.inspectionNotesfor3stars[$index],x.TemplateQuestionID,rating3star,x.InspectionOrderKey,x.TemplateID)" class = " btn-primary">OK</button> -->
+<!-- </div> -->
+
+<!-- <div class = "list">
+                              <div class = "col-sm-offset-2 col-sm-10">
+                                    <label  class = "col-sm- 3 control-label" > -->
+
+<!-- </label>
+                              </div>
+                      </div>  -->
+<!-- </div> -->
+
+<!--         <div class="float-button" ng-click="scrollToTop()">
+<span class="height-fix">
+   <a class="content">
+      <i class="ion-ios-arrow-up"> </i>
+   </a>
+    </span>
+</div> -->
+<!--  </ion-scroll> -->

@@ -1,0 +1,37 @@
+<ion-view view-title="App info">
+  <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+
+  <ion-content delegate-handle="mainScroll">
+
+    <div class="row">
+      <img class="imageStyleScan" src="trowork logo new.png">
+    </div>
+
+    <div style="margin-top: 20%" class="padding_login ">
+      <div class="loginBody">
+
+
+        <!-- <div class=" header text-center ">
+          <h3 style="color: #2b542c">TrooWork</h3>
+        </div> -->
+        <div class=" header text-center ">
+          <p style="color: #2b542c">App Name : {{AppName}}</p>
+        </div>
+        <!--        <div class=" header text-center ">-->
+        <!--          <p style="color: #2b542c">Package Name {{AppPackageName}}</p>-->
+        <!--        </div>-->
+        <div class=" header text-center ">
+          <p style="color: #2b542c">Version : {{AppVersion}}</p>
+        </div>
+        <div class=" header text-center ">
+          <p style="color: #2b542c">Version Code : {{AppVersionCode}}</p>
+        </div>
+        <div class=" header text-center ">
+          <p style="color: #2b542c">Updated on {{LastUpdated}}</p>
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+
+</ion-view>

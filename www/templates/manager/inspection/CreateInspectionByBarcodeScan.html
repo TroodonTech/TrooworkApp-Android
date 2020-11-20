@@ -1,0 +1,28 @@
+<!--VIEW WORKORDER -> EmployeePage -->
+<ion-view view-title="Inspection Create By Scanning">
+    
+    <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div> 
+       <ion-content class="padding_inspection"  delegate-handle="mainScroll">
+        <h3 align="center">Inspection Create By Scanning</h3>
+
+
+<div><br><br></div>
+<div class="padding_inspection">
+    <!-- 	<button type="sumbit" on-hold="showBarcodePopup()" on-tap="getEmployeeWorkorderByBarcode()" class="button button-block buttonScan">Scan For Work</button>  -->
+
+    <img type="sumbit"  style="width: 100px; height: 100px;" class="imageStyleScan" src="shelfari-scanner-icon.png" on-tap="createInspectionByBarcode()">
+  </div>
+
+<!-- <div class="float-button" ng-click="scrollToTop()">
+<span class="height-fix">
+<a class="content">
+ <i class="ion-ios-arrow-up"> </i>
+</a>
+</span>
+</div> -->
+          <!--  </ion-scroll> -->
+       </ion-content>
+       <ion-floating-button click="scrollToTop()" has-footer="false" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff" class="bottomPadding">
+     </ion-floating-button>
+   </ion-view>
+    

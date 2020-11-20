@@ -1,0 +1,128 @@
+<!--VIEW WORKORDER -> EmployeePage -->
+<ion-view view-title="Scan For Work">
+  <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+  <div class="bar bar-subheader">
+    <div class="button-bar">
+      <a class="button" ng-class="{'button-small buttonScan': isActive('employeeFilter')}" ng-click="setActive('employeeFilter');" ui-sref="supervisorDashboard.filteringByEmployeeList">Employee</a>
+      <a class="button" ng-class="{'button-small buttonScan': isActive('facilityFilter')}" ng-click="setActive('facilityFilter');getAllFacility();" ui-sref="supervisorDashboard.filteringByFacility">Facility</a>
+      <a class="button" ng-class="{'button-small buttonScan': isActive('statusFilter')}" ng-click="setActive('statusFilter');getAllWorkStatus();" ui-sref="supervisorDashboard.filteringByStatus">Status</a>
+    </div>
+  </div>
+
+  <ion-content class="padding_workorderview" delegate-handle="mainScroll">
+    <!--  <ion-scroll direction="xy" class="scrollClass" delegate-handle="small"> -->
+    <!-- <ion-scroll zooming="true" direction="xy" style="width: 100%; "> -->
+
+    <!-- <input type = "date" class = "form-control"  ng-model="WorkorderDate" ng-show="showDatepicker" ng-change="viewWorkorderFilterByDate()" class="col-sm-12 col-md-12 col-lg-12"/> -->
+    <ion-list>
+      <ion-item ng-repeat="data in viewworkorder">
+        <div class="item item-icon-right">
+<!--    <div class="item item-icon-right" ng-repeat="data in viewworkorder">-->
+      <div ng-if="data.Color!='#ebfaff'">
+        <a ng-style="{'border': '11px' ,'border-style': 'solid','border-color': data.Color}" class="item item-text-wrap text-center" ng-If="data.IsEquipment==0" ui-sref="supervisorDashboard.detailedWorkorderView({workorderKey: data.WorkorderKey})">
+          <h2><b>{{data.RoomId}}</b></h2>
+          <div ng-show="data.FacilityName">
+            <p style="color: blueviolet">{{data.WorkorderTypeName}}</p>
+            <p>{{data.FacilityName}} - {{data.ZoneName}} - {{data.FloorName}}</p>
+            <p>{{data.WorkorderTime}}</p>
+            <p>Assigned to : {{data.LastName}},{{data.FirstName}} </p>
+            <p>Priority : {{data.PriorityValue}}</p>
+            <p>
+              <ion-label class="label text-Scheduled-{{data.WorkorderStatus === 'Scheduled'}}
+                              text-InProgress-{{data.WorkorderStatus === 'InProgress'}}
+                              text-Completed-{{data.WorkorderStatus === 'Completed'}}
+                              text-Delayed-{{data.WorkorderStatus === 'Delayed'}}
+                              text-Cancelled-{{data.WorkorderStatus === 'Cancelled'}}">
+                {{data.WorkorderStatus}}
+              </ion-label>
+            </p>
+          </div>
+        </a> <i class="icon ion-chevron-right"></i>
+        <a ng-style="{'border': '11px' ,'border-style': 'solid','border-color': data.Color}" class="item item-text-wrap text-center" ng-If="data.IsEquipment==1" ui-sref="supervisorDashboard.detailedWorkorderView({workorderKey: data.WorkorderKey})">
+          <h2><b>{{data.EquipmentName}}</b></h2>
+          <div ng-show="data.FacilityName">
+            <p style="color: blueviolet">{{data.WorkorderTypeName}}</p>
+            <p>{{data.FacilityName}} - {{data.EquipmentType}} </p>
+            <p>{{data.WorkorderTime}}</p>
+            <p>Assigned to : {{data.LastName}},{{data.FirstName}} </p>
+            <p>Priority : {{data.PriorityValue}}</p>
+            <p>
+              <ion-label class="label text-Scheduled-{{data.WorkorderStatus === 'Scheduled'}}
+                              text-InProgress-{{data.WorkorderStatus === 'InProgress'}}
+                              text-Completed-{{data.WorkorderStatus === 'Completed'}}
+                              text-Delayed-{{data.WorkorderStatus === 'Delayed'}}
+                              text-Cancelled-{{data.WorkorderStatus === 'Cancelled'}}">
+                {{data.WorkorderStatus}}
+              </ion-label>
+            </p>
+          </div>
+        </a> <i class="icon ion-chevron-right"></i>
+        <a class="item item-text-wrap text-center" ng-show="data.IsEquipment!=1 && data.IsEquipment!=0 && data.WorkorderTypeName=='No works found!'">
+          <h2>No works found!</h2>
+        </a> <i class="icon ion-chevron-right"></i>
+      </div>
+      <div ng-if="data.Color==='#ebfaff'">
+        <a class="item item-text-wrap text-center" ng-If="data.IsEquipment==0" ui-sref="supervisorDashboard.detailedWorkorderView({workorderKey: data.WorkorderKey})">
+          <h2><b>{{data.RoomId}}</b></h2>
+          <div ng-show="data.FacilityName">
+            <p style="color: blueviolet">{{data.WorkorderTypeName}}</p>
+            <p>{{data.FacilityName}} - {{data.ZoneName}} - {{data.FloorName}}</p>
+            <p>{{data.WorkorderTime}}</p>
+            <p>Assigned to : {{data.LastName}},{{data.FirstName}} </p>
+            <p>Priority : {{data.PriorityValue}}</p>
+            <p>
+              <ion-label class="label text-Scheduled-{{data.WorkorderStatus === 'Scheduled'}}
+                              text-InProgress-{{data.WorkorderStatus === 'InProgress'}}
+                              text-Completed-{{data.WorkorderStatus === 'Completed'}}
+                              text-Delayed-{{data.WorkorderStatus === 'Delayed'}}
+                              text-Cancelled-{{data.WorkorderStatus === 'Cancelled'}}">
+                {{data.WorkorderStatus}}
+              </ion-label>
+            </p>
+          </div>
+        </a> <i class="icon ion-chevron-right"></i>
+        <a class="item item-text-wrap text-center" ng-If="data.IsEquipment==1" ui-sref="supervisorDashboard.detailedWorkorderView({workorderKey: data.WorkorderKey})">
+          <h2><b>{{data.EquipmentName}}</b></h2>
+          <div ng-show="data.FacilityName">
+            <p style="color: blueviolet">{{data.WorkorderTypeName}}</p>
+            <p>{{data.FacilityName}} - {{data.EquipmentType}} </p>
+            <p>{{data.WorkorderTime}}</p>
+            <p>Assigned to : {{data.LastName}},{{data.FirstName}} </p>
+            <p>Priority : {{data.PriorityValue}}</p>
+            <p>
+              <ion-label class="label text-Scheduled-{{data.WorkorderStatus === 'Scheduled'}}
+                              text-InProgress-{{data.WorkorderStatus === 'InProgress'}}
+                              text-Completed-{{data.WorkorderStatus === 'Completed'}}
+                              text-Delayed-{{data.WorkorderStatus === 'Delayed'}}
+                              text-Cancelled-{{data.WorkorderStatus === 'Cancelled'}}">
+                {{data.WorkorderStatus}}
+              </ion-label>
+            </p>
+          </div>
+        </a> <i class="icon ion-chevron-right"></i>
+        <a class="item item-text-wrap text-center" ng-show="data.IsEquipment!=1 && data.IsEquipment!=0 && data.WorkorderTypeName=='No works found!'">
+          <h2>No works found!</h2>
+        </a> <i class="icon ion-chevron-right"></i>
+      </div>
+
+    </div>
+
+      </ion-item>
+    </ion-list>
+    <div ng-if="hasData">
+      <ion-infinite-scroll on-infinite="get_more()" distance="1%">
+      </ion-infinite-scroll>
+    </div>
+    <div><br><br></div>
+    <!-- <div class="float-button" ng-click="scrollToTop()">
+<span class="height-fix">
+   <a class="content">
+      <i class="ion-ios-arrow-up"> </i>
+   </a>
+    </span>
+</div> -->
+    <!--  </ion-scroll> -->
+  </ion-content>
+  <ion-floating-button click="scrollToTop()" has-footer="false" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff" class="bottomPadding">
+  </ion-floating-button>
+</ion-view>

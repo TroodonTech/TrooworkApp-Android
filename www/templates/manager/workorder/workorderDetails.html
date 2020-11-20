@@ -1,0 +1,250 @@
+<ion-view view-title="Work Order Details">
+  <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+  <!-- <ion-nav-buttons   side="left">
+                 <a class="button" ui-sref="viewWorkorder"><i class="icon-large ion-chevron-left"></i> Back</a>
+             </ion-nav-buttons>
+                 <ion-nav-buttons   side="right">
+                <div ng-controller="loginCtrl">{{name}}  
+                    <button class="button" ng-click="logout()"><i class="icon ion-log-out" data-pack="default" data-tags="sign out"></i>
+                    </button>
+                </div>
+            </ion-nav-buttons>
+        </ion-view> -->
+
+
+
+  <div class="bar bar-subheader">
+    <div class="button-bar">
+      <a class="button" ng-class="{'button-small buttonScan': isActive('employeeFilter')}" ng-click="setActive('employeeFilter');" ui-sref="managerDashboard.filteringByEmployeeList">Employee</a>
+      <a class="button" ng-class="{'button-small buttonScan': isActive('facilityFilter')}" ng-click="setActive('facilityFilter');getAllFacility();" ui-sref="managerDashboard.filteringByFacility">Facility</a>
+      <a class="button" ng-class="{'button-small buttonScan': isActive('statusFilter')}" ng-click="setActive('statusFilter');getAllWorkStatus();" ui-sref="managerDashboard.filteringByStatus">Status</a>
+    </div>
+  </div>
+
+  <ion-content class="padding_workorderview" delegate-handle="mainScroll">
+    <!-- <div class="bar bar-subheader"> -->
+    <!-- <button class="button icon ion-navicon"></button> -->
+    <!-- <h1 class="title">Header Buttons</h1> -->
+    <!-- <button  ng-if="viewEmpWorkorderDetails[0].WorkorderStatus === 'Completed' && viewEmpWorkorderDetails[0].IsSnapshot === 1"  ui-sref="managerDashboard.snapshot({workorderKey: viewEmpWorkorderDetails[0].WorkorderKey})" class="button">SnapShot</button> -->
+    <!-- </div> -->
+    <!--  <ion-scroll direction="xy" class="scrollClass" delegate-handle="small"> -->
+    <!-- <ion-scroll zooming="true" direction="xy" style="width: 100%; "> -->
+
+    <!-- <p>viewWorkorderDetails</p>
+            <input type = "date" class = "form-control"  ng-model="WorkorderDate"> -->
+    <div ng-show="noWorksFound">
+      <div class="item item-icon-right">
+        <a class="item item-text-wrap text-center">
+          <h2>No Works Found!</h2>
+        </a>
+      </div>
+    </div>
+    <div ng-hide="noWorksFound" class="">
+
+      <div class="list " ng-repeat="items in viewEmpWorkorderDetails">
+        <div class="item item-text-wrap viewWorkorderDetails">
+
+          <div class="row headerRow">
+            <div class="col text-center">
+              <strong>{{items.WorkorderTypeName}}</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col text-left">Facility </div>
+            <div class="col text-right">{{items.FacilityName}}</div>
+          </div>
+          <div class="row" ng-if="items.ZoneName !== 'null'">
+            <div class="col text-left">Zone </div>
+            <div class="col text-right">{{items.ZoneName}}</div>
+          </div>
+          <div class="row" ng-if="items.FloorName !== 'null'">
+            <div class="col text-left">Floor </div>
+            <div class="col text-right">{{items.FloorName}}</div>
+          </div>
+          <div class="row">
+            <div class="col text-left">Room </div>
+            <div class="col text-right">{{items.RoomText}}</div>
+          </div>
+          <div class="row" ng-if="items.EquipmentType !== 'null'">
+            <div class="col text-left">Equipment Type </div>
+            <div class="col text-right">{{items.EquipmentType}}</div>
+          </div>
+          <div class="row">
+            <div class="col text-left">Equipment </div>
+            <div class="col text-right">{{items.EquipmentName}}</div>
+          </div>
+          <div class="row">
+            <div class="col text-left">Assigned to </div>
+            <div class="col text-right">{{items.EmployeeText}}</div>
+          </div>
+          <div class="row">
+            <div class="col text-left">Date </div>
+            <div class="col text-right">{{items.WorkorderDate}}</div>
+          </div>
+          <div class="row">
+            <div class="col text-left">Time </div>
+            <div class="col text-right">{{items.WorkorderTime}}</div>
+          </div>
+
+          <div class="row" ng-if="items.WorkorderStatus === 'Completed'">
+            <div class="col text-left">Check in </div>
+            <div class="col text-right">{{items.checkin1}}</div>
+          </div>
+
+          <div class="row" ng-if="items.WorkorderStatus === 'Completed'">
+            <div class="col text-left">Check out </div>
+            <div class="col text-right">{{items.checkout1}}</div>
+          </div>
+
+          <div class="row" ng-if="items.WorkorderStatus === 'Completed'">
+            <div class="col text-left">Delay time </div>
+            <div class="col text-right">{{items.DelayTime}}</div>
+          </div>
+
+
+          <div class="row" ng-if="items.WorkorderStatus === 'Completed'">
+            <div class="col text-left">Duration </div>
+            <div class="col text-right">{{items.duration}}</div>
+          </div>
+
+
+          <div class="row" ng-if="items.WorkorderNotes !== 'null'">
+            <div class="col text-left">Notes </div>
+
+          </div>
+          <div class="row" ng-if="items.WorkorderNotes !== 'null'">
+
+            <div class="col text-right">{{items.WorkorderNotes}}</div>
+          </div>
+          <div class="row" ng-if="items.IsPhotoRequired === 1">
+            <div class="col text-left">Photo Required </div>
+            <div class="col text-right"><i class="icon ion-checkmark"></i></div>
+          </div>
+          <div class="row" ng-if="items.IsPhotoRequired === 0">
+            <div class="col text-left">Photo Required </div>
+            <div class="col text-right"><i class="icon ion-close"></i></div>
+          </div>
+          <div class="row" ng-if="items.IsBarcodeRequired === 1">
+            <div class="col text-left">Barcode Required </div>
+            <div class="col text-right"><i class="icon ion-checkmark"></i></div>
+          </div>
+          <div class="row" ng-if="items.IsBarcodeRequired === 0">
+            <div class="col text-left">Barcode Required </div>
+            <div class="col text-right"><i class="icon ion-close"></i></div>
+          </div>
+
+          <div class="row" ng-if="items.IsSnapshot === 1">
+            <div class="col text-left">Snapshot Required </div>
+            <div class="col text-right"><i class="icon ion-checkmark"></i></div>
+          </div>
+          <div class="row" ng-if="items.IsSnapshot === 0">
+            <div class="col text-left">Snapshot Required </div>
+            <div class="col text-right"><i class="icon ion-close"></i></div>
+          </div>
+
+
+
+          <div class="row">
+            <div class="col text-center">
+              <ion-label class="label text-Scheduled-{{items.WorkorderStatus === 'Scheduled'}} 
+                          text-InProgress-{{items.WorkorderStatus === 'InProgress'}}
+                          text-Completed-{{items.WorkorderStatus === 'Completed'}} 
+                          text-Delayed-{{items.WorkorderStatus === 'Delayed'}} 
+                          text-Cancelled-{{items.WorkorderStatus === 'Cancelled'}} statusFont">
+                <strong> {{items.WorkorderStatus}}</strong>
+              </ion-label>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="row col text-center" ng-if="(items.WorkorderStatus != 'Cancelled' && items.WorkorderStatus != 'Completed')">
+              <button style="width:60% !important" class="button   button-cancel" ui-sref="managerDashboard.workorderCancel({workorderKey: items.WorkorderKey})">Workorder Cancel</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col text-center">
+              <button class="button button-block button-positive padding" ng-if="viewEmpWorkorderDetails[0].WorkorderStatus === 'Completed' && viewEmpWorkorderDetails[0].IsSnapshot === 1" ui-sref="managerDashboard.snapshot({workorderKey: viewEmpWorkorderDetails[0].WorkorderKey})" class="button">View Gps SnapShot</button>
+
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+
+    <!-- <div ng-hide="noWorksFound">
+             <div class="list" ng-repeat="items in viewEmpWorkorderDetails">
+                <a class="item">                  
+                  <h3>{{items.WorkorderTypeName}}</h3>
+                  <p>Facility : {{items.FacilityName}} </p>
+                  <p>Zone : {{items.ZoneName}} </p>
+                  <p>Floor : {{items.FloorName}} </p>
+                  <p>Room : {{items.RoomText}}</p>
+                  <p>Equipment Type : {{items.EquipmentType}} </p>
+                  <p>Equipment : {{items.EquipmentName}}</p>
+                  <p>Assigned to : {{items.EmployeeText}}</p>
+                  <p>DateTime : {{items.WorkorderDate}}-{{items.WorkorderTime}}</p>
+                  <p>Notes : {{items.WorkorderNotes}}</p>
+                  <p ng-if="items.IsPhotoRequired === 1 ">Photo Required : <i class="icon ion-checkmark"></i></p>
+                  <p ng-if="items.IsPhotoRequired === 0 ">Photo Required : <i class="icon ion-close"></i></p>
+                  <p ng-if="items.IsBarcodeRequired === 1 ">Barcode Required : <i class="icon ion-checkmark"></i></p>
+                  <p ng-if="items.IsBarcodeRequired === 0 ">Barcode Required : <i class="icon ion-close"></i></p>
+                  <p>
+                      <ion-label class="label text-brown-{{items.WorkorderStatus === 'Scheduled'}} 
+                                   text-green-{{items.WorkorderStatus === 'InProgress'}}
+                                   text-yellow-{{items.WorkorderStatus === 'Completed'}}">
+                          {{items.WorkorderStatus}}
+                      </ion-label>
+                </p>
+              <p>
+                  <button class=" button buttonFinish button-large button-brown-{{items.WorkorderStatus === 'Scheduled'}} 
+                                   button-green-{{items.WorkorderStatus === 'InProgress'}}
+                                   button-yellow-{{items.WorkorderStatus === 'Completed'}}" 
+                                   ng-if="items.IsPhotoRequired === 1 && items.WorkorderStatus === 'Completed'" ng-click="DownloadImage(items.WorkorderKey)">
+                                   <i class="icon ion-images"></i><h2>View Image</h2>
+                      </button>
+                  
+
+               </p>
+            </a>       
+          </div> 
+          </div>  -->
+
+
+
+
+    <div><br><br></div>
+    <!--    <div class="float-button" ng-click="scrollToTop()">
+<span class="height-fix">
+   <a class="content">
+      <i class="ion-ios-arrow-up"> </i>
+   </a>
+    </span>
+</div>
+                 </ion-scroll> 
+          //      <script id="image-modal.html" type="text/ng-template">
+
+          //     <div class="modal image-modal transparent" on-swipe-down="closeModal()">
+                  
+          //         <ion-pane class="transparent">
+          //                   <ion-scroll direction="xy" scrollbar-x="false" scrollbar-y="false"
+          //                         zooming="true" min-zoom="{{zoomMin}}" style="width: 100%; height: 100%"
+          //                         delegate-handle="scrollHandle{{}}" on-scroll="updateSlideStatus()" on-release="updateSlideStatus()">
+          //                           <img ng-src="{{imageSrc}}" class="fullscreen-image" zooming="true" min-zoom="{{zoomMin}}" />
+                                
+                             
+          //                 </ion-scroll>
+          //       </ion-pane>
+          //     </div>
+          // </script> -->
+  </ion-content>
+  <ion-floating-button click="scrollToTop()" has-footer="false" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff" class="bottomPadding">
+  </ion-floating-button>
+</ion-view>

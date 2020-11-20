@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, user-scalable=no, width=device-width">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *"> -->
+<!--  <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready file:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src * 'unsafe-inline' 'unsafe-eval'"> -->
+
+
+    <title>Troowork</title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+    <!--
+    <script src="phonegap-plugin-barcodescanner/www/barcodescanner.js"></script>
+   <script src="cordova-plugin-media-capture/www/capture.js"></script>
+   <script src="cordova-plugin-camera/www/camera.js"></script>
+ -->
+    <!--
+   <script src="cordova-plugin-geolocation/www/geolocation.js"></script>
+   <script src="https://maps.google.com/maps/api/js?v=3&key=AIzaSyDaciakO8dZrELxT9XoQvab6MYmhBSC4i0"></script>
+
+    -->
+
+    <!-- your app's js -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/ng-cordova.min.js"></script>
+    <script src="js/ionic-ratings.js"></script>
+    <script src="js/ionic-rating-stars.min.js"></script>
+    <script src="js/ionic-rating-stars.js"></script>
+    <script src="js/ionic-ratings3.js"></script>
+    <script src="js/ionic-datepicker.bundle.min.js"></script>
+    <script src="js/ui-bootstrap.js"></script>
+    <script src="js/Ionic_timepicker.js"></script>
+    <script src="js/ionic-datepicker.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/angularUtils.directives.dirPagination.js"></script>
+    <script src="js/ion-floating-menu.min.js"></script>
+    <script src="js/angular-busy.js"></script>
+    <script src="js/ionic-modal-select.js"></script>
+    <script src="js/ionic.bundle.min.js"></script>
+    <script src="js/env.js"></script>
+    <script src="js/angular-ui.min.js"></script>
+    <script src="js/loader.js"></script>
+
+    <link href="css/ion-floating-menu.min.css" rel="stylesheet">
+
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers/dashboardController.js"></script>
+    <script src="js/controllers/loginCtrl/loginController.js"></script>
+    <script src="js/controllers/loginCtrl/logoutController.js"></script>
+    <script src="js/controllers/workorderCtrl/workorderController.js"></script>
+    <script src="js/controllers/workorderCtrl/quickWorkorderController.js"></script>
+    <script src="js/controllers/workorderCtrl/workorderviewController.js"></script>
+    <script src="js/controllers/workorderCtrl/workorderDetailsCtrl.js"></script>
+    <script src="js/controllers/workorderCtrl/WorkOrderFilteringByFacilityCtrl.js"></script>
+    <script src="js/controllers/workorderCtrl/WorkOrderFilteringByStatusCtrl.js"></script>
+    <script src="js/controllers/workorderCtrl/workorderFilteringByEmployeeCtrl.js"></script>
+    <script src="js/controllers/inspectionCtrl/inspectionViewCtrl.js"></script>
+    <script src="js/controllers/inspectionCtrl/inspectionEditCtrl.js"></script>
+    <script src="js/controllers/inspectionCtrl/inspectionDetailsCtrl.js"></script>
+    <script src="js/controllers/inspectionCtrl/inspectionAddCtrl.js"></script>
+    <script src="js/controllers/findEmployeeCtrl/findemployeeMapController.js"></script>
+    <script src="js/controllers/workorderCtrl/workorderViewControllerForManagerList.js"></script>
+    <script src="js/controllers/workorderCtrl/workorderDetailsManager.js"></script>
+    <script src="js/controllers/workorderCtrl/SnapshotCtrl.js"></script>
+    <script src="js/controllers/workorderCtrl/workorderCreateByScan.js"></script>
+    <script src="js/controllers/findEmployeeCtrl/fireBaseTrack.js"></script>
+    <script src="js/controllers/inspectionCtrl/InspectionCreateByScanCtrl.js"></script>
+
+    <script src="js/controllers/workorderCtrl/workorderPieController.js"></script>
+    <script src="js/controllers/workorderCtrl/workorderPieFiltersController.js"></script>
+
+    <script src="js/services/savingInspectedValuesService.js"></script>
+    <script src="js/factory/SpecialCharactersRestricted.js"></script>
+    <script src="js/controllers/loginCtrl/aboutappctrl.js"></script>
+    <script src="js/controllers/workorderCtrl/workorderscanCtrl.js"></script>
+    <script src="js/controllers/workorderCtrl/workorderFilteringByEmployeeViewCtrl.js"></script>
+    <script src="js/controllers/workorderCtrl/workorderFilteringByFacilityViewCtrl.js"></script>
+    <script src="js/controllers/workorderCtrl/WorkOrderFilteringByStatusViewCtrl.js"></script>
+
+    <script src="js/controllers/loginCtrl/schedulerCtrl.js"></script>
+    <script src="js/controllers/loginCtrl/schedulerDatePicker.js"></script>
+    <!--
+      <script src="js/controllers/routeController.js"></script>
+
+
+      <script src="js/googleMaps.js"></script>
+
+     -->
+
+<!--daypilot starts-->
+        <!-- DayPilot library -->
+    <script src="js/daypilot/daypilot-all.min.js"></script>
+
+    <!-- icons -->
+    <link rel="stylesheet" href="icons/style.css" />
+    <style>
+    .icon {
+      font-size: 16px;
+      color: #ccc;
+
+      line-height: 30px;
+      padding: 0px 5px;
+    }
+  </style>
+
+    <!-- theme -->
+    <link rel="stylesheet" href="theme/dark.css" />
+<!--    daypilot ends-->
+
+  </head>
+  <body ng-app="starter" class="platform-android platform-cordova platform-webview platform-ios platform-cordova platform-webview">
+       <!-- <div ng-controller="routeController"></div> -->
+         <ion-nav-view></ion-nav-view>
+
+       <script src="http://maps.google.com/maps/api/js?v=3&key=AIzaSyBL6NLlMU2vrJk4CRlI0FQa4BEQE_SiQrg"></script>
+
+  <!--
+
+   <script src="http://maps.google.com/maps/api/js?v=3&key=AIzaSyDaciakO8dZrELxT9XoQvab6MYmhBSC4i0"></script>
+
+  <script src="http://maps.googleapis.com/maps/api/js?key=[AIzaSyDaciakO8dZrELxT9XoQvab6MYmhBSC4i0]&sensor=true"></script> -->
+
+
+  </body>
+</html>

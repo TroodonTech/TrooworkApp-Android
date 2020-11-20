@@ -1,0 +1,145 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24 Feb, 2016, 1:56:38 PM
+    Author     : sujin
+*/
+
+.fileList.ng-leave
+{
+    -webkit-animation: 2s ani-leave;
+    -moz-animation: 2s ani-leave;
+    -o-transition: 2s ani-leave;
+    position: relative;
+}
+
+@keyframes ani-leave
+{
+    from
+    {
+        left:0;
+/*transform:rotate(3600deg);*/
+    }
+    to
+    {
+        left:100%;
+/*transform:rotate(0deg);*/
+    }
+}
+
+@-webkit-keyframes ani-leave
+{
+    from
+    {
+        left:0; 
+        /*transform:rotate(360deg);*/
+    }
+    to
+    {
+        left:100%; 
+/*transform:rotate(0deg);*/
+    }
+}
+
+
+.fileList.ng-enter
+{
+    -webkit-animation: 2s ani-enter;
+    -moz-animation: 2s ani-enter;
+    -o-transition: 2s ani-enter;
+    position: relative;
+}
+
+@keyframes ani-enter
+{
+    from
+    {
+        left:100%;
+/*        transform:rotate(0deg);*/
+    }
+    to
+    {
+        left:0;
+/*        transform:rotate(360deg);*/
+    }
+}
+
+@-webkit-keyframes ani-enter
+{
+    from
+    {
+        left:100%; 
+        /*transform:rotate(0deg);*/
+    }
+    to
+    {
+        left:0;
+/*transform:rotate(360deg);*/
+    }
+}
+
+
+
+.table-list
+{
+    border:1px solid #999;
+  margin-top:15px;
+  padding:15px;
+  border-radius:4px;
+  background:#4278B3;
+  color:#fff;
+    font-size: 15px;
+  
+}
+
+.table-list
+{
+     position: relative;
+    transition-property: font-size;
+    transition-duration: 4s;
+    transition-delay: 2s;
+    font-size: 14px;
+  
+}
+
+.table-list:hover
+{
+     transition-property: font-size;
+    transition-duration: 4s;
+    transition-delay: 2s;
+    font-size: 36px;
+}
+/*
+@keyframes tab-enter
+{
+    from
+    {
+        font-size:100%;
+    }
+    to
+    {
+        font-size:150%;
+    }
+}
+
+@-webkit-keyframes tab-enter
+{
+    from
+    {
+        font-size:100%;
+    }
+    to
+    {
+         font-size:150%;
+    }
+}
+.table-list.ng-leave
+{
+     -webkit-animation: 2s tab-leave;
+    -moz-animation: 2s tab-leave;
+    -o-transition: 2s tab-leave;
+  
+}*/

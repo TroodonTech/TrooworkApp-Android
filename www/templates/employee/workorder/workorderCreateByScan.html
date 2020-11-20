@@ -1,0 +1,17 @@
+<ion-view view-title="Workorder Create By Scan">
+    <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+    <div class="bar bar-subheader">
+        <div class="button-bar">
+            <!--   <a class="button" ng-class="{'button-small buttonScan': isActive('employeeFilter')}" ng-click="setActive('employeeFilter');" ui-sref="employeeDashboard.filteringByEmployeeList">Employee</a> -->
+            <a class="button" ng-class="{'button-small buttonScan': isActive('facilityFilter')}" ng-click="setActive('facilityFilter');getAllFacility();" ui-sref="employeeDashboard.filteringByFacility">Facility</a>
+            <a class="button" ng-class="{'button-small buttonScan': isActive('statusFilter')}" ng-click="setActive('statusFilter');getAllWorkStatus();" ui-sref="employeeDashboard.filteringByStatus">Status</a>
+        </div>
+    </div>
+    <ion-content class="padding_workorderview" delegate-handle="mainScroll">
+        <div class="padding_inspection">
+            <img type="sumbit"  style="width: 100px; height: 100px;" class="imageStyleScan" src="shelfari-scanner-icon.png" on-tap="createEmployeeWorkorderByBarcode()">
+        </div>
+    </ion-content>
+        <ion-floating-button click="scrollToTop()" has-footer="false" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff" class="bottomPadding">
+        </ion-floating-button>
+</ion-view>

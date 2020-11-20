@@ -1,0 +1,28 @@
+<ion-view view-title="Image Upload">
+          <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div> 
+        <div class="bar bar-subheader">
+        <div class="button-bar">
+         <!--   <a class="button" ng-class="{'button-small buttonScan': isActive('employeeFilter')}" ng-click="setActive('employeeFilter');" ui-sref="employeeDashboard.filteringByEmployeeList">Employee</a> -->
+            <a class="button" ng-class="{'button-small buttonScan': isActive('facilityFilter')}" ng-click="setActive('facilityFilter');getAllFacility();" ui-sref="employeeDashboard.filteringByFacility">Facility</a>
+            <a class="button" ng-class="{'button-small buttonScan': isActive('statusFilter')}" ng-click="setActive('statusFilter');getAllWorkStatus();" ui-sref="employeeDashboard.filteringByStatus">Status</a>
+          </div>
+    </div>
+         
+            <ion-content class="padding_workorderview"  delegate-handle="mainScroll">
+           <img ng-src="{{pathForImage(image)}}" style="width: 100%; height: 100%;">
+          
+
+            <!-- <ion-floating-button click="scrollToTop()" has-footer="false" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff" class="bottomPadding">
+          </ion-floating-button> -->
+         <ion-footer-bar class="bar bar-positive">
+      <div class="button-bar">
+        <button class="button icon-left ion-camera" style="width: 50%; " ng-click="loadImage()">Choose Photo</button>
+        <button class="button icon-left ion-upload" style="width: 50%; "ng-click="uploadImage()" ng-disabled="image === null">Upload</button>
+      </div>
+    </ion-footer-bar>
+      
+        </ion-content>
+       
+        </ion-view>
+   
+   

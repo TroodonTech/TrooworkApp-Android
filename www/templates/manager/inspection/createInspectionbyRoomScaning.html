@@ -1,0 +1,65 @@
+<ion-view view-title="Inspection Create By Scanning">
+    <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+    <div class="bar bar-subheader">
+     
+    </div>
+    <ion-content class="padding_workorderview" delegate-handle="mainScroll" >
+        <h3 align="center" >Inspection Create By Scanning</h3>
+        <label class="item item-input item-select">
+            <div class="input-label">Template*</div>
+            <select ng-model="TemplateID"  ng-options="x.TemplateID as x.TemplateName for x in templateList | unique:'TemplateName'" ng-value="x.TemplateID">
+                <option label=" Select "></option>
+            </select>
+        </label>
+        <div class="item item-divider">Select Auditor and Employee</div>           
+        <label class="item item-input item-select">
+            <div class="input-label" ng-init="SupervisorKey=auditSupKey">Auditor*</div>
+            <select ng-model="SupervisorKey"  ng-options="x.SupervisorKey as  x.SupervisorText for x in supervisorName | unique:'SupervisorText'" ng-value="x.SupervisorKey">
+                <option label=" Select "></option>
+            </select>
+        </label>
+        <label class="item item-input item-select">
+            <div class="input-label">Employee</div>
+            <select ng-model="EmployeeKey"  ng-options="x.EmployeeKey as x.EmployeeText for x in employeeListManagerView | unique:'EmployeeText'" ng-value="x.EmployeeKey">
+                <option label=" Select "></option>
+            </select>
+        </label>
+        <label class="item item-input">
+            <!-- <div class="input-label">Building Name:</div>
+              {{roomDetails.FacilityName}}  <input type="text" ng-model="roomDetails.FacilityName" ng-disabled="true" > -->
+            <div class="col text-left">Building Name:</div>
+            <div class="col text-right">{{roomDetails.FacilityName}}</div>
+        </label>
+        <label class="item item-input">
+
+            <!-- <input type="text" ng-model="roomDetails.FloorName" ng-disabled="true" > -->
+            <div class="col text-left">Floor Name:</div>
+            <div class="col text-right">{{roomDetails.FloorName}}</div>
+        </label>
+
+        <div ng-if="roomDetails.IsEquipment==0">
+            <label class="item item-input">
+                <div class="col text-left">Zone Name:</div>
+                <div class="col text-right">{{roomDetails.ZoneName}}</div> <!-- <input type="text" ng-model="roomDetails.ZoneName"  ng-disabled="true"> -->
+            </label>
+            <label class="item item-input">
+                <div class="col text-left">Room Name:</div>
+                <div class="col text-right">{{roomDetails.RoomName}}</div> <!-- <input type="text" ng-model="roomDetails.RoomName"  ng-disabled="true"> -->
+            </label>
+                    </div>
+        <div ng-if="roomDetails.IsEquipment==1">
+            <label class="item item-input">
+                <div class="col text-left">Equipment Type Name:</div>
+                <div class="col text-right">{{roomDetails.EquipmentType}}</div> <!-- <input type="text" ng-model="roomDetails.EquipmentType"  ng-disabled="true"> -->
+            </label>
+            <label class="item item-input">
+                <div class="col text-left">Equipment Name:</div>
+                <div class="col text-right">{{roomDetails.EquipmentName}}</div> <!-- <input type="text" ng-model="roomDetails.EquipmentName"  ng-disabled="true"> -->
+
+            </label>
+                    </div>
+        <button class="button button-block button-positive padding" type="submit" ng-click="createInspection(TemplateID,SupervisorKey,EmployeeKey)">Create Inspection</button>
+    </ion-content>
+    <ion-floating-button click="scrollToTop()" has-footer="false" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff" class="bottomPadding">
+    </ion-floating-button>
+</ion-view>

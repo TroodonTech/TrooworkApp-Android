@@ -1,0 +1,64 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <!-- TABS -->
+    <ion-tabs class="tabs-icon-top tabs-color-active-positive">
+      <!-- Home Tab -->
+      <ion-tab title="Home" icon-off="ion-home" icon-on="ion-home" ui-sref="employeeDashboard.dashboardViewEmployee">
+        <ion-nav-view name="tab-empHome"></ion-nav-view>
+      </ion-tab>
+
+      <!-- Workorder Tab -->
+      <ion-tab title="Work Order" icon-off="ion-social-buffer-outline" icon-on="ion-social-buffer"
+        ui-sref="employeeDashboard.employeeworks">
+        <!-- <ion-nav-view name="tab-employeeworks"></ion-nav-view> -->
+      </ion-tab>
+
+      <!-- scanWorks Tab -->
+      <ion-tab title="Scan for Work" icon-off="ion-ios-barcode-outline" icon-on="ion-ios-barcode"
+        ui-sref="employeeDashboard.scanforworkEmp">
+        <!-- <ion-nav-view name="tab-employeescanWorks"></ion-nav-view> -->
+      </ion-tab>
+      <ion-tab title="Create WorkOrder By Scan" icon-off="ion-qr-scanner" icon-on="ion-qr-scanner"
+        ui-sref="employeeDashboard.createWorkOrderbyScan">
+        <!-- <ion-nav-view name="tab-employeescanWorks"></ion-nav-view> -->
+      </ion-tab>
+    </ion-tabs>
+    <ion-nav-view name="tab-employeeview"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <!-- Side Menu (left) -->
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">{{name}}</h1>
+    </ion-header-bar>
+    <ion-content class="custom">
+      <ion-list>
+        <ion-item menu-close ui-sref="employeeDashboard.employeeworks">
+          <i class="icon ion-social-buffer" data-pack="default" data-tags="sign out"></i> Work Order
+        </ion-item>
+        <ion-item menu-close ui-sref="employeeDashboard.scanforworkEmp">
+          <i class="icon ion-ios-barcode-outline" data-pack="default" data-tags="sign out"></i> Scan For Work
+        </ion-item>
+        <ion-item menu-close ui-sref="employeeDashboard.createWorkOrderbyScan">
+          <i class="icon ion-qr-scanner" data-pack="default" data-tags="sign out"></i> Create WorkOrder By Scan
+        </ion-item>
+        <ion-item menu-close ui-sref="employeeDashboard.aboutapp">
+          <i class="icon ion-information-circled" data-pack="default" data-tags="sign out"></i> App info
+        </ion-item>
+        <ion-item menu-close ng-controller="logoutCtrl" ng-click="logout()">
+          <i class="icon ion-log-out" data-pack="default" data-tags="sign out"></i> Logout
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

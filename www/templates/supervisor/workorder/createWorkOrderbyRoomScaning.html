@@ -1,0 +1,60 @@
+<ion-view view-title="Workorder Create By Scanning">
+    <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+    <div class="bar bar-subheader">
+        <div class="button-bar">
+            <!--   <a class="button" ng-class="{'button-small buttonScan': isActive('employeeFilter')}" ng-click="setActive('employeeFilter');" ui-sref="employeeDashboard.filteringByEmployeeList">Employee</a> -->
+            <a class="button" ng-class="{'button-small buttonScan': isActive('facilityFilter')}" ng-click="setActive('facilityFilter');getAllFacility();" ui-sref="employeeDashboard.filteringByFacility">Facility</a>
+            <a class="button" ng-class="{'button-small buttonScan': isActive('statusFilter')}" ng-click="setActive('statusFilter');getAllWorkStatus();" ui-sref="employeeDashboard.filteringByStatus">Status</a>
+        </div>
+    </div>
+    <ion-content class="padding_workorderview" delegate-handle="mainScroll">
+        <h3 align="center" class="row">Workorder Create By Scanning</h3>
+        <label class="item item-input item-select item-text-wrap">
+            <div class="input-label">Workorder Type*</div>
+            <select ng-model="WorkorderTypeKey" ng-options="x.WorkorderTypeText for x in workorderTypes | unique:'WorkorderTypeText'" ng-value="x.WorkorderTypeKey" ng-change="changedWOT()">
+                <option label=" Select "></option>
+            </select>
+        </label>
+        <label class="item item-input">
+            <!-- <div class="input-label">Building Name:</div>
+              {{roomDetails.FacilityName}}  <input type="text" ng-model="roomDetails.FacilityName" ng-disabled="true" > -->
+            <div class="col text-left">Building Name:</div>
+            <div class="col text-right">{{roomDetails.FacilityName}}</div>
+        </label>
+        <label class="item item-input">
+
+            <!-- <input type="text" ng-model="roomDetails.FloorName" ng-disabled="true" > -->
+            <div class="col text-left">Floor Name:</div>
+            <div class="col text-right">{{roomDetails.FloorName}}</div>
+        </label>
+        <div ng-if="roomDetails.IsEquipment==0">
+            <label class="item item-input">
+                <div class="col text-left">Zone Name:</div>
+                <div class="col text-right">{{roomDetails.ZoneName}}</div> <!-- <input type="text" ng-model="roomDetails.ZoneName"  ng-disabled="true"> -->
+            </label>
+            <label class="item item-input">
+                <div class="col text-left">Room Name:</div>
+                <div class="col text-right">{{roomDetails.RoomName}}</div> <!-- <input type="text" ng-model="roomDetails.RoomName"  ng-disabled="true"> -->
+            </label>
+            <div class="item item-divider"></div>
+            <ion-toggle  ng-model="isBarcodeRequired" ng-click="toggleButton(isBarcodeRequired)" toggle-class="toggle-positive">Barcode Required</ion-toggle>
+
+        </div>
+        <div ng-if="roomDetails.IsEquipment==1">
+            <label class="item item-input">
+                <div class="col text-left">Equipment Type Name:</div>
+                <div class="col text-right">{{roomDetails.EquipmentType}}</div> <!-- <input type="text" ng-model="roomDetails.EquipmentType"  ng-disabled="true"> -->
+            </label>
+            <label class="item item-input">
+                <div class="col text-left">Equipment Name:</div>
+                <div class="col text-right">{{roomDetails.EquipmentName}}</div> <!-- <input type="text" ng-model="roomDetails.EquipmentName"  ng-disabled="true"> -->
+            </label>
+            <div class="item item-divider"></div>
+            <ion-toggle  ng-model="isBarcodeRequired" ng-click="toggleButton(isBarcodeRequired)" toggle-class="toggle-positive">Barcode Required</ion-toggle>
+
+        </div>
+        <button class="button button-block button-positive padding" type="submit" ng-click="createWorkorder(WorkorderTypeKey.WorkorderTypeKey,isBarcodeRequired)">Create Workorder</button>
+    </ion-content>
+    <ion-floating-button click="scrollToTop()" has-footer="false" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff" class="bottomPadding">
+    </ion-floating-button>
+</ion-view>

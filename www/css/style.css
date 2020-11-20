@@ -1,0 +1,1058 @@
+/* Empty. Add your own CSS if you like */
+
+.imageStyleScan{
+/*  position: center !important;
+  margin: 0 auto !important;*/
+  position:absolute;
+    left: 0;
+    right: 0;
+    margin:0 auto;
+}
+
+.facilityBackButton{
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+}
+
+ .loginCheckbox{
+  padding-top: 30px !important;
+ }
+ .checkboxButton_Login{
+      background: transparent;
+    border: none;
+ }
+ #checkbox{
+  width: 25px !important;
+    height: 14px !important;
+    
+ }
+
+ .button-brown-true {
+background-color: brown;
+    /*width: 20% !important;*/
+    
+} 
+.option-selected{
+        background-color: #ccc !important;
+  }
+.button-green-true {
+background-color: green;
+    /*width: 20% !important;*/
+    
+}  
+.workOrderCancel-btn-color {
+  background-color: rgba(255, 115, 0, 0.993) !important;  
+}
+
+.button-violet-true{
+  background-color: rgb(255, 72, 0);
+}
+.text-violet-true{
+  color: rgb(255, 72, 0);
+}
+.login{
+  padding:0px;
+  position: absolute;
+}
+.vaild_text{
+  color:red;
+}
+.padding_login{
+       position: relative;
+        padding-top: 75px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 10px;
+ }
+ .padding_findEmployee{
+       position: relative;
+        padding-top: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 20px;
+ }
+ .padding_inspection{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+ }
+ .inspection_questionButton{
+  padding-top: 20px;
+ }
+ .pagerPreviousButton{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+ }
+.pagerNextButton{
+  position: absolute;
+    right: 10px;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+.bottomPadding{
+  bottom: 50px !important;
+
+}
+.pagerPreviousButton{
+position: absolute;
+}
+.pager{
+  padding-bottom: 10px;
+}
+.mouseOver{
+    background-color: crimson;
+            }
+.button-yellow-true {
+background-color: yellow;
+    /*width: 20% !important;*/
+   
+}  
+#error{
+  color: brown;
+}
+ .text-brown-true {
+ color: brown;
+    /*width: auto ;*/
+    
+} 
+
+.text-orange-true {
+ color: orange;
+    /*width: auto ;*/
+    
+} 
+
+ .button.button-dark {
+    border-color: transparent;
+    /*background-color: #405449 !important;*/
+    background-color: #54838a !important;
+    
+    color: #fff;
+}   
+.text-green-true {
+ color: green;
+    /*width: auto ;*/
+    
+}  
+.text-yellow-true {
+ color: blue;
+    /*width: auto ;*/
+   
+} 
+
+
+
+.text-Scheduled-true{
+  color: brown;  
+}
+.text-InProgress-true{
+  color: blue;  
+}
+.text-Completed-true{
+  color: green;  
+}
+.text-Delayed-true{
+  color: gold;  
+}
+.text-Cancelled-true{
+  color: orange;  
+}
+
+.button-InProgress-text-true {  
+  color: white !important; 
+  }
+  .button-Scheduled-text-true {  
+    color: white !important; 
+    } 
+.button-delay{
+  background-color:gold;
+  margin-bottom: 5px;
+}
+.button-Scheduled-true{
+  color: white !important; 
+  background-color:brown; 
+}
+.button-InProgress-true{
+  color: white !important; 
+  background-color:blue; 
+}
+.button-Completed-true{
+  background-color:green; 
+}
+.button-cancel{
+  background-color:orange;
+}
+.button-blue-true {
+  background-color: blue;
+  color: white !important; 
+  
+      /*width: 20% !important;*/  
+  } 
+ .buttonSize{
+  width:100px;
+  margin-top: 5px;
+ }
+  .round {
+    --width: 60px;
+    --height: 60px;
+    --border-radius: 50%;
+    --vertical-align: middle;
+    --padding-start: 10px;
+    --padding-end: 10px;
+  }
+  
+.button.customButton{
+  font-size: 2px !important;
+  display: inline-block;
+}
+.scrollClass{
+    
+    /*height: 100vh !important;*/
+    width: 100%;
+    /*padding-top: 10px !important;;*/
+    padding-bottom: 50px !important;
+    /*transform: translate3d(10px, 10px, 10px) scale(1) !important;*/
+   /*overflow-x: auto; /*for horizontal scroll bar 
+	overflow-y: auto; for hiding vertical scroll bar 
+	overflow: visible; /*for horizontal and vertical scroll bars */
+}
+
+/*.scroll-view.scroll-y {
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+}
+*/
+.narBarClass{
+    /*text-indent: 50px; */
+    font-size: 10px;
+    
+
+}
+.viewtitlebar.title{
+      transform: translate3d(0px, 0px,0px);
+      left: 80px !important;
+        right: 90px;
+        font-size: 14px !important;
+}
+
+.table {
+    border-collapse: collapse;
+}
+.title{
+  transform: translate3d(0px, 0px,0px);
+    left: 80px !important;
+        right: 100px;
+        font-size: 14px !important;
+        padding-left: .2cm !important;
+}
+table, td, th {
+    border: 1px solid black;
+}
+.narBarTitleClass{
+    font-size: 12px;
+}
+.backButtonClass{
+    font-size: 11px;
+}
+.padding_workorderview{
+  padding-top: 70px;
+}
+.icon-circle, .icon-circle-large, .icon-circle-small{
+  position: relative;
+  display: inline-block;
+  margin: -1px;
+  /*padding: 16px;*/
+  
+  
+  width: 45px; /* 60*/
+  height: 45px; 
+  font-size:40px; 
+  
+   -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+  border-radius: 50%;
+  
+  
+  
+  border: 1px solid #ebebeb;
+ 
+  background: rgb(0, 161, 225); /*#ececec;ebebeb*/
+  color: #fff;
+  
+  text-align:center;
+  /*vertical-align: middle;*/
+}
+
+.icon-circle-large {
+  width: 100px;
+  height: 100px;
+  font-size: 64px; /* 64, originally 60 */
+  padding: 16px;
+  
+  
+}
+.icon-circle-small {
+  width: 24px;
+  height: 24px;
+  font-size: 20px;
+}
+
+.viewWorkorderDetails{
+      
+    background: transparent;
+}
+.viewWorkorderDetails .buttonCol{
+  border: none !important;
+}
+.viewWorkorderDetails .statusFont{
+    font-size: 20px;
+}
+.viewWorkorderDetails .col{
+  line-height: 20px !important;
+  /*border:solid 1px grey !important;*/
+
+}
+.viewWorkorderDetails .a.item:hover{
+  color: inherit !important;
+  text-decoration: none;
+}
+.headerRow{
+  font-size: 20px;
+}
+/*.icon-circle i, .icon-circle-small i, .icon-circle-large i { vertical-align: middle; }*/
+
+.icon-circle-outline {
+   border: 1px solid rgb(0, 161, 225);
+   background: transparent;
+  color: rgb(0, 161, 225);
+   /*color: #8a6de9;*/
+}
+
+/*.icon-circle-outline i {  }
+icon-circle-bg and icon-circle and circle-bg
+*/
+
+ .padding{
+      
+        padding: 20px;
+ }
+ 
+.header .col {
+    background-color:lightgrey;
+}
+.padding_inspectionCompleted{
+  margin-left: 50px !important;
+  padding: 15px !important;
+}
+.col {
+   /* border: solid 1px grey;*/
+    border-bottom-style: none;
+    border-right-style: none;
+}
+
+/*.col:last-child {
+    border-right: solid 1px grey;
+}*/
+
+/*.row:last-child .col {
+    border-bottom: solid 1px grey;
+}*/
+.padding_right{
+    padding-right: .2cm !important;
+}
+.padding_left{
+    padding-left: .2cm !important;
+}
+
+#map{
+    height: 100vh !important;
+    width: 100%;
+  }
+
+  
+.toggle-text > .track {
+
+  width: auto;
+  padding-left: 25px;
+  padding-right: 25px;
+
+}
+
+.toggle-text .handle {
+  left: 7px;
+}
+
+.toggle-text .handle-text {
+  font-size: 24px;
+  color: white;
+
+  position: absolute;
+  top: -4px;
+  
+}
+
+.toggle-text .handle-text-false {
+  left: 36px;
+}
+
+.toggle-text input:checked + .track .handle {
+  -webkit-transform: none;
+  -moz-transform: none;
+  transform: none;
+  left: calc(100% - 34px);
+  
+/*  -webkit-transform: translate3d(0, 0,0);*/
+}
+.track-text {
+  line-height: 26px;
+  color: white;
+  font-size: 24px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.pane {
+        background: url(../assets/img/backgrounds/light.jpg) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+    }
+
+.ionic_ratings .icon {
+  font-size:50px;
+}
+
+.ionic_ratings .read_only {
+  pointer-events:none;
+}
+.ionic_rating .icon {
+  font-size:50px;
+}
+
+.ionic_rating .read_only {
+  pointer-events:none;
+}
+/*ul.rating li {
+  display: inline;
+  border: 0px;
+  background: none;
+  padding: 5px 10px;
+}
+ul.rating li i {
+  font-size: 30px;
+}*/
+
+
+/*for ionic modal*/
+.transparent {
+  background: transparent !important;
+}
+.image-modal {
+  width: 100% !important;
+  height: 100%;
+  top: 0 !important;
+  left: 0 !important;
+}
+.fullscreen-image {
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  overflow: auto;
+  padding-top: 50px;
+  padding-left: 50px;
+ 
+  position: relative;
+  right: 0;
+  top: 0;
+}
+.buttonFinish{
+  padding: 0px;
+    background-color: yellow;
+}
+/* Fix modal backdrop for smaller devices */
+
+@media (max-width: 679px) {
+        .active .modal-backdrop-bg {
+          opacity: .5;
+        }
+        .fullscreen-image {
+        max-width: 100%;
+        max-height: 100%;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        overflow: auto;
+        padding-top: 150px;
+        padding-left: 50px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+        position: relative;
+        right: 0;
+        top: 0;
+      }
+      .button{
+          padding: 0px;
+          min-width: 31px;
+          min-height: 45px;
+      }
+      .button_login{
+          padding: 0px;
+          min-width: 75px !important;
+          min-height: 60px !important;
+      }
+      .inspection_SaveButton{
+          padding-left: 10px;
+          padding-right: 10px;
+          min-width: 31px !important;
+          min-height: 45px !important;
+          float:right !important;
+      }
+}
+.findEmployee .item{
+  
+  background-color: rgb(84,131,138) !important;
+  border-width: 1px !important;
+  border: solid 1px white !important;
+  padding:10px !important;
+  color: white;
+}
+.findEmployee .item .item-stable{
+  background-color: rgb(84,131,138) !important;
+ /*background-color: #3e3e9e !important;*/
+ color: white !important;
+ border-width: 0px !important;
+padding: 5px !important;
+}
+/*.findEmployee .item-radio .item-content{
+  background-color: #7bbfb7 !important;
+ color: white !important;
+ border-width: 1px !important;
+ border: solid 1px white !important;
+}*/
+.findEmployee .statusList{
+ background-color: #7bbfb7 !important;
+ color: white !important;
+ border-width: 1px !important;
+ border: solid 1px white !important;
+ padding:10px !important;
+}
+
+ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated {
+    color: rgb(84,131,138) !important; 
+  }
+  .bar .bar-stable{
+    background-color: #2b542c !important;
+    color:white;
+  }
+.buttonScan{
+  background-color: rgb(84,131,138);
+  color:white;
+}
+.buttonScan:hover{
+  background-color: rgb(84,131,138);
+  color:white;
+}
+.inspectionDetails{
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+.inspectionDetailsSuperviosr{
+  margin: 10px !important;
+}
+.inspectionPadding{
+  padding-bottom: 10px !important;
+}
+.workorder_Button{
+      padding-left: 10px !important;
+          padding-right: 10px !important;
+          padding-bottom: 10px !important;
+          min-width: 31px !important;
+          min-height: 45px !important;
+}
+.inspection_SaveButton{
+          padding-left: 10px;
+          padding-right: 10px;
+          min-width: 31px !important;
+          min-height: 45px !important;
+          float:right !important;
+      }
+.buttonFinish{
+  padding: 0px;
+    min-width: 31px;
+    min-height: 45px;
+    background-color: yellow;
+}
+  .modal-backdrop-bg {
+    -webkit-transition: opacity 300ms ease-in-out;
+    transition: opacity 300ms ease-in-out;
+    background-color: #000;
+    opacity: 0;
+  }
+}
+.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+.error-container {
+  margin: 5px 0;
+}
+ 
+.error-container:last-child {
+    margin: 5px 0 0;
+}
+
+.error {
+  padding: 10px 16px;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #555;
+  vertical-align: middle;
+}
+ 
+.error i {
+  font-size: 24px;
+  color: #B83E2C;  
+  vertical-align: middle;
+}
+ 
+.last-error-container > .error {
+  padding: 10px 16px 0;
+}
+ 
+.float-button {
+ 
+background-color:#303f9f;
+opacity: 0.9;
+color: white;
+border-radius: 50%;
+/*border-radius:15% 0 0 0;*/
+width: 30px;
+padding: 25px;
+font-size: 40px;
+position: fixed;
+bottom: 5%; /* Adjust height */
+right: 5%; /* Adjust position */
+z-index: 1000;
+}
+ 
+.float-button .height_fix {
+  margin-top: 100%;
+  border: 1px solid red;
+}
+ 
+.float-button .content {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  margin-top: -20px;
+  color: white;
+}
+
+
+
+
+
+.center{
+  display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+/*
+@media (max-width: 679px)
+.button {
+    padding: 0px;
+    min-width: 68px !important;
+    min-height: 59px !important;
+}*/
+ 
+/*.has-errors {
+  border-bottom: 3px solid #B83E2C;
+}
+ 
+.no-errors {
+  border-bottom: 3px solid green;
+}*/
+.custom {
+  background-color: rgb(84,131,138) !important; /* This sets the background color*/
+ }
+ .custom .icon{
+    font-size: 25px;
+    padding-right: 20px;
+ }
+ /*Set the background to transparent for ion-item*/
+.custom .item {
+  background-color: transparent;
+  border:none;   /*Removes all borders*/
+  border-top: 1px solid;   /*Top Border for each menu item*/
+  border-bottom:2px solid;   /*Bottom border for each menu item*/
+  border-color: white;   /*Sets colors for top and bottom border*/
+  color: white;    /*Text color for each item*/
+}
+/*Changes the border for the last item*/
+.custom .item:last-child {
+  border-bottom: 1px solid white;
+}
+ 
+.custom .item-complex .item-content, .dark .item-radio .item-content .ion-icon{
+  background-color: transparent;
+}
+ 
+/*Just makes the type white*/
+.custom h2,
+.custom h3,
+.custom p,
+.custom icon,
+.custom a {
+  color: white;  /*Text color for each item, overrides the color property above*/
+}
+.cg-busy-backdrop{
+  position: fixed !important;
+  background: rgba(0,0,0,0.4) !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  -webkit-backface-visibility:hidden !important;
+  -webkit-animation: 0.5s !important;
+  animation: 0.5s !important;
+}
+.cg-busy-default-wrapper{
+  margin-top: 20% !important;
+}
+
+.workorder-item.ng-enter-stagger {
+  -webkit-animation-delay: 200ms;
+  animation-delay:200ms;
+
+  /* override to make sure it's not inherited from other styles */
+  -webkit-animation-duration:0;
+  animation-duration:0;
+}
+.cg-busy{
+  position:absolute;
+  top:130px;
+  left:0px;
+  right:0px;
+  bottom:0px;
+    z-index:1001;
+}
+
+.cg-busy-animation.ng-hide-add,
+.cg-busy-animation.ng-hide-remove {
+    -webkit-transition:all .3s ease;
+    -moz-transition:all .3s ease;
+    -o-transition:all .3s ease;
+    transition:all .3s ease;
+    display:block !important;
+}
+.cg-busy-animation.ng-hide-remove {
+    opacity:0;
+    -webkit-transform:translate(0px,-40px);
+    -moz-transform:translate(0px,-40px);
+    -ms-transform:translate(0px,-40px);
+    -o-transform:translate(0px,-40px);
+    transform:translate(0px,-40px);
+}
+.cg-busy-animation.ng-hide-remove.ng-hide-remove-active {
+    opacity:1;
+    -webkit-transform:translate(0px,0px);
+    -moz-transform:translate(0px,0px);
+    -ms-transform:translate(0px,0px);
+    -o-transform:translate(0px,0px);
+    transform:translate(0px,0px);
+}
+.cg-busy-animation.ng-hide-add {
+    opacity:1;
+    -webkit-transform:translate(0px,0px);
+    -moz-transform:translate(0px,0px);
+    -ms-transform:translate(0px,0px);
+    -o-transform:translate(0px,0px);
+    transform:translate(0px,0px);
+}
+.cg-busy-animation.ng-hide-add.ng-hide-add-active {
+    opacity:0;
+    -webkit-transform:translate(0px,-40px);
+    -moz-transform:translate(0px,-40px);
+    -ms-transform:translate(0px,-40px);
+    -o-transform:translate(0px,-40px);
+    transform:translate(0px,-40px);
+}
+
+.cg-busy-backdrop {
+  background-color:white;
+  opacity:.7;
+}
+
+.cg-busy-backdrop-animation.ng-hide-add,
+.cg-busy-backdrop-animation.ng-hide-remove {
+    -webkit-transition:opacity .3s ease;
+    -moz-transition:opacity .3s ease;
+    -o-transition:opacity .3s ease;
+    transition:opacity .3s ease;
+    display:block !important;
+}
+
+.cg-busy-backdrop-animation.ng-hide {
+  opacity:0;
+}
+
+/* All styles below are for the default template. */
+
+.cg-busy-default-wrapper {
+
+  text-align:center;
+}
+
+.cg-busy-default-sign{
+  display: inline-block;
+  position:relative;
+    z-index:1002;
+  padding-bottom: 6px;
+  color:#333333;
+  text-shadow:0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color:#e9eeee;
+  border:1px solid #dddddd;
+  border-top-width:0;
+  -webkit-border-radius:7px;
+  -moz-border-radius:7px;
+  border-radius:7px;
+  border-top-left-radius:0;
+  border-top-right-radius:0;
+  -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  -moz-box-shadow:inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+}
+.cg-busy-default-text{
+  margin:13px 12px 6px 49px;
+  font-size:16px;
+  color:#555;
+  text-align: left;
+  max-width: 400px;
+}
+.cg-busy-default-spinner{
+  position:absolute;
+  width:25px;
+  height:25px;
+  display:inline-block;
+  top:12px;
+  left:14px;
+}
+.cg-busy-default-spinner div{
+  width:12%;
+  height:26%;
+  background:#000;
+  position:absolute;
+  left:44.5%;
+  top:37%;
+  opacity:0;
+  -webkit-animation:cg-busy-spinner-anim 1s linear infinite;
+  -moz-animation:cg-busy-spinner-anim 1s linear infinite;
+  -ms-animation:cg-busy-spinner-anim 1s linear infinite;
+  -o-animation:cg-busy-spinner-anim 1s linear infinite;
+  animation:cg-busy-spinner-anim 1s linear infinite;
+  -webkit-border-radius:50px;
+  -moz-border-radius:50px;
+  border-radius:50px;
+  -webkit-box-shadow:0 0 3px rgba(0,0,0,0.2);
+  -moz-box-shadow:0 0 3px rgba(0,0,0,0.2);
+  box-shadow:0 0 3px rgba(0,0,0,0.2);
+}
+.cg-busy-default-spinner div.bar1{
+  -webkit-transform:rotate(0deg) translate(0, -142%);
+  -moz-transform:rotate(0deg) translate(0, -142%);
+  -ms-transform:rotate(0deg) translate(0, -142%);
+  -o-transform:rotate(0deg) translate(0, -142%);
+  transform:rotate(0deg) translate(0, -142%);
+  -webkit-animation-delay:0s;
+  -moz-animation-delay:0s;
+  -ms-animation-delay:0s;
+  -o-animation-delay:0s;
+  animation-delay:0s;
+}
+.cg-busy-default-spinner div.bar2{
+  -webkit-transform:rotate(30deg) translate(0, -142%);
+  -moz-transform:rotate(30deg) translate(0, -142%);
+  -ms-transform:rotate(30deg) translate(0, -142%);
+  -o-transform:rotate(30deg) translate(0, -142%);
+  transform:rotate(30deg) translate(0, -142%);
+  -webkit-animation-delay:-0.9167s;
+  -moz-animation-delay:-0.9167s;
+  -ms-animation-delay:-0.9167s;
+  -o-animation-delay:-0.9167s;
+  animation-delay:-0.9167s;
+}
+.cg-busy-default-spinner div.bar3{
+  -webkit-transform:rotate(60deg) translate(0, -142%);
+  -moz-transform:rotate(60deg) translate(0, -142%);
+  -ms-transform:rotate(60deg) translate(0, -142%);
+  -o-transform:rotate(60deg) translate(0, -142%);
+  transform:rotate(60deg) translate(0, -142%);
+  -webkit-animation-delay:-0.833s;
+  -moz-animation-delay:-0.833s;
+  -ms-animation-delay:-0.833s;
+  -o-animation-delay:-0.833s;
+  animation-delay:-0.833s;
+}
+.cg-busy-default-spinner div.bar4{
+  -webkit-transform:rotate(90deg) translate(0, -142%);
+  -moz-transform:rotate(90deg) translate(0, -142%);
+  -ms-transform:rotate(90deg) translate(0, -142%);
+  -o-transform:rotate(90deg) translate(0, -142%);
+  transform:rotate(90deg) translate(0, -142%);
+  -webkit-animation-delay:-0.75s;
+  -moz-animation-delay:-0.75s;
+  -ms-animation-delay:-0.75s;
+  -o-animation-delay:-0.75s;
+  animation-delay:-0.75s;
+}
+.cg-busy-default-spinner div.bar5{
+  -webkit-transform:rotate(120deg) translate(0, -142%);
+  -moz-transform:rotate(120deg) translate(0, -142%);
+  -ms-transform:rotate(120deg) translate(0, -142%);
+  -o-transform:rotate(120deg) translate(0, -142%);
+  transform:rotate(120deg) translate(0, -142%);
+  -webkit-animation-delay:-0.667s;
+  -moz-animation-delay:-0.667s;
+  -ms-animation-delay:-0.667s;
+  -o-animation-delay:-0.667s;
+  animation-delay:-0.667s;
+}
+.cg-busy-default-spinner div.bar6{
+  -webkit-transform:rotate(150deg) translate(0, -142%);
+  -moz-transform:rotate(150deg) translate(0, -142%);
+  -ms-transform:rotate(150deg) translate(0, -142%);
+  -o-transform:rotate(150deg) translate(0, -142%);
+  transform:rotate(150deg) translate(0, -142%);
+  -webkit-animation-delay:-0.5833s;
+  -moz-animation-delay:-0.5833s;
+  -ms-animation-delay:-0.5833s;
+  -o-animation-delay:-0.5833s;
+  animation-delay:-0.5833s;
+}
+.cg-busy-default-spinner div.bar7{
+  -webkit-transform:rotate(180deg) translate(0, -142%);
+  -moz-transform:rotate(180deg) translate(0, -142%);
+  -ms-transform:rotate(180deg) translate(0, -142%);
+  -o-transform:rotate(180deg) translate(0, -142%);
+  transform:rotate(180deg) translate(0, -142%);
+  -webkit-animation-delay:-0.5s;
+  -moz-animation-delay:-0.5s;
+  -ms-animation-delay:-0.5s;
+  -o-animation-delay:-0.5s;
+  animation-delay:-0.5s;
+}
+.cg-busy-default-spinner div.bar8{
+  -webkit-transform:rotate(210deg) translate(0, -142%);
+  -moz-transform:rotate(210deg) translate(0, -142%);
+  -ms-transform:rotate(210deg) translate(0, -142%);
+  -o-transform:rotate(210deg) translate(0, -142%);
+  transform:rotate(210deg) translate(0, -142%);
+  -webkit-animation-delay:-0.41667s;
+  -moz-animation-delay:-0.41667s;
+  -ms-animation-delay:-0.41667s;
+  -o-animation-delay:-0.41667s;
+  animation-delay:-0.41667s;
+}
+.cg-busy-default-spinner div.bar9{
+  -webkit-transform:rotate(240deg) translate(0, -142%);
+  -moz-transform:rotate(240deg) translate(0, -142%);
+  -ms-transform:rotate(240deg) translate(0, -142%);
+  -o-transform:rotate(240deg) translate(0, -142%);
+  transform:rotate(240deg) translate(0, -142%);
+  -webkit-animation-delay:-0.333s;
+  -moz-animation-delay:-0.333s;
+  -ms-animation-delay:-0.333s;
+  -o-animation-delay:-0.333s;
+  animation-delay:-0.333s;
+}
+.cg-busy-default-spinner div.bar10{
+  -webkit-transform:rotate(270deg) translate(0, -142%);
+  -moz-transform:rotate(270deg) translate(0, -142%);
+  -ms-transform:rotate(270deg) translate(0, -142%);
+  -o-transform:rotate(270deg) translate(0, -142%);
+  transform:rotate(270deg) translate(0, -142%);
+  -webkit-animation-delay:-0.25s;
+  -moz-animation-delay:-0.25s;
+  -ms-animation-delay:-0.25s;
+  -o-animation-delay:-0.25s;
+  animation-delay:-0.25s;
+}
+.cg-busy-default-spinner div.bar11{
+  -webkit-transform:rotate(300deg) translate(0, -142%);
+  -moz-transform:rotate(300deg) translate(0, -142%);
+  -ms-transform:rotate(300deg) translate(0, -142%);
+  -o-transform:rotate(300deg) translate(0, -142%);
+  transform:rotate(300deg) translate(0, -142%);
+  -webkit-animation-delay:-0.1667s;
+  -moz-animation-delay:-0.1667s;
+  -ms-animation-delay:-0.1667s;
+  -o-animation-delay:-0.1667s;
+  animation-delay:-0.1667s;
+}
+.cg-busy-default-spinner div.bar12{
+  -webkit-transform:rotate(330deg) translate(0, -142%);
+  -moz-transform:rotate(330deg) translate(0, -142%);
+  -ms-transform:rotate(330deg) translate(0, -142%);
+  -o-transform:rotate(330deg) translate(0, -142%);
+  transform:rotate(330deg) translate(0, -142%);
+  -webkit-animation-delay:-0.0833s;
+  -moz-animation-delay:-0.0833s;
+  -ms-animation-delay:-0.0833s;
+  -o-animation-delay:-0.0833s;
+  animation-delay:-0.0833s;
+}
+
+@-webkit-keyframes cg-busy-spinner-anim{
+  from {opacity: 1;}
+  to {opacity: 0.25;}
+}
+@-moz-keyframes cg-busy-spinner-anim{
+  from {opacity: 1;}
+  to {opacity: 0.25;}
+}
+@keyframes cg-busy-spinner-anim{
+  from {opacity: 1;}
+  to {opacity: 0.25;}
+}
+

@@ -1,0 +1,20 @@
+<!--VIEW WORKORDER  -->
+<ion-view view-title="Manager - {{username}}">
+    
+         <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div> 
+            <ion-content class="padding_inspection"  delegate-handle="mainScroll">
+ 
+             <div class="inspectionMenuButtons">
+              <p><a class="button button-dark  button-block"  ui-sref="managerDashboard.managerWorkorderDashboard">Work Order</a></p>
+             
+             <p><a class="button button-dark button-block"  ui-sref="managerDashboard.scanforwork">Scan For Work</a></p>
+             <p><a class="button button-dark button-block"  ui-sref="managerDashboard.inspectionorder">Inspection Order</a></p>
+             <p><a class="button button-dark button-block"  ui-sref="managerDashboard.findemployee">Find Employee</a></p>
+             <p><a class="button button-dark button-block"  ui-sref="managerDashboard.fireBaseTrack">Live Tracking</a></p>
+             
+           </div>
+
+            </ion-content>
+            
+        </ion-view>
+         

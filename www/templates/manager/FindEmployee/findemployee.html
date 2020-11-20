@@ -1,0 +1,46 @@
+<!-- INVENTORY page -> Managerpage-->
+    
+    
+        <ion-view view-title="Find Employee">     
+        <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>      
+            <ion-content delegate-handle="mainScroll">
+            <div class="padding_findEmployee"> 
+            <h4  ng-hide="showEmployeeName" align="center">Find Employee</h4>
+            <h4  ng-show="showEmployeeName" align="center">Find Employee: <b>{{employeename}}</b></h4>
+            <p id="error" ng-show="errorMsg"></p>
+                <div class = "list">                                                      
+                        <label class = "col-sm-2 control-label item item-input item-select">
+                        <div class = "col-sm-2 input-label">Employee
+                            <select ng-model="findLocation.EmployeeKey"  ng-options="x.EmployeeText for x in employeeList" ng-value="x.EmployeeKey">
+                                <option label=" Select "></option>
+                            </select>
+                            <!-- <select  ng-model="EmployeeKey" ng-options="z.FirstName for z in employees" value="z.EmployeeKey" >
+                                    <option label="--all--"></option>
+                            </select> -->
+                        </label>
+                        </div> 
+                </div>
+                <!-- <div class="item item-body">         -->
+                <!--   <button class="button button-dark button-full" modal-select="" ng-model="findLocation.EmployeeKey" options="employees" has-search="true">
+                    Select Employee
+                    <div class="option">
+                      <h2>{{option.EmployeeText}}</h2>
+                      <p>{{option.JobTitle}}</p>
+                    </div>
+                  </button> -->
+                   
+                <!-- </div> -->
+                    <button class="button button-full button-positive" type="submit" ng-click="searchEmployeeLocation()">Search</button>                 
+                
+                
+               
+                
+                <div id="map" data-tap-disabled="true"></div>
+                 </div>
+                <!-- <p id="error"></p> 
+                <div id="map" data-tap-disabled="true"></div>  -->
+            </ion-content>
+            <ion-floating-button click="scrollToTop()" has-footer="false" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff" class="bottomPadding">
+          </ion-floating-button>
+        </ion-view>
+         

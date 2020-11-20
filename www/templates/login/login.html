@@ -1,0 +1,51 @@
+<ion-view view-title="Troowork">
+    <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+    <ion-content>
+
+
+
+        <div class="row">
+            <img class="imageStyleScan" src="trowork logo new.png">
+        </div>
+        <div style="margin-top: 20%" class="padding_login ">
+            <div class="loginBody">
+
+
+                <div class=" header text-center ">
+                    <h3 style="color: #2b542c">Login</h3>
+                </div>
+                <div class=" header text-center ">
+                    <p style="color: #2b542c">Enter your username and password:</p>
+                </div>
+                <form name="loginForm" ng-submit="login(username,password,teantID)" novalidate>
+                    <div class="list ">
+                        <label class="item item-input">
+                            <span class="input-label">Username:</span>
+                            <input type="text" name="username" placeholder="Username" ng-model="username" maxlength="20" no-special-char>
+
+                        </label>
+
+                        <label class="item item-input">
+                            <span class="input-label">Password:</span>
+                            <input type="{{inputType}}" name="password" placeholder="Password" ng-model="password" maxlength="20" no-special-char>
+
+                        </label>
+                        <label class="item item-input">
+                            <span class="input-label">Tenant ID:</span>
+                            <input type="text" name="teantID" placeholder="Tenant ID" ng-model="teantID" maxlength="20" no-special-char>
+
+                        </label>
+                        <div style="margin-top: 5%"class=" text-center ">
+                            <input type="checkbox" id="checkbox" ng-model="passwordCheckbox" ng-click="hideShowPassword()" />
+                            <label for="checkbox" ng-if="passwordCheckbox">Hide password</label>
+                            <label for="checkbox" ng-if="!passwordCheckbox">Show password</label>
+                        </div>
+                    </div>
+                    <div class="padding text-center">
+                        <button type="sumbit" class="button button-large button-positive button_login"> Login </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

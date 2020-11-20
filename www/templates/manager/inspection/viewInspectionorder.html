@@ -1,0 +1,45 @@
+<!--VIEW WORKORDER  -->
+<ion-view view-title="Inspection Order">
+
+         <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+            <ion-content class="padding_inspection"  delegate-handle="mainScroll">
+            <!--  <ion-scroll direction="xy" class="scrollClass" delegate-handle="small"> -->
+            <!-- <ion-scroll zooming="true" direction="xy" style="width: 100%; "> -->
+             <!-- <ion-refresher pulling-text="Pull to refresh.." on-refresh="doRefresh()"></ion-refresher> -->
+             <!-- <input type = "date" class = "form-control"  ng-model="WorkorderDate" ng-show="showDatepicker" ng-change="viewWorkorderFilterByDate()" class="col-sm-12 col-md-12 col-lg-12"/> -->
+             <div class="inspectionMenuButtons">
+              <p><a class="button button-dark  button-block"  ui-sref="managerDashboard.createInspection">Create Inspection Order</a></p>
+             <p><a class="button button-dark button-block"  ui-sref="managerDashboard.inspectionorderProvided">View Inspection Order</a></p>
+             <p><a class="button button-dark button-block"  ui-sref="managerDashboard.scanRoomForCreateInsp">Scan to Create Inspection</a></p>
+
+           </div>
+
+
+             <!-- <div class="item item-icon-right" ng-repeat="data in inspectionManagerView">
+                <a class="item" ui-sref="managerDashboard.afterInspectionManagerView({inspectionorderkey: data.InspectionOrderKey})">
+                  <h2>{{data.TemplateName}}</h2>
+                  <p>{{data.FacilityName}} - {{data.RoomType}} - {{data.RoomId}}</p>
+                  <!-- <p>{{data.WorkorderTime}}</p>
+                  <p>Assigned to : {{data.FirstName}} {{data.LastName}}</p>
+                  <!-- <a class="button  icon-right ion-chevron-right button-calm">Inspect</a> -->
+                  <!-- <button class=" button"
+                                   ng-if="data.InspectionCompletedBy !== 'null'" >
+                                   <h2>View Inspection</h2>
+                      </button>
+
+                </a>   <i class="icon ion-chevron-right"></i>
+              </div> -->
+
+
+<!-- <div><br><br></div>
+<div class="float-button" ng-click="scrollToTop()">
+<span class="height-fix">
+   <a class="content">
+      <i class="ion-ios-arrow-up"> </i>
+   </a>
+    </span>
+</div> -->
+               <!--  </ion-scroll> -->
+            </ion-content>
+
+        </ion-view>
