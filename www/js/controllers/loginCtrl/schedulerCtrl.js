@@ -30,8 +30,8 @@ myApp.controller('schedulerCtrl', function (HOSTNAME, $ionicPopup, $ionicPlatfor
       } else {
         $scope.sttButton = false;
       }
-    }); //apply
-  };  //getScrollPosition
+    });
+  };
 
   function convert_DT(str) {
     var date = new Date(str),
@@ -70,18 +70,7 @@ myApp.controller('schedulerCtrl', function (HOSTNAME, $ionicPopup, $ionicPlatfor
   } else {
     $scope.dateValue = convert_DT_calendar(new Date());
   }
-  // $scope.loadAllData = function () {
-  //   console.log("Inside loadAllData() ");
-  //   console.log("Inside loadAllData() " + $scope.dateValue);
-
-  // };
-  // $scope.saveEvent = function () {
-  //   console.log("I am going back");
-  //   DayPilot.Modal.close();
-
-  // };
-
-
+  $scope.search;
   var dtRange = "Week";
   var groupName = "Manager";
 
@@ -103,7 +92,6 @@ myApp.controller('schedulerCtrl', function (HOSTNAME, $ionicPopup, $ionicPlatfor
     }
     console.log("schedulerctrl date onint " + $scope.dateValue);
 
-
     $scope.myPromise = $http.get($scope.serverLocation + "/allemployees_SuType?empkey=" + $scope.toServeremployeekey + "&OrganizationID=" + $scope.OrganizationID)
       .success(function (response) {
         $scope.empList = response;
@@ -118,7 +106,23 @@ myApp.controller('schedulerCtrl', function (HOSTNAME, $ionicPopup, $ionicPlatfor
         $timeout(function () {
           $ionicLoading.hide();
           alertPopup.close();
-          // uploadingPopup.close();
+        }, 1000);
+      });
+
+    $scope.myPromise = $http.get($scope.serverLocation + "/getEmployeeShifts?empkey=" + $scope.toServeremployeekey + "&OrgID=" + $scope.OrganizationID)
+      .success(function (response) {
+        $scope.grpList = response;
+        $scope.grpKeys = [];
+
+      })
+      .error(function (error) {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Something went Wrong',
+          template: 'Please relogin!'
+        });
+        $timeout(function () {
+          $ionicLoading.hide();
+          alertPopup.close();
         }, 1000);
       });
 
@@ -156,19 +160,14 @@ myApp.controller('schedulerCtrl', function (HOSTNAME, $ionicPopup, $ionicPlatfor
       // }),
       onBeforeEventRender: function (args) {
         args.data.areas = [
-          // { left: 2, top: 5, bottom: 5, width: 20, icon: "icon icon-resize-left", action: "ResizeStart" },
-          // { right: 2, top: 5, bottom: 5, width: 20, icon: "icon icon-resize-right", action: "ResizeEnd" },
-          // { left: 22, top: 5, bottom: 5, width: 20, icon: "icon icon-move", action: "Move" },
-          // { right: 54, top: 5, bottom: 5, width: 32, icon: "icon icon-info", action: "Bubble" },
           { right: 5, top: 5, bottom: 5, width: 32, icon: "icon icon-menu", action: "ContextMenu" },
           { left: 5, top: 5, bottom: 5, right: 84, style: "display: flex; align-items: center;", html: args.data.text },
-          // word-wrap: break-word
         ];
         args.data.html = '';
       },
       contextMenu: new DayPilot.Menu({
         items: [
-          { text: "Details", onClick: function (args) { var e = args.source; DayPilot.Modal.alert(e.text()); } },
+          // { text: "Details", onClick: function (args) { var e = args.source; DayPilot.Modal.alert(e.text()); } },
           //           {
           //             text: "Create", onClick: function (args) {
           ////             var data=$scope.assignmentList;
@@ -233,8 +232,6 @@ myApp.controller('schedulerCtrl', function (HOSTNAME, $ionicPopup, $ionicPlatfor
         response1.forEach(el => {
           dp.events.add(el);
         });
-        // console.log("Event check: " + dp.events.list);
-        // dp.update();
       })
       .error(function (error) {
         var alertPopup = $ionicPopup.alert({
@@ -267,14 +264,14 @@ myApp.controller('schedulerCtrl', function (HOSTNAME, $ionicPopup, $ionicPlatfor
     dp.scrollLabelsVisible = true;
     //dp.infiniteScrollingEnabled = true;
     dp.init();
-    // $scope.loadAllData();
-
+    $scope.empKeys = "0";
     var empKey1;
     $scope.selectedEmployees = function (EmployeeKey1) {
       console.log(EmployeeKey1);
-      empKey1 = EmployeeKey1.map(x => x.EmployeeKey).join();
-      console.log(empKey1);
-      $scope.myPromise = $http.get($scope.serverLocation + "/employeesrowFiltering_mob?groupID=" + groupName + "&searchtext=" + empKey1 + "&range=" + dtRange + "&todaydate=" + $scope.dateValue + "&OrganizationID=" + $scope.OrganizationID)
+      //      empKey1 = EmployeeKey1.map(x => x.EmployeeKey).join();
+      empKey1 = EmployeeKey1.EmployeeKey;
+      //      console.log(empKey1.length);
+      $scope.myPromise = $http.get($scope.serverLocation + "/employeesrowFiltering_mob?groupID=" + groupName + "&searchtype=Employee" + "&searchtext=" + empKey1 + "&range=" + dtRange + "&todaydate=" + $scope.dateValue + "&OrganizationID=" + $scope.OrganizationID)
         .success(function (response) {
           dp.update(dp.resources = response);
           console.log("employees length fn:..." + response.length);
@@ -293,12 +290,33 @@ myApp.controller('schedulerCtrl', function (HOSTNAME, $ionicPopup, $ionicPlatfor
 
 
 
+    $scope.grpKeys = "0";
+    var grpKey1;
+    $scope.selectedEmployeeGroups = function (grpKeys) {
+      console.log(grpKeys);
+      grpKey1 = grpKeys.Idemployeegrouping;
+      //      console.log(grpKey1.length);
+      $scope.myPromise = $http.get($scope.serverLocation + "/employeesrowFiltering_group_mob?groupID=" + groupName + "&searchtype=Group" + "&searchtext=" + grpKey1 + "&range=" + dtRange + "&todaydate=" + $scope.dateValue + "&OrganizationID=" + $scope.OrganizationID)
+        .success(function (response) {
+          dp.update(dp.resources = response);
+          console.log("employees length fn:..." + response.length);
+        })
+        .error(function (error) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Something went Wrong',
+            template: 'Please relogin!'
+          });
+          $timeout(function () {
+            $ionicLoading.hide();
+            alertPopup.close();
+          }, 1000);
+        });
+    };
 
 
 
     var ipObj2 = {
-      callback: function (val) {  //Mandatory
-        // console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+      callback: function (val) {
         $scope.dateValue = convert_DT(new Date(val));
         console.log("New Date is " + $scope.dateValue);
         $rootScope.globalDateValue = $scope.dateValue;
@@ -309,13 +327,7 @@ myApp.controller('schedulerCtrl', function (HOSTNAME, $ionicPopup, $ionicPlatfor
         $scope.myPromise = $http.get($scope.serverLocation + "/employeeCalendarDetailsForScheduler_mob?dateRange=" + dtRange + "&startDate=" + $scope.dateValue + "&OrganizationID=" + $scope.OrganizationID)
           .success(function (response1) {
             console.log("Events length:..." + response1.length);
-            // dp.events.list = response1;
-            // response1.forEach(el => {
-            //   dp.events.add(el);
-            // });
             dp.update(dp.events.list = response1);
-            // console.log("Event check: " + dp.events.list);
-            // dp.update();
           })
           .error(function (error) {
             var alertPopup = $ionicPopup.alert({
@@ -351,11 +363,26 @@ myApp.controller('schedulerCtrl', function (HOSTNAME, $ionicPopup, $ionicPlatfor
       ionicDatePicker.openDatePicker(ipObj2);
 
     };
-document.addEventListener("deviceready", function (){
-                                         window.screen.orientation.lock('landscape'); // or ‘portrait’
-                                         console.log('Orientation1....'+screen.orientation.type);
-                                         }, false);
+
+    document.addEventListener("deviceready", function () {
+      window.screen.orientation.lock('landscape'); // or ‘portrait’
+      console.log('Orientation1....' + screen.orientation.type);
+    }, false);
+
   });
-
-
+  $scope.clientSideList = [
+    { text: "Employee", value: "Employee" },
+    { text: "Employee Group", value: "Employee Group" }
+  ];
+  $scope.selectSearchType = function (item) {
+    console.log("searchBy " + item.value);
+    if (item.value === "Employee") {
+      $scope.empShow = true;
+      $scope.grpShow = false;
+    } else if (item.value === "Employee Group") {
+      $scope.empShow = false;
+      $scope.grpShow = true;
+    }
+    console.log($scope.empShow);
+  }
 });

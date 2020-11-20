@@ -8,16 +8,28 @@
         Click to open the date:
         <div class="input-label">{{dateValue}}</div>
       </div>
-      <label class="item item-input item-select" ng-hide="showWorkorder">
+
+      <ion-radio ng-repeat="item in clientSideList" ng-value="item.value" class="radio radio-inline radio-blue" ng-click="selectSearchType(item)" ng-model="search">
+        {{ item.text }}
+      </ion-radio>
+
+      <label class="item item-input item-select" ng-if="empShow">
         <div class="input-label">Employee</div>
-        <select multiple ng-model="empKeys" ng-options="x.EmployeeText for x in empList | unique:'EmployeeText'" ng-value="x.EmployeeKey" ng-change="selectedEmployees(empKeys);">
+        <select ng-model="empKeys" ng-options="x.EmployeeText for x in empList | unique:'EmployeeText'" ng-value="x.EmployeeKey" ng-change="selectedEmployees(empKeys);">
+          <option label=" Select" value="0"></option>
         </select>
       </label>
+
+      <label class="item item-input item-select" ng-if="grpShow">
+        <div class="input-label">Employee Group</div>
+        <select ng-model="grpKeys" ng-options="x.Description for x in grpList | unique:'Description'" ng-value="x.Idemployeegrouping" ng-change="selectedEmployeeGroups(grpKeys);">
+          <option label=" Select" value="0"></option>
+        </select>
+      </label>
+
     </div>
     <div class="main" style="overflow:auto;">
       <div id="dp" style="overflow:auto;"></div>
     </div>
   </ion-content>
-  <!--  <ion-floating-button click="scrollToTop()" has-footer="false" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff" class="bottomPadding">-->
-  <!--  </ion-floating-button>-->
 </ion-view>
