@@ -91,6 +91,7 @@ myApp.controller('schedulerCtrl', function (HOSTNAME, $ionicPopup, $ionicPlatfor
       $scope.dateValue = convert_DT_calendar(new Date());
     }
     console.log("schedulerctrl date onint " + $scope.dateValue);
+    // $scope.searchByList=[{val:"All Employees"},{val:"Employee"},{val:"Employee Group"}]
 
     $scope.myPromise = $http.get($scope.serverLocation + "/allemployees_SuType?empkey=" + $scope.toServeremployeekey + "&OrganizationID=" + $scope.OrganizationID)
       .success(function (response) {
@@ -158,51 +159,51 @@ myApp.controller('schedulerCtrl', function (HOSTNAME, $ionicPopup, $ionicPlatfor
       //     args.html = "Event details: " + e.data.id;
       //   }
       // }),
-      onBeforeEventRender: function (args) {
-        args.data.areas = [
-          { right: 5, top: 5, bottom: 5, width: 32, icon: "icon icon-menu", action: "ContextMenu" },
-          { left: 5, top: 5, bottom: 5, right: 84, style: "display: flex; align-items: center;", html: args.data.text },
-        ];
-        args.data.html = '';
-      },
-      contextMenu: new DayPilot.Menu({
-        items: [
-          // { text: "Details", onClick: function (args) { var e = args.source; DayPilot.Modal.alert(e.text()); } },
-          //           {
-          //             text: "Create", onClick: function (args) {
-          ////             var data=$scope.assignmentList;
-          ////             var form=[{name: "Event Name", id: "assignmentKey",options}];
-          //var form = [
-          //  {name: "First Name", id: "first"},
-          //  {name: "Last Name", id: "last"}
-          //];
-          //
-          //var data = {
-          //  first: "Jane",
-          //  last: "Doe",
-          //  id: 1204
-          //};
-          //            DayPilot.Modal.form(form,data).then(function(args) {
-          //              if (!args.canceled) {
-          //                console.log("data", args.result);    //  {first: "John", last: "Doe"}
-          //              }
-          //            });
-          ////               var modal = new DayPilot.Modal({
-          ////                 saveEvent: function (args) {
-          ////                   console.log("Modal dialog closing");
-          ////                   modal.close();
-          ////                 },
-          ////                 onClosed: function (args) {
-          ////                   console.log("Modal dialog closed");
-          ////                 },
-          ////                 // ...
-          ////               });
-          ////               modal.showHtml("<div><h1>Create Event</h1><form><div><select ng-model='assignmentKey' ng-options='x.ScheduleName for x in assignmentList | unique:'ScheduleName'' ng-value='x.BatchScheduleNameKey'><option label=' Select '></option></select></div><div><button click='saveEvent()'>Save</button><button click='onClosed()'>Cancel</button></div></form></div>");
-          //             }
-          //           },
-          //           { text: "Delete", onClick: function (args) { dp.events.remove(args.source); } },
-        ]
-      })
+      //      onBeforeEventRender: function (args) {
+      //        args.data.areas = [
+      //          { right: 5, top: 5, bottom: 5, width: 32, icon: "icon icon-menu", action: "ContextMenu" },
+      //          { left: 5, top: 5, bottom: 5, right: 84, style: "display: flex; align-items: center;", html: args.data.text },
+      //        ];
+      //        args.data.html = '';
+      //      },
+      // contextMenu: new DayPilot.Menu({
+      //   items: [
+      //     // { text: "Details", onClick: function (args) { var e = args.source; DayPilot.Modal.alert(e.text()); } },
+      //     //           {
+      //     //             text: "Create", onClick: function (args) {
+      //     ////             var data=$scope.assignmentList;
+      //     ////             var form=[{name: "Event Name", id: "assignmentKey",options}];
+      //     //var form = [
+      //     //  {name: "First Name", id: "first"},
+      //     //  {name: "Last Name", id: "last"}
+      //     //];
+      //     //
+      //     //var data = {
+      //     //  first: "Jane",
+      //     //  last: "Doe",
+      //     //  id: 1204
+      //     //};
+      //     //            DayPilot.Modal.form(form,data).then(function(args) {
+      //     //              if (!args.canceled) {
+      //     //                console.log("data", args.result);    //  {first: "John", last: "Doe"}
+      //     //              }
+      //     //            });
+      //     ////               var modal = new DayPilot.Modal({
+      //     ////                 saveEvent: function (args) {
+      //     ////                   console.log("Modal dialog closing");
+      //     ////                   modal.close();
+      //     ////                 },
+      //     ////                 onClosed: function (args) {
+      //     ////                   console.log("Modal dialog closed");
+      //     ////                 },
+      //     ////                 // ...
+      //     ////               });
+      //     ////               modal.showHtml("<div><h1>Create Event</h1><form><div><select ng-model='assignmentKey' ng-options='x.ScheduleName for x in assignmentList | unique:'ScheduleName'' ng-value='x.BatchScheduleNameKey'><option label=' Select '></option></select></div><div><button click='saveEvent()'>Save</button><button click='onClosed()'>Cancel</button></div></form></div>");
+      //     //             }
+      //     //           },
+      //     //           { text: "Delete", onClick: function (args) { dp.events.remove(args.source); } },
+      //   ]
+      // })
     });
 
     // dp.resources = [
@@ -369,20 +370,42 @@ myApp.controller('schedulerCtrl', function (HOSTNAME, $ionicPopup, $ionicPlatfor
       console.log('Orientation1....' + screen.orientation.type);
     }, false);
 
-  });
-  $scope.clientSideList = [
-    { text: "Employee", value: "Employee" },
-    { text: "Employee Group", value: "Employee Group" }
-  ];
-  $scope.selectSearchType = function (item) {
-    console.log("searchBy " + item.value);
-    if (item.value === "Employee") {
-      $scope.empShow = true;
-      $scope.grpShow = false;
-    } else if (item.value === "Employee Group") {
-      $scope.empShow = false;
-      $scope.grpShow = true;
+    $scope.clientSideList = [
+      { text: "All Employees", value: "All Employees" },
+      { text: "Employee", value: "Employee" },
+      { text: "Employee Group", value: "Employee Group" }
+    ];
+    $scope.selectSearchType = function (item) {
+      console.log("searchBy " + item.value);
+      if (item.value === "Employee") {
+        $scope.empShow = true;
+        $scope.grpShow = false;
+      } else if (item.value === "Employee Group") {
+        $scope.empShow = false;
+        $scope.grpShow = true;
+      } else {
+        $scope.empShow = false;
+        $scope.grpShow = false;
+
+        $scope.myPromise = $http.get($scope.serverLocation + "/employeesForScheduler_SuType_mob?groupID=" + groupName + "&empkey=" + $scope.toServeremployeekey + "&OrganizationID=" + $scope.OrganizationID)
+          .success(function (response) {
+            dp.update(dp.resources = response);
+            console.log("employees length:..." + response.length);
+          })
+          .error(function (error) {
+            var alertPopup = $ionicPopup.alert({
+              title: 'Something went Wrong',
+              template: 'Please relogin!'
+            });
+            $timeout(function () {
+              $ionicLoading.hide();
+              alertPopup.close();
+            }, 1000);
+          });
+      }
+      console.log($scope.empShow);
     }
-    console.log($scope.empShow);
-  }
+
+  });
+
 });
