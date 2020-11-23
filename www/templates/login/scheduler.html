@@ -1,6 +1,6 @@
 <ion-view view-title="Scheduler">
   <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
-  <ion-content class="padding_inspection">
+  <ion-content scroll="false">
     <div style="padding-top: 0.5%;padding-bottom: 0.5%;">
       <div>Date</div>
       <div class="item item-icon-left" ion-datetime-picker date monday-first ng-model="dateValue" ng-click="openDatePicker();">
@@ -8,11 +8,11 @@
         Click to open the date:
         <div class="input-label">{{dateValue}}</div>
       </div>
-
-      <ion-radio ng-repeat="item in clientSideList" ng-value="item.value" class="radio radio-inline radio-blue" ng-click="selectSearchType(item)" ng-model="search">
-        {{ item.text }}
-      </ion-radio>
-
+      <div style="padding-left: 1.5%;background-color: white;">
+        <ion-radio ng-repeat="item in clientSideList" ng-value="item.value" class="radio radio-inline radio-blue" ng-click="selectSearchType(item)" ng-model="search">
+          {{ item.text }}
+        </ion-radio>
+      </div>
       <label class="item item-input item-select" ng-if="empShow">
         <div class="input-label">Employee</div>
         <select ng-model="empKeys" ng-options="x.EmployeeText for x in empList | unique:'EmployeeText'" ng-value="x.EmployeeKey" ng-change="selectedEmployees(empKeys);">
@@ -28,8 +28,8 @@
       </label>
 
     </div>
-    <div class="main" style="overflow:auto;">
-      <div id="dp" style="overflow:auto;"></div>
+    <div class="main">
+      <div id="dp"></div>
     </div>
   </ion-content>
 </ion-view>
