@@ -480,4 +480,8 @@ myApp.controller('loginCtrl', ['HOSTNAME', 'AUTH_HOSTNAME', '$scope', '$cordovaG
     });
   }, $timeout(function () { }, 10);
 
+  document.addEventListener("deviceready", function (){
+    window.screen.orientation.unlock(); // or ‘portrait’
+    }, false);
+
 }]);
