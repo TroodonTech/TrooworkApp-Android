@@ -93,7 +93,7 @@ myApp.controller('schedulerCtrl', function (HOSTNAME, $ionicPopup, $ionicPlatfor
     console.log("schedulerctrl date onint " + $scope.dateValue);
     // $scope.searchByList=[{val:"All Employees"},{val:"Employee"},{val:"Employee Group"}]
 
-    $scope.myPromise = $http.get($scope.serverLocation + "/allemployees_SuType?empkey=" + $scope.toServeremployeekey + "&OrganizationID=" + $scope.OrganizationID)
+    $scope.myPromise = $http.get($scope.serverLocation + "/employeesForScheduler_SuType_mob?groupID=" + groupName + "&empkey=" + $scope.toServeremployeekey + "&OrganizationID=" + $scope.OrganizationID)
       .success(function (response) {
         $scope.empList = response;
         $scope.empKeys = [];
@@ -110,7 +110,7 @@ myApp.controller('schedulerCtrl', function (HOSTNAME, $ionicPopup, $ionicPlatfor
         }, 1000);
       });
 
-    $scope.myPromise = $http.get($scope.serverLocation + "/getEmployeeShifts?empkey=" + $scope.toServeremployeekey + "&OrgID=" + $scope.OrganizationID)
+    $scope.myPromise = $http.get($scope.serverLocation + "/getEmployeeGroupsforscheduler_mob?empkey=" + $scope.toServeremployeekey + "&OrgID=" + $scope.OrganizationID)
       .success(function (response) {
         $scope.grpList = response;
         $scope.grpKeys = [];
