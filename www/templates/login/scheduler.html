@@ -15,7 +15,7 @@
       </div>
       <label class="item item-input item-select" ng-if="empShow">
         <div class="input-label">Employee</div>
-        <select ng-model="empKeys" ng-options="x.EmployeeText for x in empList | unique:'EmployeeText'" ng-value="x.EmployeeKey" ng-change="selectedEmployees(empKeys);">
+        <select ng-model="empKeys" ng-options="x.name for x in empList | unique:'name'" ng-value="x.id" ng-change="selectedEmployees(empKeys);">
           <option label=" Select" value="0"></option>
         </select>
       </label>

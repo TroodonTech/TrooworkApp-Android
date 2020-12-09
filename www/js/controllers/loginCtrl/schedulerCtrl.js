@@ -95,6 +95,7 @@ myApp.controller('schedulerCtrl', function (HOSTNAME, $ionicPopup, $ionicPlatfor
 
     $scope.myPromise = $http.get($scope.serverLocation + "/employeesForScheduler_SuType_mob?groupID=" + groupName + "&empkey=" + $scope.toServeremployeekey + "&OrganizationID=" + $scope.OrganizationID)
       .success(function (response) {
+        console.log("EmpList length " + response.length);
         $scope.empList = response;
         $scope.empKeys = [];
 
@@ -270,7 +271,7 @@ myApp.controller('schedulerCtrl', function (HOSTNAME, $ionicPopup, $ionicPlatfor
     $scope.selectedEmployees = function (EmployeeKey1) {
       console.log(EmployeeKey1);
       //      empKey1 = EmployeeKey1.map(x => x.EmployeeKey).join();
-      empKey1 = EmployeeKey1.EmployeeKey;
+      empKey1 = EmployeeKey1.id;
       //      console.log(empKey1.length);
       $scope.myPromise = $http.get($scope.serverLocation + "/employeesrowFiltering_mob?groupID=" + groupName + "&searchtype=Employee" + "&searchtext=" + empKey1 + "&range=" + dtRange + "&todaydate=" + $scope.dateValue + "&OrganizationID=" + $scope.OrganizationID)
         .success(function (response) {
