@@ -1,6 +1,6 @@
 <ion-view view-title="Scheduler">
   <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
-  <ion-content scroll="false">
+  <ion-content>
     <div style="padding-top: 0.5%;padding-bottom: 0.5%;">
       <div>Date</div>
       <div class="item item-icon-left" ion-datetime-picker date monday-first ng-model="dateValue" ng-click="openDatePicker();">
