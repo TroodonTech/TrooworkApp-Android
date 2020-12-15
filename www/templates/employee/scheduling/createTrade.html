@@ -1,0 +1,36 @@
+<ion-view view-title="Create Trade Request">
+
+    <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+    <ion-content class="padding_inspection" delegate-handle="mainScroll">
+
+        <h3 align="center">Create Trade Request</h3>
+        <div class="list padding-bottom">
+            <div>Start Date*</div>
+            <div class="item item-icon-left" ion-datetime-picker date monday-first ng-model="startdate" ng-click="openDatePicker1();">
+                <i class="icon ion-ios-calendar-outline positive"></i>
+                Click to open the date:
+                <div class="input-label">{{startdate}}</div>
+            </div>
+            <div>End Date*</div>
+            <div class="item item-icon-left" ion-datetime-picker date monday-first ng-model="enddate" ng-click="openDatePicker2();">
+                <i class="icon ion-ios-calendar-outline positive"></i>
+                Click to open the date:
+                <div class="input-label">{{enddate}}</div>
+            </div>
+            <label class="item item-input item-select">
+                <div class="input-label">Employee*</div>
+                <select ng-model="trade.EmployeeKey" ng-options="x.EmployeeName for x in allEmployeeList | unique:'EmployeeName'" ng-value="x.EmployeeKey">
+                    <option label=" Select "></option>
+                </select>
+            </label>
+            <label class="item item-input">
+                <div class="input-label">Comments*</div>
+                <textarea rows="6" ng-model="trade.comments" maxlength="200" placeholder="Comments"></textarea>
+            </label>
+        </div>
+        <button class="button button-block button-positive padding" type="submit" ng-click="createTradeRequest()">Create Trade</button>
+        <div class="padding"></div>
+    </ion-content>
+    <!-- <ion-floating-button click="scrollToTop()" has-footer="true" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff" class="padding">
+    </ion-floating-button> -->
+</ion-view>

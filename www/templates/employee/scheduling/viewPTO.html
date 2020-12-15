@@ -1,0 +1,31 @@
+<ion-view view-title="PTO">
+    <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+    <ion-content class="padding_inspection" delegate-handle="mainScroll">
+        <!-- <ion-refresher pulling-text="Pull to refresh.." on-refresh="doRefreshEmployeeView()"></ion-refresher> -->
+        <!-- <input type = "date" class = "form-control"  ng-model="WorkorderDate" ng-show="showDatepicker" ng-change="viewWorkorderFilterByDate()" class="col-sm-12 col-md-12 col-lg-12"/> -->
+
+
+        <ion-list>
+            <ion-item ng-repeat="data in viewpto">
+                <div class="item item-icon-right">
+                    <a class="item item-text-wrap text-center" ng-If="showme" ui-sref="employeeDashboard.employeeEditPTO({ptorequestDetails: data.request_id})">
+                        <!-- > -->
+                        <!-- <h2><b>{{data.RoomId}}</b></h2> -->
+                        <div>
+                            <p>{{data.RequestStatus}}</p>
+                            <p>{{data.StartDate}} - {{data.EndDate}}</p>
+                            <!-- <p>{{data.SubmittedDate}}</p> -->
+                        </div>
+                    </a>
+                    <i class="icon ion-chevron-right"></i>
+                    <a class="item item-text-wrap text-center" ng-If="!showme">
+                        <h2>No PTO found!</h2>
+                    </a>
+                    <i class="icon ion-chevron-right"></i>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <!-- <ion-floating-button click="scrollToTop()" has-footer="false" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff" class="bottomPadding">
+    </ion-floating-button> -->
+</ion-view>

@@ -94,8 +94,8 @@ myApp.controller('schedulerCtrl', function (HOSTNAME, $ionicPopup, $ionicPlatfor
     // $scope.searchByList=[{val:"All Employees"},{val:"Employee"},{val:"Employee Group"}]
 
     $scope.myPromise = $http.get($scope.serverLocation + "/employeesForScheduler_SuType_mob?groupID=" + groupName + "&empkey=" + $scope.toServeremployeekey + "&OrganizationID=" + $scope.OrganizationID)
-      .success(function (response) {
-        console.log("EmpList length " + response.length);
+        .success(function (response) {
+    console.log("EmpList length "+response.length);
         $scope.empList = response;
         $scope.empKeys = [];
 

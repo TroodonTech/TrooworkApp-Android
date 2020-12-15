@@ -1,0 +1,108 @@
+<ion-view view-title="PTO Details">
+    <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+    <ion-content class="padding_inspection" delegate-handle="mainScroll">
+
+        <div ng-show="noWorksFound">
+            <div class="item item-icon-right">
+                <a class="item item-text-wrap text-center">
+                    <h2>No Details Found!</h2>
+                </a>
+            </div>
+        </div>
+        <div ng-hide="noWorksFound">
+
+            <div class="list " ng-repeat="data in viewEmpPTODetails">
+                <div class="item item-text-wrap viewWorkorderDetails" ng-if="data.RequestStatus === 'Pending'">
+                    <div class="list padding-bottom">
+                        <div>Start Date*</div>
+                        <div class="item item-icon-left" ion-datetime-picker date monday-first ng-model="startdate" ng-click="openDatePicker1();">
+                            <i class="icon ion-ios-calendar-outline positive"></i>
+                            Click to open the date:
+                            <div class="input-label">{{startdate}}</div>
+                        </div>
+                        <div>End Date*</div>
+                        <div class="item item-icon-left" ion-datetime-picker date monday-first ng-model="enddate" ng-click="openDatePicker2();">
+                            <i class="icon ion-ios-calendar-outline positive"></i>
+                            Click to open the date:
+                            <div class="input-label">{{enddate}}</div>
+                        </div>
+                        <label class="item item-input">
+                            <div class="input-label">PTO Remaining</div>
+                            <input type="text" placeholder="PTO Remaining" ng-model="pto.ptoreason" maxlength="20" no-special-char>
+                        </label>
+                        <label class="item item-input">
+                            <div class="input-label">Comments</div>
+                            <textarea rows="6" ng-model="pto.Comments" maxlength="200" placeholder="Comments"></textarea>
+                        </label>
+                    </div>
+                </div>
+                <div class="item item-text-wrap viewWorkorderDetails" ng-if="data.RequestStatus !== 'Pending'">
+                    <div class="row">
+                        <div class="col text-left">Start Date </div>
+                        <div class="col text-right">{{data.StartDate}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-left">End Date </div>
+                        <div class="col text-right">{{data.EndDate}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-left">PTO Remaining </div>
+                        <div class="col text-right">{{data.Reason}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-left">Submitted Date </div>
+                        <div class="col text-right">{{data.SubmittedDate}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-left">Comments </div>
+                        <div class="col text-right">{{data.Comments}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-left">Status Date </div>
+                        <div class="col text-right">{{data.StatusDate}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-left">Status </div>
+                        <div class="col text-right">{{data.RequestStatus}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-left">Approver Comments </div>
+                        <div class="col text-right">{{data.StatusComment}}</div>
+                    </div>
+                    <div class="row" ng-if="(data.RequestStatus === 'Approved' || data.RequestStatus === 'Cancelled by employee')">
+                        <div class="col text-left">Approved Start Date </div>
+                        <div class="col text-right">{{data.ApprovedStartDate}}</div>
+                    </div>
+                    <div class="row" ng-if="(data.RequestStatus === 'Approved' || data.RequestStatus === 'Cancelled by employee')">
+                        <div class="col text-left">Approved End Date </div>
+                        <div class="col text-right">{{data.ApprovedEndDate}}</div>
+                    </div>
+                    <div class="row" ng-if="data.RequestStatus === 'Cancelled by employee'">
+                        <div class="col text-left">Cancelled Date</div>
+                        <div class="col text-right">{{data.CancelledDate}}</div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <div class="row col text-center" ng-if="data.RequestStatus == 'Approved'">
+                        <button class="button button-full button-cancel" ng-click="cancelPTO()">Cancel Request</button>
+                        <!-- ui-sref="employeeDashboard.workorderCancel({workorderKey: data.WorkorderKey})" -->
+                    </div>
+                </div>
+                <div class="row col text-center" ng-if="data.RequestStatus === 'Pending'">
+                    <button class="button button-full button-positive" type="submit" ng-click="updatePTODetails()">UPDATE</button>
+                    <button class="button button-full" style="background-color:red!important" type="submit" ng-click="deletePTO()">DELETE</button>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+        <div><br><br></div>
+    </ion-content>
+    <!-- <ion-floating-button click="scrollToTop()" has-footer="false" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff">
+    </ion-floating-button> -->
+</ion-view>

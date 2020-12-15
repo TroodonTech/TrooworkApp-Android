@@ -1,20 +1,22 @@
 <!--VIEW WORKORDER  -->
 <ion-view view-title="Supervisor - {{username}}">
-    
-         <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div> 
-            <ion-content class="padding_inspection"  delegate-handle="mainScroll">
- 
-             <div class="inspectionMenuButtons">
-              <p><a class="button button-dark  button-block"  ui-sref="supervisorDashboard.supervisorworks">Work Order</a></p>
-             
-             <p><a class="button button-dark button-block"  ui-sref="supervisorDashboard.scanforwork">Scan For Work</a></p>
-             <p><a class="button button-dark button-block"  ui-sref="supervisorDashboard.createWorkOrderbyScan">Create WorkOrder By Scan</a></p>
-             <p><a class="button button-dark button-block"  ui-sref="supervisorDashboard.inspection">Inspection Order</a></p>
-             <p><a class="button button-dark button-block"  ui-sref="supervisorDashboard.findemployee">Find Employee</a></p>
-             
-           </div>
 
-            </ion-content>
-            
-        </ion-view>
-         
+  <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+  <ion-content class="padding_inspection" delegate-handle="mainScroll">
+
+    <div class="inspectionMenuButtons">
+      <p><a class="button button-dark  button-block" ui-sref="supervisorDashboard.supervisorworks">Work Order</a></p>
+
+      <p><a class="button button-dark button-block" ui-sref="supervisorDashboard.scanforwork">Scan For Work</a></p>
+      <p><a class="button button-dark button-block" ui-sref="supervisorDashboard.createWorkOrderbyScan">Create WorkOrder By Scan</a></p>
+      <p><a class="button button-dark button-block" ui-sref="supervisorDashboard.inspection">Inspection Order</a></p>
+      <p><a class="button button-dark button-block" ui-sref="supervisorDashboard.findemployee">Find Employee</a></p>
+
+      <p><a class="button button-dark button-block" ui-sref="supervisorDashboard.managePTOSupervisor">PTO</a></p>
+      <p><a class="button button-dark button-block" ui-sref="supervisorDashboard.supervisorManageTrade">TRADE</a></p>
+
+    </div>
+
+  </ion-content>
+
+</ion-view>
