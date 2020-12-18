@@ -1,6 +1,6 @@
 <ion-view view-title="Trade Details">
     <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
-    <ion-content class="padding_inspection" delegate-handle="mainScroll">
+    <ion-content delegate-handle="mainScroll">
 
         <div ng-show="noWorksFound">
             <div class="item item-icon-right">
@@ -11,16 +11,16 @@
         </div>
         <div ng-hide="noWorksFound">
 
-            <div class="list " ng-repeat="data in viewEmpTradeDetails">
+            <div class="list padding-bottom" ng-repeat="data in viewEmpTradeDetails">
                 <div class="item item-text-wrap viewWorkorderDetails" ng-if="data.StatusKey == 1 && data.EmployeeKey == toServeremployeekey">
                     <div class="list padding-bottom">
-                        <div>Start Date*</div>
+                        <div class="item item-divider">Start Date*</div>
                         <div class="item item-icon-left" ion-datetime-picker date monday-first ng-model="startdate" ng-click="openDatePicker1();">
                             <i class="icon ion-ios-calendar-outline positive"></i>
                             Click to open the date:
                             <div class="input-label">{{startdate}}</div>
                         </div>
-                        <div>End Date*</div>
+                        <div class="item item-divider">End Date*</div>
                         <div class="item item-icon-left" ion-datetime-picker date monday-first ng-model="enddate" ng-click="openDatePicker2();">
                             <i class="icon ion-ios-calendar-outline positive"></i>
                             Click to open the date:
@@ -40,57 +40,60 @@
                 </div>
                 <div class="item item-text-wrap viewWorkorderDetails" ng-if="data.StatusKey == 1 && data.OtherEmployeeKey == toServeremployeekey" ng-init="status = ['Approved', 'Rejected']">
                     <div class="list padding-bottom">
-                        <div class="row">
+
+                        <div class="item item-divider">Trade Request Details</div>
+                        <label class="item item-input">
                             <div class="col text-left">Start Date </div>
                             <div class="col text-right">{{data.StartDate}}</div>
-                        </div>
-                        <div class="row">
+                        </label>
+                        <label class="item item-input">
                             <div class="col text-left">End Date </div>
                             <div class="col text-right">{{data.EndDate}}</div>
-                        </div>
-                        <div class="row">
+                        </label>
+                        <label class="item item-input">
                             <div class="col text-left">Requested Employee Name </div>
                             <div class="col text-right">{{data.Employeename}}</div>
-                        </div>
-                        <div class="row">
+                        </label>
+                        <label class="item item-input">
                             <div class="col text-left">Requested Employee Number </div>
                             <div class="col text-right">{{data.EmployeeKey}}</div>
-                        </div>
-                        <div class="row">
+                        </label>
+                        <label class="item item-input">
                             <div class="col text-left">Other Employee Name </div>
                             <div class="col text-right">{{data.OtherEmployeename}}</div>
-                        </div>
-                        <div class="row">
+                        </label>
+                        <label class="item item-input">
                             <div class="col text-left">Other Employee Number </div>
                             <div class="col text-right">{{data.OtherEmployeeKey}}</div>
-                        </div>
-                        <div class="row">
+                        </label>
+                        <label class="item item-input">
                             <div class="col text-left">Submitted Date </div>
                             <div class="col text-right">{{data.SubmittedDate}}</div>
-                        </div>
-                        <div class="row">
+                        </label>
+                        <label class="item item-input">
                             <div class="col text-left">Comments </div>
                             <div class="col text-right">{{data.Comments}}</div>
-                        </div>
+                        </label>
 
+                        <div class="item item-divider">Approve/Reject</div>
                         <label class="item item-input item-select">
                             <div class="input-label">Status*</div>
                             <select ng-model="trade.Status" ng-options="x for x in status" ng-change="selectStatus();">
                                 <option label=" Select "></option>
                             </select>
                         </label>
-                        <div class="row">
+                        <label class="item item-input">
                             <div class="col text-left">Status Date </div>
                             <div class="col text-right">{{dateValue}}</div>
-                        </div>
+                        </label>
 
-                        <div ng-if="showDates">Approving Start Date*</div>
+                        <div ng-if="showDates" class="item item-divider">Approving Start Date*</div>
                         <div ng-if="showDates" class="item item-icon-left" ion-datetime-picker date monday-first ng-model="approvinngstartdate" ng-click="openDatePicker1();">
                             <i class="icon ion-ios-calendar-outline positive"></i>
                             Click to open the date:
                             <div class="input-label">{{approvinngstartdate}}</div>
                         </div>
-                        <div ng-if="showDates">Approving End Date* </div>
+                        <div ng-if="showDates" class="item item-divider">Approving End Date*</div>
                         <div ng-if="showDates" class="item item-icon-left" ion-datetime-picker date monday-first ng-model="approvinngenddate" ng-click="openDatePicker2();">
                             <i class="icon ion-ios-calendar-outline positive"></i>
                             Click to open the date:
@@ -106,89 +109,89 @@
                 <div class="item item-text-wrap viewWorkorderDetails" ng-if="data.StatusKey != 1">
 
                     <div class="item item-divider">Trade Request Details</div>
-                    <div class="row">
+                    <label class="item item-input">
                         <div class="col text-left">Start Date </div>
                         <div class="col text-right">{{data.StartDate}}</div>
-                    </div>
-                    <div class="row">
+                    </label>
+                    <label class="item item-input">
                         <div class="col text-left">End Date </div>
                         <div class="col text-right">{{data.EndDate}}</div>
-                    </div>
-                    <div class="row">
+                    </label>
+                    <label class="item item-input">
                         <div class="col text-left">Requested Employee Name </div>
                         <div class="col text-right">{{data.Employeename}}</div>
-                    </div>
-                    <div class="row">
+                    </label>
+                    <label class="item item-input">
                         <div class="col text-left">Other Employee Name </div>
                         <div class="col text-right">{{data.OtherEmployeename}}</div>
-                    </div>
-                    <div class="row">
+                    </label>
+                    <label class="item item-input">
                         <div class="col text-left">Submitted Date </div>
                         <div class="col text-right">{{data.SubmittedDate}}</div>
-                    </div>
-                    <div class="row">
+                    </label>
+                    <label class="item item-input">
                         <div class="col text-left">Comments </div>
                         <div class="col text-right">{{data.Comments}}</div>
-                    </div>
-                    <div class="row">
+                    </label>
+                    <label class="item item-input">
                         <div class="col text-left">Status </div>
                         <div class="col text-right"><b>{{data.RequestStatus}}</b></div>
-                    </div>
+                    </label>
 
                     <div class="item item-divider">1st Approval Details</div>
-                    <div class="row">
+                    <label class="item item-input">
                         <div class="col text-left">Other Employee Status Approved Date </div>
                         <div class="col text-right">{{data.OtherEmployeeStatusDate}}</div>
-                    </div>
-                    <div class="row">
+                    </label>
+                    <label class="item item-input">
                         <div class="col text-left">Other Employee Approved Start Date</div>
                         <div class="col text-right">{{data.OtherEmployeeApprovedStartDate}}</div>
-                    </div>
-                    <div class="row">
+                    </label>
+                    <label class="item item-input">
                         <div class="col text-left">Other Employee Approved End Date</div>
                         <div class="col text-right">{{data.OtherEmployeeApprovedEndDate}}</div>
-                    </div>
-                    <div class="row">
+                    </label>
+                    <label class="item item-input">
                         <div class="col text-left">Other Employee Comment </div>
                         <div class="col text-right">{{data.OtherEmployeeComments}}</div>
-                    </div>
+                    </label>
 
 
 
                     <div class="item item-divider" ng-if="(data.StatusKey == 4 || data.StatusKey == 5 || data.StatusKey == 6 || data.StatusKey == 7)">2nd Approval Details</div>
-                    <div class="row" ng-if="(data.StatusKey == 4 || data.StatusKey == 5 || data.StatusKey == 6 || data.StatusKey == 7)">
+                    <label class="item item-input" ng-if="(data.StatusKey == 4 || data.StatusKey == 5 || data.StatusKey == 6 || data.StatusKey == 7)">
 
 
                         <div class="col text-left">Approver</div>
                         <div class="col text-right">{{data.ApproverName}}</div>
-                    </div>
-                    <div class="row" ng-if="(data.StatusKey == 4 || data.StatusKey == 5 || data.StatusKey == 6 || data.StatusKey == 7)">
+                    </label>
+                    <label class="item item-input" ng-if="(data.StatusKey == 4 || data.StatusKey == 5 || data.StatusKey == 6 || data.StatusKey == 7)">
 
                         <div class="col text-left">Status Updated Date </div>
                         <div class="col text-right">{{data.ApproverStatusDate}}</div>
-                    </div>
-                    <div class="row" ng-if="(data.StatusKey == 4 || data.StatusKey == 5 || data.StatusKey == 6 || data.StatusKey == 7)">
+                    </label>
+                    <label class="item item-input" ng-if="(data.StatusKey == 4 || data.StatusKey == 5 || data.StatusKey == 6 || data.StatusKey == 7)">
 
                         <div class="col text-left">Approver Comments</div>
                         <div class="col text-right">{{data.ApproverComments}}</div>
 
-                    </div>
-                    <div class="row" ng-if="(data.StatusKey == 4 || data.StatusKey == 6 || data.StatusKey == 7)">
+                    </label>
+                    <label class="item item-input" ng-if="(data.StatusKey == 4 || data.StatusKey == 6 || data.StatusKey == 7)">
 
                         <div class="col text-left">Approved Start Date</div>
                         <div class="col text-right">{{data.ApproverApprovedStartDate}}</div>
-                    </div>
-                    <div class="row" ng-if="(data.StatusKey == 4 || data.StatusKey == 6 || data.StatusKey == 7)">
+                    </label>
+                    <label class="item item-input" ng-if="(data.StatusKey == 4 || data.StatusKey == 6 || data.StatusKey == 7)">
 
                         <div class="col text-left">Approved End Date </div>
                         <div class="col text-right">{{data.ApproverApprovedEndDate}}</div>
 
-                    </div>
+                    </label>
                     <div class="item item-divider" ng-if="data.StatusKey == 7">Cancelled Details</div>
-                    <div class="row" ng-if="data.StatusKey == 7">
+                    <label class="item item-input" ng-if="data.StatusKey == 7">
                         <div class="col text-left">Cancelled Date</div>
                         <div class="col text-right">{{data.CancelledDate}}</div>
-                    </div>
+                    </label>
 
 
                 </div>

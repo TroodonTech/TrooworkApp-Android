@@ -25,7 +25,7 @@
     </div>
     <div ng-hide="noWorksFound" class="">
 
-      <div class="list " ng-repeat="items in viewEmpWorkorderDetails">
+      <div class="list padding-bottom" ng-repeat="items in viewEmpWorkorderDetails">
         <div class="item item-text-wrap viewWorkorderDetails">
 
           <div class="row headerRow">
@@ -33,77 +33,77 @@
               <strong>{{items.WorkorderTypeName}}</strong>
             </div>
           </div>
-          <div class="row">
+          <label class="item item-input">
             <div class="col text-left">Facility </div>
             <div class="col text-right">{{items.FacilityName}}</div>
-          </div>
-          <div class="row" ng-if="items.ZoneName !== 'null'">
+          </label>
+          <label class="item item-input" ng-if="items.ZoneName !== 'null'">
             <div class="col text-left">Zone </div>
             <div class="col text-right">{{items.ZoneName}}</div>
-          </div>
-          <div class="row" ng-if="items.FloorName !== 'null'">
+          </label>
+          <label class="item item-input" ng-if="items.FloorName !== 'null'">
             <div class="col text-left">Floor </div>
             <div class="col text-right">{{items.FloorName}}</div>
-          </div>
-          <div class="row">
+          </label>
+          <label class="item item-input">
             <div class="col text-left">Room </div>
             <div class="col text-right">{{items.RoomText}}</div>
-          </div>
-          <div class="row" ng-if="items.EquipmentType !== 'null'">
+          </label>
+          <label class="item item-input" ng-if="items.EquipmentType !== 'null'">
             <div class="col text-left">Equipment Type </div>
             <div class="col text-right">{{items.EquipmentType}}</div>
-          </div>
-          <div class="row">
+          </label>
+          <label class="item item-input">
             <div class="col text-left">Equipment </div>
             <div class="col text-right">{{items.EquipmentName}}</div>
-          </div>
-          <div class="row">
+          </label>
+          <label class="item item-input">
             <div class="col text-left">Assigned to </div>
             <div class="col text-right">{{items.EmployeeText}}</div>
-          </div>
-          <div class="row">
+          </label>
+          <label class="item item-input">
             <div class="col text-left">Date </div>
             <div class="col text-right">{{items.WorkorderDate}}</div>
-          </div>
-          <div class="row">
+          </label>
+          <label class="item item-input">
             <div class="col text-left">Time </div>
             <div class="col text-right">{{items.WorkorderTime}}</div>
-          </div>
+          </label>
 
-          <div class="row" ng-if="items.WorkorderStatus === 'Completed'">
+          <label class="item item-input" ng-if="items.WorkorderStatus === 'Completed'">
             <div class="col text-left">Check in </div>
             <div class="col text-right">{{items.checkin1}}</div>
-          </div>
+          </label>
 
-          <div class="row" ng-if="items.WorkorderStatus === 'Completed'">
+          <label class="item item-input" ng-if="items.WorkorderStatus === 'Completed'">
             <div class="col text-left">Check out </div>
             <div class="col text-right">{{items.checkout1}}</div>
-          </div>
-          <div class="row" ng-if="items.WorkorderStatus === 'Completed'">
+          </label>
+          <label class="item item-input" ng-if="items.WorkorderStatus === 'Completed'">
             <div class="col text-left">Delay time </div>
             <div class="col text-right">{{items.DelayTime}}</div>
-          </div>
+          </label>
 
-          <div class="row" ng-if="items.WorkorderStatus === 'Completed'">
+          <label class="item item-input" ng-if="items.WorkorderStatus === 'Completed'">
             <div class="col text-left">Duration </div>
             <div class="col text-right">{{items.duration}}</div>
-          </div>
+          </label>
 
 
 
-          <div class="row" ng-if="items.WorkorderNotes !== 'null'">
+          <label class="item item-input" ng-if="items.WorkorderNotes !== 'null'">
             <div class="col text-left">Notes </div>
 
-          </div>
-          <div class="row" ng-if="items.WorkorderNotes !== 'null'">
+          </label>
+          <label class="item item-input" ng-if="items.WorkorderNotes !== 'null'">
 
             <div class="col text-right">{{items.WorkorderNotes}}</div>
-          </div>
+          </label>
 
           <!-- <div>
                   <a class="button button-dark button-block" ng-click="locationTracker()">LocationTracker</a>
                 </div> -->
-          <div class="row">
+          <label class="item item-input">
             <div class="col text-center">
               <ion-label class="label 
                                    text-Scheduled-{{items.WorkorderStatus === 'Scheduled'}} 
@@ -115,14 +115,14 @@
                 <strong> {{items.WorkorderStatus}}</strong>
               </ion-label>
             </div>
-          </div>
+          </label>
           <div class="row">
             <div class="row col text-center" ng-if="(items.WorkorderStatus != 'Cancelled' && items.WorkorderStatus != 'Completed')">
               <button style="width:60% !important" class="button   button-cancel" ui-sref="employeeDashboard.workorderCancel({workorderKey: items.WorkorderKey})">Workorder Cancel</button>
             </div>
           </div>
           <div class="row col text-center" ng-if="items.WorkorderStatus == 'InProgress'">
-            <button style="width:60% !important"  class=" button  button-delay " on-tap="delayCurrentWorkOrder(items.WorkorderKey)">
+            <button style="width:60% !important" class=" button  button-delay " on-tap="delayCurrentWorkOrder(items.WorkorderKey)">
               <h2>Delay</h2>
 
             </button>
@@ -213,46 +213,46 @@
 
           <div class="row col text-center" ng-if="((items.WorkorderStatus != 'Cancelled') && (items.WorkorderStatus != 'Completed'))">
 
-              <button ng-if="items.IsPhotoRequired == 1 &&items.WorkorderStatus != 'Delayed'" class=" button buttonSize button-large button-Scheduled-{{items.WorkorderStatus === 'Scheduled'}} 
+            <button ng-if="items.IsPhotoRequired == 1 &&items.WorkorderStatus != 'Delayed'" class=" button buttonSize button-large button-Scheduled-{{items.WorkorderStatus === 'Scheduled'}} 
                       button-InProgress-{{items.WorkorderStatus === 'InProgress'}}
                       button-Completed-{{items.WorkorderStatus === 'Completed'}} workorder_Button" ng-click="takePhoto(items.WorkorderKey)" ng-if="items.IsPhotoRequired == 1">
-                <i class="icon ion-camera"></i>
-                <h2 class="button-InProgress-text-{{items.WorkorderStatus === 'InProgress'}}
+              <i class="icon ion-camera"></i>
+              <h2 class="button-InProgress-text-{{items.WorkorderStatus === 'InProgress'}}
                   button-Scheduled-text-{{items.WorkorderStatus === 'Scheduled'}}"> Photo</h2>
-              </button>
-  
-  
-              <button ng-if="items.IsBarcodeRequired == 1 &&items.WorkorderStatus != 'Delayed'" class=" button buttonSize button-large button-Scheduled-{{items.WorkorderStatus === 'Scheduled'}} 
+            </button>
+
+
+            <button ng-if="items.IsBarcodeRequired == 1 &&items.WorkorderStatus != 'Delayed'" class=" button buttonSize button-large button-Scheduled-{{items.WorkorderStatus === 'Scheduled'}} 
                       button-InProgress-{{items.WorkorderStatus === 'InProgress'}}
                       button-Completed-{{items.WorkorderStatus === 'Completed'}} workorder_Button" on-tap="scanBarcode(items.WorkorderKey)" ng-if="items.IsBarcodeRequired == 1">
-                <i class="icon ion-ios-barcode"></i>
-                <h2 class="button-InProgress-text-{{items.WorkorderStatus === 'InProgress'}}
+              <i class="icon ion-ios-barcode"></i>
+              <h2 class="button-InProgress-text-{{items.WorkorderStatus === 'InProgress'}}
                   button-Scheduled-text-{{items.WorkorderStatus === 'Scheduled'}}">Barcode</h2>
-  
-              </button>
-  
-  
-  
-              <button ng-if="items.IsSnapshot == 1 &&items.WorkorderStatus != 'Delayed'" class=" button buttonSize button-large button-Scheduled-{{items.WorkorderStatus === 'Scheduled'}} 
+
+            </button>
+
+
+
+            <button ng-if="items.IsSnapshot == 1 &&items.WorkorderStatus != 'Delayed'" class=" button buttonSize button-large button-Scheduled-{{items.WorkorderStatus === 'Scheduled'}} 
                       button-InProgress-{{items.WorkorderStatus === 'InProgress'}}
                       button-Completed-{{items.WorkorderStatus === 'Completed'}} workorder_Button" on-tap="locationTracker()" ng-if="items.IsSnapshot == 1">
-                <i class="icon ion-location"></i>
-                <h2 class="button-InProgress-text-{{items.WorkorderStatus === 'InProgress'}}
+              <i class="icon ion-location"></i>
+              <h2 class="button-InProgress-text-{{items.WorkorderStatus === 'InProgress'}}
                   button-Scheduled-text-{{items.WorkorderStatus === 'Scheduled'}}">Snapshot</h2>
-  
-              </button>
-  
-  
-  
-              <button ng-if="items.IsBarcodeRequired==0 && items.IsPhotoRequired==0 && items.IsSnapshot==0 &&items.WorkorderStatus != 'Delayed'" class=" button button-large button-Scheduled-{{items.WorkorderStatus === 'Scheduled'}} 
+
+            </button>
+
+
+
+            <button ng-if="items.IsBarcodeRequired==0 && items.IsPhotoRequired==0 && items.IsSnapshot==0 &&items.WorkorderStatus != 'Delayed'" class=" button button-large button-Scheduled-{{items.WorkorderStatus === 'Scheduled'}} 
                         button-InProgress-{{items.WorkorderStatus === 'InProgress'}}
                         button-Completed-{{items.WorkorderStatus === 'Completed'}} workorder_Button" ng-click="workCompleted(items.WorkorderKey)">
-                <i class="icon ion-checkmark-circled"></i>
-                <h2 class="button-InProgress-text-{{items.WorkorderStatus === 'InProgress'}}
+              <i class="icon ion-checkmark-circled"></i>
+              <h2 class="button-InProgress-text-{{items.WorkorderStatus === 'InProgress'}}
                   button-Scheduled-text-{{items.WorkorderStatus === 'Scheduled'}}">Finish</h2>
-              </button>
-  
-            </div>
+            </button>
+
+          </div>
         </div>
         <!--   <a class="list icon-circle-large icon-circle-outline">
           <i class="ion-star"></i>

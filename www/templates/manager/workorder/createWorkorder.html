@@ -1,110 +1,109 @@
 <!--VIEW WORKORDER  -->
 
-<ion-view view-title="Create Work Order" >
+<ion-view view-title="Create Work Order">
 
-         <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
-            <ion-content class="padding_inspection"  delegate-handle="mainScroll">
+    <div cg-busy="{promise:myPromise,message:'Loading...',delay:300,minDuration:700,backdrop:true}"></div>
+    <ion-content class="padding_inspection" delegate-handle="mainScroll">
 
-           <h3 align="center">Create Work Order</h3>
-           <div class="list padding-bottom">
-                <label class="item item-input item-select item-text-wrap">
-                    <div class="input-label">Workorder Type*</div>
-                        <select ng-model="workorderCreation.WorkorderTypeKey" ng-options="x.WorkorderTypeText for x in workorderTypes | unique:'WorkorderTypeText'" ng-value="x.WorkorderTypeKey" ng-change="changedWOT()">
-                            <option label=" Select "></option>
-                        </select>
-                 </label>
-                 <label class="item item-input">
-                    <div class="input-label">Workorder Notes</div>
-                        <input type="text" ng-model="workorderCreation.workorderNotes" maxlength="200" placeholder="Workorder Notes">
-                 </label>
-                 <div class="item item-divider">Select Location</div>
-                 <label class="item item-input item-select">
-                        <div class="input-label">Building*</div>
-                        <select ng-model="workorderCreation.FacilityKey"  ng-options="x.FacilityText for x in facilityList | unique:'FacilityText'" ng-value="x.FacilityKey" ng-change="selectedFacility()">
-                            <option label=" Select "></option>
-                        </select>
-                    </label>
-                    <label class="item item-input item-select">
-                        <div class="input-label">Floor*</div>
-                        <select ng-model="workorderCreation.FloorKey"  ng-options="x.FloorName for x in floorList | unique:'FloorName'" ng-value="x.FloorKey" ng-change="changedFloor()">
-                            <option label=" Select "></option>
-                        </select>
-                    </label>
-                    <label ng-if ="!workorderCreation.showEqTypes == true" class="item item-input item-select">
-                        <div class="input-label">Zone</div>
-                        <select ng-model="workorderCreation.ZoneKey" ng-disabled="workorderCreation.showEqTypes" ng-options="x.ZoneName for x in zoneList | unique:'ZoneName'" ng-value="x.ZoneKey" ng-change="changedZone()">
-                            <option label=" Select "></option>
-                        </select>
-                    </label>
-                    <label ng-if ="!workorderCreation.showEqTypes == true" class="item item-input item-select">
-                        <div class="input-label">Room Type</div>
-                        <select ng-model="workorderCreation.RoomTypeKey" ng-disabled="workorderCreation.showEqTypes" ng-options="x.RoomTypeName for x in roomtypeList | unique:'RoomTypeName'" ng-value="x.RoomTypeKey" ng-change="changedRoomtype()">
-                            <option label=" Select "></option>
-                        </select>
-                    </label>
-                    <label ng-if ="!workorderCreation.showEqTypes == true" class="item item-input item-select">
-                        <div class="input-label">Room</div>
-                        <select ng-model="workorderCreation.RoomKey" ng-disabled="workorderCreation.showEqTypes" ng-options="x.RoomName for x in roomList | unique:'RoomName'" ng-value="x.RoomKey">
-                            <option label=" Select "></option>
-                        </select>
-                    </label>
+        <h3 align="center">Create Work Order</h3>
+        <div class="list padding-bottom">
+            <label class="item item-input item-select item-text-wrap">
+                <div class="input-label">Workorder Type*</div>
+                <select ng-model="workorderCreation.WorkorderTypeKey" ng-options="x.WorkorderTypeText for x in workorderTypes | unique:'WorkorderTypeText'" ng-value="x.WorkorderTypeKey" ng-change="changedWOT()">
+                    <option label=" Select "></option>
+                </select>
+            </label>
+            <label class="item item-input">
+                <div class="input-label">Workorder Notes</div>
+                <input type="text" ng-model="workorderCreation.workorderNotes" maxlength="200" placeholder="Workorder Notes">
+            </label>
+            <div class="item item-divider">Select Location</div>
+            <label class="item item-input item-select">
+                <div class="input-label">Building*</div>
+                <select ng-model="workorderCreation.FacilityKey" ng-options="x.FacilityText for x in facilityList | unique:'FacilityText'" ng-value="x.FacilityKey" ng-change="selectedFacility()">
+                    <option label=" Select "></option>
+                </select>
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">Floor*</div>
+                <select ng-model="workorderCreation.FloorKey" ng-options="x.FloorName for x in floorList | unique:'FloorName'" ng-value="x.FloorKey" ng-change="changedFloor()">
+                    <option label=" Select "></option>
+                </select>
+            </label>
+            <label ng-if="!workorderCreation.showEqTypes == true" class="item item-input item-select">
+                <div class="input-label">Zone</div>
+                <select ng-model="workorderCreation.ZoneKey" ng-disabled="workorderCreation.showEqTypes" ng-options="x.ZoneName for x in zoneList | unique:'ZoneName'" ng-value="x.ZoneKey" ng-change="changedZone()">
+                    <option label=" Select "></option>
+                </select>
+            </label>
+            <label ng-if="!workorderCreation.showEqTypes == true" class="item item-input item-select">
+                <div class="input-label">Room Type</div>
+                <select ng-model="workorderCreation.RoomTypeKey" ng-disabled="workorderCreation.showEqTypes" ng-options="x.RoomTypeName for x in roomtypeList | unique:'RoomTypeName'" ng-value="x.RoomTypeKey" ng-change="changedRoomtype()">
+                    <option label=" Select "></option>
+                </select>
+            </label>
+            <label ng-if="!workorderCreation.showEqTypes == true" class="item item-input item-select">
+                <div class="input-label">Room</div>
+                <select ng-model="workorderCreation.RoomKey" ng-disabled="workorderCreation.showEqTypes" ng-options="x.RoomName for x in roomList | unique:'RoomName'" ng-value="x.RoomKey">
+                    <option label=" Select "></option>
+                </select>
+            </label>
 
-                    <div class="item item-divider"></div>
-                    <ion-toggle ng-model="workorderCreation.showEqTypes" ng-change="showEqTypesFun()" toggle-class="toggle-positive">Is Equipment</ion-toggle>
+            <div class="item item-divider"></div>
+            <ion-toggle ng-model="workorderCreation.showEqTypes" ng-change="showEqTypesFun()" toggle-class="toggle-positive">Is Equipment</ion-toggle>
 
 
-                    <label ng-if ="workorderCreation.showEqTypes == true" class="item item-input item-select">
-                        <div class="input-label">Equipment Type</div>
-                        <select ng-model="workorderCreation.EquipmentTypeKey"  ng-options="x.EquipmentTypeText for x in equipmentTypeList | unique:'EquipmentTypeText'" ng-value="x.EquipmentTypeKey" ng-change="selectDomainEquipmenttype('equipments',workorderCreation.EquipmentTypeKey.EquipmentTypeKey)">
-                            <option label=" Select "></option>
-                        </select>
-                    </label>
-                    <label ng-if ="workorderCreation.showEqTypes == true" class="item item-input item-select">
-                        <div class="input-label">Equipment</div>
-                        <select ng-disabled="!workorderCreation.showEqTypes" ng-model="workorderCreation.EquipmentKey"  ng-options="x.EquipmentName for x in equipmentList | unique:'EquipmentName'" ng-value="x.EquipmentKey">
-                            <option label=" Select "></option>
-                        </select>
-                    </label>
-                    <div class="item item-divider"></div>
-                    <!-- <label class="item item-input item-select">
+            <label ng-if="workorderCreation.showEqTypes == true" class="item item-input item-select">
+                <div class="input-label">Equipment Type</div>
+                <select ng-model="workorderCreation.EquipmentTypeKey" ng-options="x.EquipmentTypeText for x in equipmentTypeList | unique:'EquipmentTypeText'" ng-value="x.EquipmentTypeKey" ng-change="selectDomainEquipmenttype('equipments',workorderCreation.EquipmentTypeKey.EquipmentTypeKey)">
+                    <option label=" Select "></option>
+                </select>
+            </label>
+            <label ng-if="workorderCreation.showEqTypes == true" class="item item-input item-select">
+                <div class="input-label">Equipment</div>
+                <select ng-disabled="!workorderCreation.showEqTypes" ng-model="workorderCreation.EquipmentKey" ng-options="x.EquipmentName for x in equipmentList | unique:'EquipmentName'" ng-value="x.EquipmentKey">
+                    <option label=" Select "></option>
+                </select>
+            </label>
+            <div class="item item-divider"></div>
+            <!-- <label class="item item-input item-select">
                         <div class="input-label">Shift Type</div>
                         <select ng-model="workorderCreation.ShiftTypeKey"  ng-options="x.ShiftTypeText for x in shiftTypeList | unique:'ShiftTypeText'" ng-value="x.ShiftTypeKey">
                             <option label=" Select "></option>
                         </select>
                     </label> -->
-                    <label class="item item-input item-select">
-                        <div class="input-label">Priority Level</div>
-                        <select ng-model="workorderCreation.PriorityKey"  ng-options="x.PriorityText for x in priorityList | unique:'PriorityText'" ng-value="x.PriorityKey">
-                            <option label=" Select "></option>
-                        </select>
-                    </label>
-                    <label class="item item-input item-select">
-                        <div class="input-label">Employee</div>
-                        <select ng-model="workorderCreation.EmployeeKey"  ng-options="x.EmployeeText for x in employeeList | unique:'EmployeeText'" ng-value="x.EmployeeKey">
-                            <option label=" Select "></option>
-                        </select>
-                    </label>
-                    <div class="item item-divider">Select Date-Time</div>
-                        <div class="item item-icon-left" ion-datetime-picker date ng-model="timeValue" ng-click="callTimePicker()">
-                            <i class="icon ion-ios-clock positive"></i>
-                            Click to change the time:
-                            <div class="input-label">{{timeValue}}</div>
-                        </div>
+            <label class="item item-input item-select">
+                <div class="input-label">Priority Level</div>
+                <select ng-model="workorderCreation.PriorityKey" ng-options="x.PriorityText for x in priorityList | unique:'PriorityText'" ng-value="x.PriorityKey">
+                    <option label=" Select "></option>
+                </select>
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">Employee</div>
+                <select ng-model="workorderCreation.EmployeeKey" ng-options="x.EmployeeText for x in employeeList | unique:'EmployeeText'" ng-value="x.EmployeeKey">
+                    <option label=" Select "></option>
+                </select>
+            </label>
+            <div class="item item-divider">Select Date-Time</div>
+            <div class="item item-icon-left" ion-datetime-picker date ng-model="timeValue" ng-click="callTimePicker()">
+                <i class="icon ion-ios-clock positive"></i>
+                Click to change the time:
+                <div class="input-label">{{timeValue}}</div>
+            </div>
 
-                        <div class="item item-icon-left" ion-datetime-picker date monday-first ng-model="dateValue" ng-click="openDatePicker();" >
-                            <i class="icon ion-ios-calendar-outline positive"></i>
-                            Click to change the date:
-                            <div class="input-label">{{dateValue}}</div>
-                        </div>
-                        <div class="item item-divider"></div>
-                        <ion-toggle ng-model="workorderCreation.isPhotoRequired" toggle-class="toggle-positive">Photo Required</ion-toggle>
-                        <ion-toggle  ng-model="workorderCreation.isBarcodeRequired" toggle-class="toggle-positive">Barcode Required</ion-toggle>
-                        <ion-toggle  ng-model="workorderCreation.isSnapshotRequired" toggle-class="toggle-positive">Snapshot Required</ion-toggle>
-                        <button class="button button-block button-positive padding" type="submit" ng-click="createWorkorder()">Create Work Order</button>
-           </div>
-           <div class="padding"></div>
-        </ion-content>
-           <ion-floating-button click="scrollToTop()" has-footer="true" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff" class="padding">
-          </ion-floating-button>
-        </ion-view>
-
+            <div class="item item-icon-left" ion-datetime-picker date monday-first ng-model="dateValue" ng-click="openDatePicker();">
+                <i class="icon ion-ios-calendar-outline positive"></i>
+                Click to change the date:
+                <div class="input-label">{{dateValue}}</div>
+            </div>
+            <div class="item item-divider"></div>
+            <ion-toggle ng-model="workorderCreation.isPhotoRequired" toggle-class="toggle-positive">Photo Required</ion-toggle>
+            <ion-toggle ng-model="workorderCreation.isBarcodeRequired" toggle-class="toggle-positive">Barcode Required</ion-toggle>
+            <ion-toggle ng-model="workorderCreation.isSnapshotRequired" toggle-class="toggle-positive">Snapshot Required</ion-toggle>
+            <button class="button button-block button-positive padding" type="submit" ng-click="createWorkorder()">Create Work Order</button>
+        </div>
+        <div class="padding"></div>
+    </ion-content>
+    <ion-floating-button click="scrollToTop()" has-footer="true" button-color="#2AC9AA" icon="ion-ios-arrow-up" iconColor="#fff" class="padding">
+    </ion-floating-button>
+</ion-view>

@@ -591,25 +591,13 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider,
         }
       }
     })
-    .state('managerDashboard.fireBaseTrack', {
+    .state('managerDashboard.fireBaseTrack', { // employee live tracking
       url: '/fireBaseTrack12',
       views: {
 
         'tab-managerview': {
           templateUrl: 'templates/manager/FindEmployee/fireBaseTrack.html',
           controller: 'fireBaseTrack'
-        }
-      }
-    })
-
-    .state('managerDashboard.scheduler', {
-      url: '/scheduler',
-      views: {
-
-        'tab-managerview': {
-          templateUrl: 'templates/login/scheduler.html',
-          controller: 'schedulerCtrl',
-          cache: false
         }
       }
     })
@@ -635,8 +623,227 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider,
         }
       }
     })
+    .state('managerDashboard.ScanForInspection', {
+      url: '/scanforinspection',
+      views: {
 
+        'tab-managerview': {
+          templateUrl: 'templates/manager/inspection/ScanForInspection.html',
+          controller: 'inspectionDetailsCtrl',
+          cache: true
+        }
+      }
+    })
+    .state('managerDashboard.scanRoomForCreateInsp', {// scanRoomForCreateInsp
+      url: '/scanRoomForCreateInsp',
+      views: {
+
+        'tab-managerview': {
+          templateUrl: 'templates/manager/inspection/CreateInspectionByBarcodeScan.html',
+          controller: 'InspectionCreateByScanCtrl',
+          cache: false
+        }
+      }
+    })
+    .state('managerDashboard.scanRoomForCreateInspDetailPage', {// scanRoomForCreateInsp DetailPage
+      url: '/scanRoomForCreateInspDetailPage/:roomKey',
+      views: {
+
+        'tab-managerview': {
+          templateUrl: 'templates/manager/inspection/createInspectionbyRoomScaning.html',
+          controller: 'InspectionCreateByScanCtrl',
+          cache: false
+        }
+      }
+    })
+    .state('supervisorDashboard.scanRoomForCreateInsp', {// scanRoomForCreateInsp
+      url: '/scanRoomForCreateInsp',
+      views: {
+
+        'tab-supervisorView': {
+          templateUrl: 'templates/supervisor/inspection/CreateInspectionByBarcodeScan.html',
+          controller: 'InspectionCreateByScanCtrl',
+          cache: false
+        }
+      }
+    })
+    .state('supervisorDashboard.scanRoomForCreateInspDetailPage', {// scanRoomForCreateInsp DetailPage
+      url: '/scanRoomForCreateInspDetailPage/:roomKey',
+      views: {
+
+        'tab-supervisorView': {
+          templateUrl: 'templates/supervisor/inspection/createInspectionbyRoomScaning.html',
+          controller: 'InspectionCreateByScanCtrl',
+          cache: false
+        }
+      }
+    })
+    .state('managerDashboard.aboutapp', {
+      url: '/aboutapp',
+      views: {
+
+        'tab-managerview': {
+          templateUrl: 'templates/login/aboutapp.html',
+          controller: 'aboutappctrl',
+          cache: false
+        }
+      }
+    })
+    .state('supervisorDashboard.aboutapp', {
+      url: '/aboutapp',
+      views: {
+
+        'tab-supervisorView': {
+          templateUrl: 'templates/login/aboutapp.html',
+          controller: 'aboutappctrl',
+          cache: false
+        }
+      }
+    })
+    .state('employeeDashboard.aboutapp', {
+      url: '/aboutapp',
+      views: {
+
+        'tab-employeeview': {
+          templateUrl: 'templates/login/aboutapp.html',
+          controller: 'aboutappctrl',
+          cache: false
+        }
+      }
+    })
+    .state('managerDashboard.scanworkorder', {
+      url: '/scanworkorder/:barcode',
+      views: {
+        'tab-managerview': {
+          templateUrl: 'templates/manager/workorder/scannedManagerWorkOrder.html',
+          controller: 'workorderscanCtrl'
+        }
+      }
+    })
+    .state('supervisorDashboard.scanworkorder', {
+      url: '/scanworkorder/:barcode',
+      views: {
+        'tab-supervisorView': {
+          templateUrl: 'templates/supervisor/workorder/scannedSupervisorWorkOrder.html',
+          controller: 'workorderscanCtrl'
+        }
+      }
+    })
+    .state('employeeDashboard.scanworkorder', {
+      url: '/scanworkorder/:barcode',
+      views: {
+        'tab-employeeview': {
+          templateUrl: 'templates/employee/workorder/scannedEmployeeWorkOrder.html',
+          controller: 'workorderscanCtrl'
+        }
+      }
+    })
+    .state('managerDashboard.filteringByEmployeeListView', {
+      url: '/filteringByEmployeeListManagerView/:employeekey/:workstatuskey',
+      views: {
+
+        'tab-managerview': {
+          templateUrl: 'templates/manager/workorder/filteringByEmployeeListView.html',
+          controller: 'workorderFilteringByEmployeeViewCtrl'
+        }
+      }
+    })
+    .state('managerDashboard.filteringByFacilityView', {
+      url: '/filteringByFacilityView/:facilitykey/:floorkey/:zonekey',
+      views: {
+
+        'tab-managerview': {
+          templateUrl: 'templates/manager/workorder/filteringByFacilityView.html',
+          controller: 'workorderFilteringByFacilityViewCtrl'
+        }
+      }
+    })
+    .state('managerDashboard.filteringByStatusView', {
+      url: '/filteringByStatusView/:statuskey',
+      views: {
+
+        'tab-managerview': {
+          templateUrl: 'templates/manager/workorder/filteringByStatusView.html',
+          controller: 'WorkOrderFilteringByStatusViewCtrl'
+        }
+      }
+    })
+    .state('supervisorDashboard.filteringByEmployeeListView', {
+      url: '/filteringByEmployeeListSupervisorView/:employeekey/:workstatuskey',
+      views: {
+
+        'tab-supervisorView': {
+          templateUrl: 'templates/supervisor/workorder/filteringByEmployeeListView.html',
+          controller: 'workorderFilteringByEmployeeViewCtrl'
+        }
+      }
+    })
+    .state('supervisorDashboard.filteringByFacilityView', {
+      url: '/filteringByFacilitySupervisorView/:facilitykey/:floorkey/:zonekey',
+      views: {
+
+        'tab-supervisorView': {
+          templateUrl: 'templates/supervisor/workorder/filteringByFacilityView.html',
+          controller: 'workorderFilteringByFacilityViewCtrl'
+        }
+      }
+    })
+    .state('supervisorDashboard.filteringByStatusView', {
+      url: '/filteringByStatusSupervisorView/:statuskey',
+      views: {
+
+        'tab-supervisorView': {
+          templateUrl: 'templates/supervisor/workorder/filteringByStatusView.html',
+          controller: 'WorkOrderFilteringByStatusViewCtrl'
+        }
+      }
+    })
+    .state('employeeDashboard.filteringByEmployeeListView', {
+      url: '/filteringByEmployeeListEmployeeView/:employeekey/:workstatuskey',
+      views: {
+
+        'tab-employeeview': {
+          templateUrl: 'templates/employee/workorder/filteringByEmployeeListView.html',
+          controller: 'workorderFilteringByEmployeeViewCtrl'
+        }
+      }
+    })
+    .state('employeeDashboard.filteringByFacilityView', {
+      url: '/filteringByFacilityEmployeeView/:facilitykey/:floorkey/:zonekey',
+      views: {
+
+        'tab-employeeview': {
+          templateUrl: 'templates/employee/workorder/filteringByFacilityView.html',
+          controller: 'workorderFilteringByFacilityViewCtrl'
+        }
+      }
+    })
+    .state('employeeDashboard.filteringByStatusView', {
+      url: '/filteringByStatusEmployeeView/:statuskey',
+      views: {
+
+        'tab-employeeview': {
+          templateUrl: 'templates/employee/workorder/filteringByStatusView.html',
+          controller: 'WorkOrderFilteringByStatusViewCtrl'
+        }
+      }
+    })
     // pie chart states ends here....
+
+    // Scheduler starts
+
+    .state('managerDashboard.scheduler', {
+      url: '/scheduler',
+      views: {
+
+        'tab-managerview': {
+          templateUrl: 'templates/login/scheduler.html',
+          controller: 'schedulerCtrl',
+          cache: false
+        }
+      }
+    })
+    // Scheduler ends
     // PTO starts
 
     .state('employeeDashboard.managePTO', {
@@ -821,44 +1028,6 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider,
       }
     })
     //Trade ends...
-
-
-    .state('managerDashboard.aboutapp', {
-      url: '/aboutapp',
-      views: {
-
-        'tab-managerview': {
-          templateUrl: 'templates/login/aboutapp.html',
-          controller: 'aboutappctrl',
-          cache: false
-        }
-      }
-    })
-
-    .state('employeeDashboard.aboutapp', {
-      url: '/aboutapp',
-      views: {
-
-        'tab-employeeview': {
-          templateUrl: 'templates/login/aboutapp.html',
-          controller: 'aboutappctrl',
-          cache: false
-        }
-      }
-    })
-
-    .state('supervisorDashboard.aboutapp', {
-      url: '/aboutapp',
-      views: {
-
-        'tab-supervisorView': {
-          templateUrl: 'templates/login/aboutapp.html',
-          controller: 'aboutappctrl',
-          cache: false
-        }
-      }
-    })
-
 
 
     .state('logout', {
