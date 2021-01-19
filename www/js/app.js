@@ -433,7 +433,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider,
 
         'tab-managerview': {
           templateUrl: 'templates/manager/inspection/viewInspectionorder.html',
-
+          controller: 'inspectionViewCtrl',
           cache: false
         }
       }
@@ -843,6 +843,28 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider,
         }
       }
     })
+    .state('supervisorDashboard.scheduler', {
+      url: '/supervisorscheduler',
+      views: {
+
+        'tab-supervisorView': {
+          templateUrl: 'templates/login/scheduler.html',
+          controller: 'schedulerCtrl',
+          cache: false
+        }
+      }
+    })
+    .state('employeeDashboard.scheduler', {
+      url: '/employeescheduler',
+      views: {
+
+        'tab-employeeview': {
+          templateUrl: 'templates/login/scheduler.html',
+          controller: 'schedulerCtrl',
+          cache: false
+        }
+      }
+    })
     // Scheduler ends
     // PTO starts
 
@@ -1028,7 +1050,6 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider,
       }
     })
     //Trade ends...
-
 
     .state('logout', {
       cache: false,

@@ -404,7 +404,6 @@ myApp.controller('inspectionEditCtrl', ['HOSTNAME', '$ionicLoading', '$scope', '
             var j = 0;
             var k = 0;
 
-            debugger;
             for (i = i; i < questionidList.length; i++) {// includes actual qn ids
                 questionValues = null;
                 notes = null;

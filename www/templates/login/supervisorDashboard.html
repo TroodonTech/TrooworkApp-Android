@@ -13,24 +13,29 @@
     <!-- TABS -->
     <ion-tabs class="tabs-icon-top tabs-color-active-positive">
       <!-- Home Tab -->
-      <ion-tab title="Home" icon-off="ion-home" icon-on="ion-home" ui-sref="supervisorDashboard.dashboardViewSupervisor">
+      <ion-tab title="Home" icon-off="ion-home" icon-on="ion-home"
+        ui-sref="supervisorDashboard.dashboardViewSupervisor">
         <ion-nav-view name="tab-supervisorHome"></ion-nav-view>
       </ion-tab>
 
       <!-- workorder Tab -->
-      <ion-tab title="Work Order" icon-off="ion-social-buffer-outline" icon-on="ion-social-buffer" ui-sref="supervisorDashboard.supervisorworks">
+      <ion-tab title="Work Order" icon-off="ion-social-buffer-outline" icon-on="ion-social-buffer"
+        ui-sref="supervisorDashboard.supervisorworks">
         <!-- <ion-nav-view name="tab-supervisorworks"></ion-nav-view> -->
       </ion-tab>
 
       <!-- scanWorks Tab -->
-      <ion-tab title="Scan for work" icon-off="ion-ios-barcode-outline" icon-on="ion-ios-barcode" ui-sref="supervisorDashboard.scanforwork">
+      <ion-tab title="Scan for work" icon-off="ion-ios-barcode-outline" icon-on="ion-ios-barcode"
+        ui-sref="supervisorDashboard.scanforwork">
         <!-- <ion-nav-view name="tab-supervisorscanWorks"></ion-nav-view> -->
       </ion-tab>
-      <ion-tab title="Create WorkOrder By Scan" icon-off="ion-qr-scanner" icon-on="ion-qr-scanner" ui-sref="supervisorDashboard.createWorkOrderbyScan">
+      <ion-tab title="Create WorkOrder By Scan" icon-off="ion-qr-scanner" icon-on="ion-qr-scanner"
+        ui-sref="supervisorDashboard.createWorkOrderbyScan">
         <!-- <ion-nav-view name="tab-supervisorscanWorks"></ion-nav-view> -->
       </ion-tab>
       <!-- inspection Tab -->
-      <ion-tab title="Inspection" icon-off="ion-ios-compose-outline" icon-on="ion-ios-compose" ui-sref="supervisorDashboard.inspection">
+      <ion-tab title="Inspection" icon-off="ion-ios-compose-outline" icon-on="ion-ios-compose"
+        ui-sref="supervisorDashboard.inspection">
         <!-- <ion-nav-view name="tab-supervisorInspection"></ion-nav-view> -->
       </ion-tab>
 
@@ -64,14 +69,15 @@
         <ion-item menu-close ui-sref="supervisorDashboard.findemployee">
           <i class="icon ion-ios-people" data-pack="default" data-tags="sign out"></i> Find Employee
         </ion-item>
-
+        <ion-item menu-close ui-sref="supervisorDashboard.scheduler">
+          <i class="icon ion-calendar" data-pack="default" data-tags="sign out"></i> Scheduler View
+        </ion-item>
         <ion-item menu-close ui-sref="supervisorDashboard.managePTOSupervisor">
-          <i class="icon ion-information-circled" data-pack="default" data-tags="sign out"></i> PTO
+          <i class="icon ion-ios-pie" data-pack="default" data-tags="sign out"></i> PTO
         </ion-item>
         <ion-item menu-close ui-sref="supervisorDashboard.supervisorManageTrade">
-          <i class="icon ion-information-circled" data-pack="default" data-tags="sign out"></i> TRADE
+          <i class="icon ion-arrow-swap" data-pack="default" data-tags="sign out"></i> TRADE
         </ion-item>
-
         <ion-item menu-close ui-sref="supervisorDashboard.aboutapp">
           <i class="icon ion-information-circled" data-pack="default" data-tags="sign out"></i> App info
         </ion-item>

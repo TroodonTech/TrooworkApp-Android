@@ -61,12 +61,6 @@ myApp.controller('inspectionAddCtrl', function ($ionicPlatform, HOSTNAME, $ionic
             day = ("0" + date.getDate()).slice(-2);
         return [date.getFullYear(), mnth, day].join("-");
     }
-    function convert_DT_calendar(str) {
-        var date = new Date(str),
-            mnth = ("0" + (date.getMonth() + 1)).slice(-2),
-            day = ("0" + date.getDate()).slice(-2);
-        return [date.getFullYear(), mnth, day].join("-");
-    }
     $rootScope.toServeremployeekey = profile.employeekey;
     $scope.dateValue = convert_DT_calendar(new Date());
     $scope.timeValue = new Date().getHours() + ':' + new Date().getMinutes();

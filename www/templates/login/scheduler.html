@@ -3,26 +3,30 @@
   <ion-content>
     <div style="padding-top: 0.5%;padding-bottom: 0.5%;">
       <div>Date</div>
-      <div class="item item-icon-left" ion-datetime-picker date monday-first ng-model="dateValue" ng-click="openDatePicker();">
+      <div class="item item-icon-left" ion-datetime-picker date monday-first ng-model="dateValue"
+        ng-click="openDatePicker();">
         <i class="icon ion-ios-calendar-outline positive"></i>
         Click to open the date:
         <div class="input-label">{{dateValue}}</div>
       </div>
       <div style="padding-left: 1.5%;background-color: white;">
-        <ion-radio ng-repeat="item in clientSideList" ng-value="item.value" class="radio radio-inline radio-blue" ng-click="selectSearchType(item)" ng-model="search">
+        <ion-radio ng-repeat="item in clientSideList" ng-value="item.value" class="radio radio-inline radio-blue"
+          ng-click="selectSearchType(item)" ng-model="search">
           {{ item.text }}
         </ion-radio>
       </div>
       <label class="item item-input item-select" ng-if="empShow">
         <div class="input-label">Employee</div>
-        <select ng-model="empKeys" ng-options="x.name for x in empList | unique:'name'" ng-value="x.id" ng-change="selectedEmployees(empKeys);">
+        <select ng-model="empKeys" ng-options="x.name for x in empList | unique:'name'" ng-value="x.id"
+          ng-change="selectedEmployees(empKeys);">
           <option label=" Select" value="0"></option>
         </select>
       </label>
 
       <label class="item item-input item-select" ng-if="grpShow">
         <div class="input-label">Employee Group</div>
-        <select ng-model="grpKeys" ng-options="x.Description for x in grpList | unique:'Description'" ng-value="x.Idemployeegrouping" ng-change="selectedEmployeeGroups(grpKeys);">
+        <select ng-model="grpKeys" ng-options="x.Description for x in grpList | unique:'Description'"
+          ng-value="x.Idemployeegrouping" ng-change="selectedEmployeeGroups(grpKeys);">
           <option label=" Select" value="0"></option>
         </select>
       </label>

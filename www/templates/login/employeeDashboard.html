@@ -18,15 +18,18 @@
       </ion-tab>
 
       <!-- Workorder Tab -->
-      <ion-tab title="Work Order" icon-off="ion-social-buffer-outline" icon-on="ion-social-buffer" ui-sref="employeeDashboard.employeeworks">
+      <ion-tab title="Work Order" icon-off="ion-social-buffer-outline" icon-on="ion-social-buffer"
+        ui-sref="employeeDashboard.employeeworks">
         <!-- <ion-nav-view name="tab-employeeworks"></ion-nav-view> -->
       </ion-tab>
 
       <!-- scanWorks Tab -->
-      <ion-tab title="Scan for Work" icon-off="ion-ios-barcode-outline" icon-on="ion-ios-barcode" ui-sref="employeeDashboard.scanforworkEmp">
+      <ion-tab title="Scan for Work" icon-off="ion-ios-barcode-outline" icon-on="ion-ios-barcode"
+        ui-sref="employeeDashboard.scanforworkEmp">
         <!-- <ion-nav-view name="tab-employeescanWorks"></ion-nav-view> -->
       </ion-tab>
-      <ion-tab title="Create WorkOrder By Scan" icon-off="ion-qr-scanner" icon-on="ion-qr-scanner" ui-sref="employeeDashboard.createWorkOrderbyScan">
+      <ion-tab title="Create WorkOrder By Scan" icon-off="ion-qr-scanner" icon-on="ion-qr-scanner"
+        ui-sref="employeeDashboard.createWorkOrderbyScan">
         <!-- <ion-nav-view name="tab-employeescanWorks"></ion-nav-view> -->
       </ion-tab>
     </ion-tabs>
@@ -49,14 +52,15 @@
         <ion-item menu-close ui-sref="employeeDashboard.createWorkOrderbyScan">
           <i class="icon ion-qr-scanner" data-pack="default" data-tags="sign out"></i> Create WorkOrder By Scan
         </ion-item>
-
+        <ion-item menu-close ui-sref="employeeDashboard.scheduler">
+          <i class="icon ion-calendar" data-pack="default" data-tags="sign out"></i> Scheduler View
+        </ion-item>
         <ion-item menu-close ui-sref="employeeDashboard.managePTO">
-          <i class="icon ion-information-circled" data-pack="default" data-tags="sign out"></i> PTO
+          <i class="icon ion-ios-pie" data-pack="default" data-tags="sign out"></i> PTO
         </ion-item>
         <ion-item menu-close ui-sref="employeeDashboard.manageTrade">
-          <i class="icon ion-information-circled" data-pack="default" data-tags="sign out"></i> TRADE
+          <i class="icon ion-arrow-swap" data-pack="default" data-tags="sign out"></i> TRADE
         </ion-item>
-
         <ion-item menu-close ui-sref="employeeDashboard.aboutapp">
           <i class="icon ion-information-circled" data-pack="default" data-tags="sign out"></i> App info
         </ion-item>
